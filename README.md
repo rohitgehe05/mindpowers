@@ -71,7 +71,7 @@ When invoked, the skill follows a 10-step process:
 
 ```bash
 # Clone and install locally
-git clone https://github.com/<your-org>/mindpowers.git
+git clone https://github.com/rohitgehe05/mindpowers.git
 claude --plugin-dir ./mindpowers
 ```
 
