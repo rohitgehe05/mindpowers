@@ -1,0 +1,17 @@
+{
+  "name": "mindpowers",
+  "version": "0.2.0",
+  "description": "Brainstorming superpowers for knowledge workers. Refines rough ideas into locked specs through Socratic dialogue, with templates for business reviews, decision docs, PRDs, briefing docs, comms drafts, frameworks, and talking points. Two approval gates (verbal then written) prevent unexamined assumptions from making it into your deliverables. Adaptive elicitation, research-as-recovery for generic-feeling structures, source attribution as standard, and type-aware handoffs. A knowledge-work counterpart to obra/superpowers.",
+  "author": "Rohit",
+  "license": "MIT",
+  "keywords": [
+    "brainstorming",
+    "knowledge-work",
+    "specs",
+    "decision-making",
+    "writing",
+    "product-management",
+    "executive-content",
+    "frameworks"
+  ]
+}
