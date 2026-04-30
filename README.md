@@ -63,9 +63,11 @@ When invoked, the skill follows a 10-step process:
 
 ### Cowork (Claude Desktop)
 
-1. Download `mindpowers.zip` (or clone this repo and zip the folder)
+1. Download the latest [`mindpowers-cowork-vX.Y.Z.zip`](https://github.com/rohitgehe05/mindpowers/releases/latest) from Releases
 2. In Cowork, go to Customize > Plugins > Upload Local Plugin
 3. Upload the zip
+
+Note: Cowork requires a flattened layout (`SKILL.md` at the top level), which differs from the Claude Code multi-skill layout in this repo. The release zip is built from this repo automatically; do not zip the repo directly.
 
 ### Claude Code
 
