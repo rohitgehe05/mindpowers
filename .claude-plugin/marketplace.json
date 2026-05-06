@@ -1,0 +1,20 @@
+{
+  "name": "mindpowers",
+  "owner": {
+    "name": "Rohit Gehe"
+  },
+  "metadata": {
+    "description": "Brainstorming superpowers for knowledge workers",
+    "version": "0.2.0",
+    "pluginRoot": "."
+  },
+  "plugins": [
+    {
+      "name": "mindpowers",
+      "source": "./",
+      "description": "Brainstorming superpowers for knowledge workers. Refines rough ideas into locked specs through Socratic dialogue, with templates for business reviews, decision docs, PRDs, briefing docs, comms drafts, frameworks, and talking points.",
+      "version": "0.2.0",
+      "keywords": ["brainstorming", "knowledge-work", "specs", "decision-making", "writing", "frameworks"]
+    }
+  ]
+}

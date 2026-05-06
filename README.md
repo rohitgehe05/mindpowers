@@ -63,19 +63,23 @@ When invoked, the skill follows a 10-step process:
 
 ### Cowork (Claude Desktop)
 
-1. Download the latest [`mindpowers-cowork-vX.Y.Z.zip`](https://github.com/rohitgehe05/mindpowers/releases/latest) from Releases
-2. In Cowork, go to Customize > Plugins > Upload Local Plugin
-3. Upload the zip
-
-Note: Cowork requires a flattened layout (`SKILL.md` at the top level), which differs from the Claude Code multi-skill layout in this repo. The release zip is built from this repo automatically; do not zip the repo directly.
+1. Download `mindpowers-cowork-v0.2.0.zip` from the [latest release](https://github.com/rohitgehe05/mindpowers/releases/latest)
+2. In Cowork: **Customize → Personal plugins → `+`**
+3. Click "Upload local plugin", drag/select the zip, click **Upload**
+4. Plugin appears in sidebar under Personal plugins. Trigger by asking for a brainstorm (e.g. "draft a PRD for X")
 
 ### Claude Code
 
 ```bash
-# Clone and install locally
 git clone https://github.com/rohitgehe05/mindpowers.git
 claude --plugin-dir ./mindpowers
+# Skill namespace: /mindpowers:brainstorming
 ```
+
+### Notes
+
+- Repo uses standard Claude Code plugin layout (`skills/<name>/SKILL.md` nested). Cowork zip is built from the same source via `scripts/build-cowork-zip.sh` and attached automatically to each release tag.
+- Don't zip the repo directly — the release zip strips dev files (CHANGELOG, CONTRIBUTING, .github, scripts, dist) for a clean install bundle.
 
 ## Quick start
 

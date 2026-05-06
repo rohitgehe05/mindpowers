@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
-# Build Cowork-format zip from Claude Code repo layout.
-# Cowork requires SKILL.md at the top level; this repo nests it under skills/brainstorming/.
+# Build Cowork-format zip from this repo.
+#
+# Cowork's plugin upload expects:
+#   - Files at the ZIP ROOT (no wrapper folder)
+#   - skills/<name>/SKILL.md nesting preserved
+#   - .claude-plugin/plugin.json + .claude-plugin/marketplace.json present
+#
 # Usage: ./scripts/build-cowork-zip.sh [version]
 #   version defaults to plugin.json "version" field.
 
@@ -9,29 +14,26 @@ set -euo pipefail
 REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$REPO_ROOT"
 
-VERSION="${1:-$(grep -o '"version"[[:space:]]*:[[:space:]]*"[^"]*"' .claude-plugin/plugin.json | sed 's/.*"\([^"]*\)"$/\1/')}"
+VERSION="${1:-$(grep -o '"version"[[:space:]]*:[[:space:]]*"[^"]*"' .claude-plugin/plugin.json | head -1 | sed 's/.*"\([^"]*\)"$/\1/')}"
 
 if [[ -z "$VERSION" ]]; then
   echo "error: could not determine version" >&2
   exit 1
 fi
 
-OUT_DIR="$(mktemp -d)"
-STAGE="$OUT_DIR/mindpowers"
-mkdir -p "$STAGE"
+STAGE="$(mktemp -d)"
 
 cp -r .claude-plugin "$STAGE/"
-cp skills/brainstorming/SKILL.md "$STAGE/"
-cp -r skills/brainstorming/references "$STAGE/"
-cp README.md LICENSE CHANGELOG.md CONTRIBUTING.md "$STAGE/"
+cp -r skills "$STAGE/"
+cp README.md LICENSE "$STAGE/"
 
 ZIP_NAME="mindpowers-cowork-v${VERSION}.zip"
 ZIP_PATH="$REPO_ROOT/dist/$ZIP_NAME"
 mkdir -p "$REPO_ROOT/dist"
 rm -f "$ZIP_PATH"
 
-(cd "$OUT_DIR" && zip -r "$ZIP_PATH" mindpowers >/dev/null)
+(cd "$STAGE" && zip -r "$ZIP_PATH" . >/dev/null)
 
-rm -rf "$OUT_DIR"
+rm -rf "$STAGE"
 
 echo "built: $ZIP_PATH"
