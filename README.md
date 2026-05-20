@@ -2,62 +2,62 @@
 
 **Brainstorming superpowers for knowledge workers.**
 
-Mindpowers is a Cowork and Claude Code plugin that gives Claude a disciplined brainstorming workflow for non-coding deliverables. It refines rough ideas into locked specs through Socratic dialogue, with templates for the seven knowledge-work shapes you actually produce.
+Mindpowers is a plugin for Cowork and Claude Code. It gives Claude a careful way to brainstorm documents that aren't code — memos, reviews, PRDs, and the like. Instead of jumping straight to a draft, Claude asks you questions until the rough idea becomes a clear, written spec.
 
-A knowledge-work counterpart to [obra/superpowers](https://github.com/obra/superpowers). Sibling to [coworkpowers](https://github.com/nabeelhyatt/coworkpowers), but focused narrowly on the brainstorming pattern rather than the full compound loop.
+It's the knowledge-work version of [obra/superpowers](https://github.com/obra/superpowers), and a cousin of [coworkpowers](https://github.com/nabeelhyatt/coworkpowers) — but it sticks to one thing: brainstorming.
 
 ## Why
 
-Most AI-assisted writing fails at the start, not the end. Claude rushes to produce output before the intent is clear. The result is plausible prose that misses the point, or worse, that reflects unexamined assumptions back at you with confidence.
+Most AI writing goes wrong at the start, not the end. Claude rushes to produce something before it knows what you actually want. You get prose that sounds fine but misses the point — or worse, confidently repeats back assumptions you never checked.
 
-Mindpowers fixes this by enforcing two approval gates before any drafting happens:
+Mindpowers fixes this with two approvals before any drafting happens:
 
-1. **Verbal approval.** Section-by-section dialogue surfaces gaps, contradictions, and unstated assumptions.
-2. **Written approval.** A locked spec on disk forces precision that conversation lets slide.
+1. **Approve the thinking.** Claude walks through the plan with you, section by section, so you catch the gaps and bad assumptions out loud.
+2. **Approve the spec.** Claude writes the agreed plan to a file. Putting it in writing forces the precision a conversation lets slide.
 
-Drafting only begins after both gates clear. The discipline is contagious: once your specs are crisp, your drafts are too.
+Drafting starts only after both pass. Tight specs make tight drafts.
 
 ## What you get
 
-One skill: `brainstorming`. Seven templates plus a self-shape fallback.
+One skill: `brainstorming`. Seven templates, plus a fallback for anything that doesn't fit one.
 
 | Template | When it fires |
 |---|---|
-| `business-review` | Weekly or quarterly product BRs |
+| `business-review` | Weekly or quarterly product reviews |
 | `decision-doc` | Strategic arguments, OKR defence, build-vs-buy |
 | `prd` | Product specs |
 | `briefing-doc` | Partner meetings, exec syncs, regulator prep |
-| `comms-draft` | Slack messages, team emails, internal announcements |
-| `framework` | Methodologies, rubrics, playbooks |
-| `talking-points` | OKR defence prep, Q&A prep, podium moments |
-| `self-shape` | Anything else, with one-question-at-a-time elicitation |
+| `comms-draft` | Slack messages, team emails, announcements |
+| `framework` | Methods, rubrics, playbooks |
+| `talking-points` | OKR defence, Q&A prep, anything you'll say out loud |
+| `self-shape` | Anything else — Claude asks one question at a time |
 
-Each template encodes earned standards (insight before data for BRs, recommendation up front for decision-docs, falsifiable hypotheses for PRDs).
+Each template carries the lessons that make that kind of document good: lead with the insight (not the data) in a business review, put the recommendation first in a decision doc, write hypotheses you can actually prove or disprove in a PRD.
 
 ## How it works
 
-When invoked, the skill follows a 10-step process:
+When the skill runs, it goes through ten steps:
 
-1. Explore context (recent specs, conversation history)
-2. Detect template match (or self-shape if novel). Classify topic as routine or exploratory.
-3. Offer visual companion when the dialogue heads into visually-shaped territory (deferred from session start)
-4. Adaptive elicitation: batched only when template match AND topic is routine for the user; otherwise one-question-at-a-time
-5. Propose 2-3 approaches when self-shaping or when the route is open
-6. Present design sections, get verbal approval. If structure is rejected as "too generic," invoke research-as-recovery before re-proposing.
-7. Write spec to `docs/brainstorm/<type>/YYYY-MM-DD-<slug>.md` with YAML frontmatter
-8. Self-review and report inline: surface checklist results so the user can see what was checked
-9. User reviews written spec on disk, gives final approval
-10. Type-aware handoff: brief-style specs ("draft, hand back, or stop?") versus spec-is-the-deliverable specs like frameworks ("stop, draft a derivative, or pause?")
+1. Read the context — recent specs, what you've been talking about
+2. Pick the matching template, or use `self-shape` if nothing fits. Decide whether the topic is routine for you or new ground.
+3. Offer a visual companion if the conversation looks like it needs sketches or diagrams
+4. Ask questions — one at a time, or a few at once when the task is routine and a template fits
+5. Suggest two or three approaches when the path isn't obvious
+6. Walk through the plan and get your spoken approval. If you say the structure feels too generic, Claude researches the topic before trying again.
+7. Write the spec to `docs/brainstorm/<type>/YYYY-MM-DD-<slug>.md`
+8. Check its own work and show you what it checked
+9. You read the written spec and give final approval
+10. Hand off in a way that fits the document. A briefing doc ends with "draft it, hand it back, or stop?" A framework — where the spec is the deliverable — ends with "stop, draft something from it, or pause?"
 
 ## What's in v0.2
 
-- Adaptive elicitation now classifies routine versus exploratory topics, not just template-match status
-- Research-as-recovery is a named recovery path when structure feedback is "too generic"
-- Source attribution is a standard across framework, decision-doc, and PRD templates
-- Framework template explicitly covers personal and life frameworks alongside professional ones
-- Structure guidance now requires connections between elements, not just placement
-- Type-aware handoff distinguishes brief-style specs from spec-is-the-deliverable specs
-- Self-review results surfaced inline rather than implicit
+- Claude now judges whether a topic is routine or new for you, not just whether a template matches
+- When you say a structure feels too generic, Claude researches before trying again
+- Frameworks, decision docs, and PRDs now cite their sources
+- The framework template covers personal and life frameworks, not only work ones
+- Structure advice now asks how the pieces connect, not just where they sit
+- The handoff at the end depends on the kind of document
+- Claude shows you its self-review instead of doing it silently
 
 ## Installation
 
@@ -83,7 +83,7 @@ claude --plugin-dir ./mindpowers
 
 ## Quick start
 
-Once installed, the skill triggers automatically on substantive deliverable requests. You can also invoke it explicitly:
+Once it's installed, the skill kicks in on its own when you ask for a real document. You can also call it directly:
 
 ```
 "Help me draft the Q1 product business review"
@@ -92,22 +92,22 @@ Once installed, the skill triggers automatically on substantive deliverable requ
 "What should I say in the OKR defence next week?"
 ```
 
-The skill handles the rest: detects the template, elicits the spec, locks it on disk, and asks how you want to proceed.
+From there Claude picks the template, asks for the details, saves the spec to a file, and asks how you want to continue.
 
 ## Philosophy
 
-- **Two gates beat one.** Verbal approval misses things. Written approval catches them.
-- **Templates encode learning.** Earned standards belong in templates, not in your head.
-- **YAGNI ruthlessly.** Every section in a spec must justify its presence.
-- **Self-shape for novel work.** When no template fits, one-question-at-a-time elicitation forces reflection.
-- **No task is too simple.** The spec for a Slack reply is short, but it exists.
+- **Two approvals beat one.** Talking it through misses things. Writing it down catches them.
+- **Templates hold the lessons.** Standards you learned the hard way belong in a template, not your memory.
+- **Cut ruthlessly.** Every section in a spec has to earn its place.
+- **When nothing fits, slow down.** No template means one question at a time — which forces you to actually think.
+- **No task is too small.** The spec for a Slack reply is short, but it still exists.
 
 ## Credits
 
-Inspired by:
+Built on:
 
-- [obra/superpowers](https://github.com/obra/superpowers): the original skills framework and brainstorming pattern
-- [nabeelhyatt/coworkpowers](https://github.com/nabeelhyatt/coworkpowers): knowledge-work adaptation that informed the template approach
+- [obra/superpowers](https://github.com/obra/superpowers) — the original skills framework and the brainstorming idea
+- [nabeelhyatt/coworkpowers](https://github.com/nabeelhyatt/coworkpowers) — the knowledge-work version that shaped the template approach
 
 ## License
 
