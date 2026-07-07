@@ -7,7 +7,7 @@ description: Use when a mindpowers spec exists and the user wants the actual del
 
 ## Overview
 
-The second step in the mindpowers loop: shape (mindstorming) -> draft (drafting) -> review (reviewing-docs). Mindstorming turns a rough idea into a locked spec. Drafting turns that locked spec into the finished document, holding it to the standards baked into the matched template.
+The second step in the mindpowers loop: shape (mindstorming) -> draft (drafting) -> review (reviewing-docs) -> remember (calibrating). Mindstorming turns a rough idea into a locked spec. Drafting turns that locked spec into the finished document, holding it to the standards baked into the matched template.
 
 Drafting does not re-litigate the spec. The thinking already happened. This skill's job is faithful, high-quality execution: realize every section, honor every exclusion, apply the template's hard requirements, and flag any deviation instead of silently making one.
 

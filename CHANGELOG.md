@@ -4,6 +4,12 @@ All notable changes to mindpowers will be documented here.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.5.0] - 2026-07-07
+
+### Added
+- New skill: `calibrating`. After a deliverable ships or gets human edits, it asks at most three questions (what landed, what got cut or rewritten, what should change next time) and records the answers in `docs/mindpowers/preferences.md`, keyed by template type. Entries are pruned on write; contradictions replace older notes instead of piling up.
+- Mindstorming now reads `docs/mindpowers/preferences.md` at the start of every session, and the routine-vs-exploratory call is made from specs and preferences on disk instead of guessing from conversation history, which doesn't persist across sessions.
+
 ## [0.4.0] - 2026-07-07
 
 ### Added

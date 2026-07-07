@@ -7,7 +7,7 @@ description: Use before drafting any non-code knowledge-work deliverable, includ
 
 ## Overview
 
-mindpowers does one loop: shape, draft, review. This skill is the "shape" step.
+mindpowers does one loop: shape, draft, review, and remembers what you like. This skill is the "shape" step.
 
 Help turn rough ideas into locked specs for knowledge-work deliverables (memos, business reviews, decision docs, PRDs, briefing docs, comms, frameworks, talking points, post-mortems) through Socratic dialogue.
 
@@ -23,8 +23,8 @@ Every task goes through this process. A Slack reply, a one-paragraph note, a rou
 
 Track these steps as todos if your harness has a task list, and complete them in order:
 
-1. **Explore context.** Check recent specs in `docs/mindpowers/specs/`, sorted by filename descending (the date prefix keeps them in chronological order); read the frontmatter of the 5-10 most recent. Also scan legacy `docs/brainstorm/` if it exists; always write new files under `docs/mindpowers/`.
-2. **Detect template match.** Does the task fit one of the 8 templates? (See "Template Selection" below.) If yes, load that template's reference file. Also classify: is this routine (a template type with prior locked specs) or exploratory (first time, novel or personal topic)?
+1. **Explore context.** Check recent specs in `docs/mindpowers/specs/`, sorted by filename descending (the date prefix keeps them in chronological order); read the frontmatter of the 5-10 most recent. Also check `docs/mindpowers/preferences.md` if it exists; it holds per-template-type notes on what this user likes. Also scan legacy `docs/brainstorm/` if it exists; always write new files under `docs/mindpowers/`.
+2. **Detect template match.** Does the task fit one of the 8 templates? (See "Template Selection" below.) If yes, load that template's reference file. Also classify: is this routine (a template type with prior locked specs and/or a recorded preference in `preferences.md`) or exploratory (first time, novel or personal topic)?
 3. **Offer visual companion (if applicable).** Defer until the dialogue is heading into visually-shaped territory. May not happen at all for text-only tasks.
 4. **Adaptive elicitation.** Batched only when template match AND routine. Otherwise one-question-at-a-time.
 5. **Propose 2-3 approaches.** When self-shaping, before presenting the design, propose alternatives with trade-offs and your recommendation. (For template-matched routine tasks, this often happens inside the template's elicitation.)
@@ -117,7 +117,7 @@ The elicitation rhythm depends on TWO axes: template match (yes/no) and topic fa
 
 **No template match (self-shape):** One question per message. Multiple-choice preferred when possible. Focus on understanding purpose, audience, constraints, success criteria. Only after the shape is clear, propose 2-3 approaches with trade-offs.
 
-**Heuristic for "routine vs exploratory":** Does `docs/mindpowers/specs/` contain a prior locked spec of this template type? Routine. Is this the first spec of this type on file, or is the subject highly personal, philosophical, or open-ended? Exploratory. This file-based check replaces guessing from conversation history, which doesn't persist across sessions. When in doubt, default to one-at-a-time, since over-batching costs more than under-batching.
+**Heuristic for "routine vs exploratory":** Does `docs/mindpowers/specs/` contain a prior locked spec of this template type, or does `docs/mindpowers/preferences.md` have a recorded entry for it? Routine. Is this the first spec of this type on file, or is the subject highly personal, philosophical, or open-ended? Exploratory. This file-based check replaces guessing from conversation history, which doesn't persist across sessions. When in doubt, default to one-at-a-time, since over-batching costs more than under-batching.
 
 Either way:
 
@@ -174,13 +174,14 @@ Acceptance does NOT mean every question goes through the visual companion. Per-q
 
 ## File Contract
 
-mindpowers is one loop across three skills: shape (`mindstorming`, this skill) -> draft (`drafting`) -> review (`reviewing-docs`). All paths below are relative to the working folder (see "no filesystem / Cowork" note in "Spec File Format").
+mindpowers is one loop across four skills: shape (`mindstorming`, this skill) -> draft (`drafting`) -> review (`reviewing-docs`) -> remember (`calibrating`). All paths below are relative to the working folder (see "no filesystem / Cowork" note in "Spec File Format").
 
 - **Specs**, written by this skill: `docs/mindpowers/specs/YYYY-MM-DD-<type>-<slug>.md`. Flat, no type subdirectories; the type lives in the filename. YAML frontmatter is authoritative (see "Spec File Format" below).
 - **Drafts**, written by `drafting`: `docs/mindpowers/drafts/YYYY-MM-DD-<type>-<slug>.md`, same stem as the spec it came from, so the pair sorts together. Draft frontmatter carries `spec: <path>`, `type`, and `status: draft | final`.
 - **Reviews**, written by `reviewing-docs`: `docs/mindpowers/reviews/YYYY-MM-DD-<type>-<slug>.md`.
+- **Preferences**, written by `calibrating`: `docs/mindpowers/preferences.md`, entries keyed by template type.
 
-**Status protocol:** a spec's `status` moves `draft -> locked -> (optionally) superseded`. This skill writes new specs as `draft` and flips them to `locked` on final approval. `drafting` consumes ONLY specs with `status: locked`; never draft from an unapproved spec. `reviewing-docs` can review any doc regardless of status and may recommend flipping a spec to `superseded` if it's since been reworked.
+**Status protocol:** a spec's `status` moves `draft -> locked -> (optionally) superseded`. This skill writes new specs as `draft` and flips them to `locked` on final approval. `drafting` consumes ONLY specs with `status: locked`; never draft from an unapproved spec. `reviewing-docs` can review any doc regardless of status and may recommend flipping a spec to `superseded` if it's since been reworked. `calibrating` only appends to `preferences.md`.
 
 Also scan legacy `docs/brainstorm/` if it exists; always write new files under `docs/mindpowers/`.
 
