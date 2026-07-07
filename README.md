@@ -108,14 +108,13 @@ docs/mindpowers/preferences.md  what you've liked, by template type
 
 Specs often carry sensitive content (leadership comms, OKR politics, exec briefings): in a shared or public git repo, mindstorming warns you and suggests `.gitignore`-ing `docs/mindpowers/` or picking a private location.
 
-## What's new in 0.3
+## What's new
 
-- The `brainstorming` skill is renamed `mindstorming`, ending a three-way name collision with `superpowers:brainstorming` and Anthropic's own brainstorming feature
-- Three new skills complete the loop: `drafting`, `reviewing-docs`, `calibrating`
-- New template: `post-mortem`
-- Output paths moved to flat `docs/mindpowers/specs|drafts|reviews/YYYY-MM-DD-<type>-<slug>.md`; legacy `docs/brainstorm/` is still read if present, nothing migrates automatically
-- No-filesystem/Cowork sessions get the spec shown in full in chat, marked as not saved, with approval still required before drafting
-- Confidentiality warning before writing specs into a shared or public repo
+- **0.5**: `calibrating` remembers what landed and what you changed, per template type, in `docs/mindpowers/preferences.md`. Mindstorming reads it at the start of every session, so your fourth business review starts smarter than your first.
+- **0.4**: `drafting` and `reviewing-docs` complete the loop, and `post-mortem` joins the templates.
+- **0.3**: the `brainstorming` skill became `mindstorming`, ending the name collision with `superpowers:brainstorming` and Anthropic's own brainstorming feature. Output paths moved to flat `docs/mindpowers/` (legacy `docs/brainstorm/` still read). Cowork sessions without a filesystem get the spec in chat, approval still required. Confidentiality warning before writing specs into a shared or public repo.
+
+Full history in the [CHANGELOG](CHANGELOG.md).
 
 ## Philosophy
 

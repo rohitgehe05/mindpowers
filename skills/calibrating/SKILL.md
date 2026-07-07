@@ -1,6 +1,6 @@
 ---
 name: calibrating
-description: Use after a knowledge-work deliverable ships or gets human edits, capturing what landed, what the user changed, and what to do differently next time, into docs/mindpowers/preferences.md so future mindstorming sessions start calibrated. Triggers on "that draft worked", "they rewrote half of it", "remember this for next time", or when the user returns with feedback on a shipped doc. Not for code retrospectives.
+description: Use after a knowledge-work deliverable ships or gets human edits. Triggers on "that draft worked", "they rewrote half of it", "remember this for next time", or when the user returns with feedback on a shipped doc. Not for code retrospectives.
 ---
 
 # Calibrating

@@ -4,6 +4,12 @@ All notable changes to mindpowers will be documented here.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.5.1] - 2026-07-07
+
+### Changed
+- All four skill descriptions now state only their triggering conditions, per skill-authoring best practice: a description that summarizes the workflow tempts the agent to follow the summary instead of reading the skill. Routing behavior verified unchanged with an A/B test (30 simulations) before the edit; approval-gate compliance verified under time pressure.
+- README "What's new" now covers 0.3 through 0.5 and links the changelog.
+
 ## [0.5.0] - 2026-07-07
 
 ### Added

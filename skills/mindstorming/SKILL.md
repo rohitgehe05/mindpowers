@@ -1,6 +1,6 @@
 ---
 name: mindstorming
-description: Use before drafting any non-code knowledge-work deliverable, including strategic memos, business reviews, OKR defences, PRDs, decision docs, briefing docs, exec talking points, Slack messages to leadership, frameworks, post-mortems. Triggers on asks like "help me write up X", "draft this memo", "what should I say to Y", even casually phrased. NOT for software implementation; for creating features, components, or code changes use superpowers:brainstorming instead; for authoring the PRD document itself, use this skill. For non-code deliverables this skill supersedes generic brainstorming. Refines rough ideas through Socratic dialogue and locks intent in a written spec (verbal + written approval gates) before drafting. Do not skip for simple asks; simple tasks hide the costliest assumptions.
+description: Use before drafting any non-code knowledge-work deliverable, including strategic memos, business reviews, OKR defences, PRDs, decision docs, briefing docs, exec talking points, Slack messages to leadership, frameworks, post-mortems. Triggers on asks like "help me write up X", "draft this memo", "what should I say to Y", even casually phrased. NOT for software implementation; for creating features, components, or code changes use superpowers:brainstorming instead; for authoring the PRD document itself, use this skill. For non-code deliverables this skill supersedes generic brainstorming. Do not skip for simple asks; simple tasks hide the costliest assumptions.
 ---
 
 # Mindstorming: Brainstorming for Knowledge Work

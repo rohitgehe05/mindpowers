@@ -1,6 +1,6 @@
 ---
 name: reviewing-docs
-description: Use when the user has a finished or near-finished document (memo, business review, PRD, decision doc, briefing, comms, framework, talking points, post-mortem) and wants it pressure-tested before it ships, such as "review this doc", "poke holes in this", "is this ready to send". Red-teams the doc against its spec (if one exists) and the matched template's standards, through a persona chosen by document type. Works on any doc, not just mindpowers-drafted ones. Not for code review.
+description: Use when the user has a finished or near-finished document (memo, business review, PRD, decision doc, briefing, comms, framework, talking points, post-mortem) and wants it pressure-tested before it ships, such as "review this doc", "poke holes in this", "is this ready to send". Works on any doc, not just mindpowers-drafted ones. Not for code review.
 ---
 
 # Reviewing Docs

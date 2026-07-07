@@ -5,7 +5,7 @@
   },
   "metadata": {
     "description": "One loop for knowledge work: shape, draft, review, remember",
-    "version": "0.5.0",
+    "version": "0.5.1",
     "pluginRoot": "."
   },
   "plugins": [
@@ -13,7 +13,7 @@
       "name": "mindpowers",
       "source": "./",
       "description": "One loop for knowledge work: shape, draft, review, remember. Mindstorming (formerly brainstorming) refines rough ideas into locked specs through Socratic dialogue; drafting turns locked specs into deliverables; reviewing-docs checks any doc against the template's standards; calibrating remembers what you like for next time. Templates cover business reviews, decision docs, PRDs, briefing docs, comms drafts, frameworks, talking points, and post-mortems.",
-      "version": "0.5.0",
+      "version": "0.5.1",
       "keywords": ["brainstorming", "mindstorming", "knowledge-work", "specs", "decision-making", "writing", "frameworks", "cowork", "claude-cowork", "prd", "productivity", "templates"]
     }
   ]

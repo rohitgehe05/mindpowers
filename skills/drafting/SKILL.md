@@ -1,6 +1,6 @@
 ---
 name: drafting
-description: Use when a mindpowers spec exists and the user wants the actual deliverable written, such as "draft it", "write the memo from the spec", or right after mindstorming locks a spec. Turns a locked spec from docs/mindpowers/specs/ into the finished document, enforcing the matched template's standards. Not for code; not for drafting without a spec (offer mindstorming first).
+description: Use when a mindpowers spec exists and the user wants the actual deliverable written, such as "draft it", "write the memo from the spec", or right after mindstorming locks a spec. Not for code; not for drafting without a spec (offer mindstorming first).
 ---
 
 # Drafting
