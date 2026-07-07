@@ -18,6 +18,8 @@ Mindpowers is a small skills package and contributions are welcome. The project 
 - Adding heavy automation or tooling (mindpowers is intentionally markdown-first)
 - Renaming things without strong justification (stable naming reduces friction across the *-powers ecosystem)
 
+v0.3 is the one exception: the `brainstorming` skill was renamed to `mindstorming` (invoke it as `/mindpowers:mindstorming`, not `/mindpowers:brainstorming`) because the old name collided three ways, with `superpowers:brainstorming` and with Anthropic's own product feature called "brainstorming". Names are stable from 0.3 onward; don't propose further renames without a similarly strong reason.
+
 ## How to propose a change
 
 1. Open an issue first if the change is non-trivial. Describe the gap you're trying to close and the proposed approach.
@@ -34,4 +36,4 @@ Mindpowers is a small skills package and contributions are welcome. The project 
 
 ## Spec discipline
 
-The skill itself enforces a brainstorming workflow. When proposing structural changes to the SKILL.md or templates, please run a brainstorm session against your own change first and submit the resulting spec alongside the PR. Yes, the project eats its own dog food.
+The mindstorming skill itself enforces this discipline. When proposing structural changes to any SKILL.md or template, please run a mindstorming session against your own change first and submit the resulting spec alongside the PR. Yes, the project eats its own dog food.

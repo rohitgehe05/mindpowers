@@ -4,17 +4,17 @@
     "name": "Rohit Gehe"
   },
   "metadata": {
-    "description": "Brainstorming superpowers for knowledge workers",
-    "version": "0.2.0",
+    "description": "One loop for knowledge work: shape, draft, review, remember",
+    "version": "0.3.0",
     "pluginRoot": "."
   },
   "plugins": [
     {
       "name": "mindpowers",
       "source": "./",
-      "description": "Brainstorming superpowers for knowledge workers. Refines rough ideas into locked specs through Socratic dialogue, with templates for business reviews, decision docs, PRDs, briefing docs, comms drafts, frameworks, and talking points.",
-      "version": "0.2.0",
-      "keywords": ["brainstorming", "knowledge-work", "specs", "decision-making", "writing", "frameworks"]
+      "description": "One loop for knowledge work: shape, draft, review, remember. Mindstorming (formerly brainstorming) refines rough ideas into locked specs through Socratic dialogue; drafting turns locked specs into deliverables; reviewing-docs checks any doc against the template's standards; calibrating remembers what you like for next time. Templates cover business reviews, decision docs, PRDs, briefing docs, comms drafts, frameworks, talking points, and post-mortems.",
+      "version": "0.3.0",
+      "keywords": ["brainstorming", "mindstorming", "knowledge-work", "specs", "decision-making", "writing", "frameworks", "cowork", "claude-cowork", "prd", "productivity", "templates"]
     }
   ]
 }

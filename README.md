@@ -1,25 +1,50 @@
 # Mindpowers
 
-**Brainstorming superpowers for knowledge workers.**
+**Claude Code and Claude Cowork plugin: brainstorming superpowers for knowledge workers.**
 
-Mindpowers is a plugin for Cowork and Claude Code. It gives Claude a careful way to brainstorm documents that aren't code — memos, reviews, PRDs, and the like. Instead of jumping straight to a draft, Claude asks you questions until the rough idea becomes a clear, written spec.
+![Demo: mindstorming a business review](docs/assets/demo.gif)
 
-It's the knowledge-work version of [obra/superpowers](https://github.com/obra/superpowers), and a cousin of [coworkpowers](https://github.com/nabeelhyatt/coworkpowers) — but it sticks to one thing: brainstorming.
+Mindpowers gives Claude a careful way to handle documents that aren't code: memos, reviews, PRDs, decisions, comms. Instead of jumping straight to a draft, Claude asks you questions until the rough idea becomes a clear, written spec, then carries that spec through drafting and review, and remembers what worked so the next one starts smarter.
 
-## Why
+It's the knowledge-work version of [obra/superpowers](https://github.com/obra/superpowers), and a cousin of [coworkpowers](https://github.com/nabeelhyatt/coworkpowers).
 
-Most AI writing goes wrong at the start, not the end. Claude rushes to produce something before it knows what you actually want. You get prose that sounds fine but misses the point — or worse, confidently repeats back assumptions you never checked.
+## The loop
 
-Mindpowers fixes this with two approvals before any drafting happens:
+mindpowers does one loop: shape, draft, review, and remembers what you like.
 
-1. **Approve the thinking.** Claude walks through the plan with you, section by section, so you catch the gaps and bad assumptions out loud.
-2. **Approve the spec.** Claude writes the agreed plan to a file. Putting it in writing forces the precision a conversation lets slide.
+| Skill | What it does |
+|---|---|
+| `mindstorming` | Turns a rough idea into a locked spec through Socratic dialogue (verbal approval, then written approval) |
+| `drafting` | Turns a locked spec into the actual deliverable, holding it to the template's standards |
+| `reviewing-docs` | Red-teams any doc, drafted here or pasted in, against its spec and template before it ships |
+| `calibrating` | Records what landed and what got rewritten, so the next mindstorming session starts calibrated |
 
-Drafting starts only after both pass. Tight specs make tight drafts.
+## Before / after
 
-## What you get
+A cold-drafted business review usually opens like this:
 
-One skill: `brainstorming`. Seven templates, plus a fallback for anything that doesn't fit one.
+```
+This quarter we shipped 14 features across three teams. Signups were up 8%
+month over month, and support tickets held roughly steady. The team
+continued to invest in onboarding improvements throughout the quarter.
+```
+
+A mindstorming-spec'd version front-loads the thing that matters:
+
+```
+Growth is masking a retention problem: signups are up 8%, but week-4
+retention slipped from 61% to 54%, the first drop in a year. Onboarding
+shipped 14 features this quarter; none of them targeted the drop.
+```
+
+- Same underlying facts, different order: insight and the lowlight lead, not buried three paragraphs in.
+- The spec forces this before drafting starts: "insight before data" is the template's standard, decided at spec time, not fixed in editing later.
+
+(Illustrative excerpt, not a real review.)
+
+## Templates
+
+Eight templates, plus a fallback for anything that doesn't fit one:
 
 | Template | When it fires |
 |---|---|
@@ -30,84 +55,82 @@ One skill: `brainstorming`. Seven templates, plus a fallback for anything that d
 | `comms-draft` | Slack messages, team emails, announcements |
 | `framework` | Methods, rubrics, playbooks |
 | `talking-points` | OKR defence, Q&A prep, anything you'll say out loud |
-| `self-shape` | Anything else — Claude asks one question at a time |
+| `post-mortem` | Incident or project retros: what happened, root cause, what changes |
+| `self-shape` | Anything else, Claude asks one question at a time |
 
 Each template carries the lessons that make that kind of document good: lead with the insight (not the data) in a business review, put the recommendation first in a decision doc, write hypotheses you can actually prove or disprove in a PRD.
 
 ## How it works
 
-When the skill runs, it goes through ten steps:
+Mindstorming, the "shape" step, runs a 10-step process:
 
-1. Read the context — recent specs, what you've been talking about
-2. Pick the matching template, or use `self-shape` if nothing fits. Decide whether the topic is routine for you or new ground.
+1. Read context: recent specs in `docs/mindpowers/specs/` and `docs/mindpowers/preferences.md`, so it knows what you've done before and what you like
+2. Pick the matching template, or `self-shape` if nothing fits. Decide whether the topic is routine or new ground for you
 3. Offer a visual companion if the conversation looks like it needs sketches or diagrams
-4. Ask questions — one at a time, or a few at once when the task is routine and a template fits
-5. Suggest two or three approaches when the path isn't obvious
-6. Walk through the plan and get your spoken approval. If you say the structure feels too generic, Claude researches the topic before trying again.
-7. Write the spec to `docs/brainstorm/<type>/YYYY-MM-DD-<slug>.md`
+4. Ask questions: batched when the task is routine and a template fits, one at a time otherwise
+5. Propose two or three approaches when the path isn't obvious
+6. Walk through the plan and get your spoken approval. If you say the structure feels too generic, Claude researches the topic before trying again
+7. Write the spec to `docs/mindpowers/specs/YYYY-MM-DD-<type>-<slug>.md`
 8. Check its own work and show you what it checked
-9. You read the written spec and give final approval
-10. Hand off in a way that fits the document. A briefing doc ends with "draft it, hand it back, or stop?" A framework — where the spec is the deliverable — ends with "stop, draft something from it, or pause?"
+9. You read the written spec and give final approval, which flips its status to `locked`
+10. Hand off in a way that fits the document: "draft it, hand back, or stop?" for brief-style docs; "stop, draft something, or pause?" when the spec itself is the deliverable
 
-## What's in v0.2
+From there, `drafting` turns the locked spec into the document, `reviewing-docs` pressure-tests it on request (yours or something someone else wrote), and `calibrating` banks what you learned for next time.
 
-- Claude now judges whether a topic is routine or new for you, not just whether a template matches
-- When you say a structure feels too generic, Claude researches before trying again
-- Frameworks, decision docs, and PRDs now cite their sources
-- The framework template covers personal and life frameworks, not only work ones
-- Structure advice now asks how the pieces connect, not just where they sit
-- The handoff at the end depends on the kind of document
-- Claude shows you its self-review instead of doing it silently
-
-## Installation
-
-### Cowork (Claude Desktop)
-
-1. Download `mindpowers-cowork-v0.2.0.zip` from the [latest release](https://github.com/rohitgehe05/mindpowers/releases/latest)
-2. In Cowork: **Customize → Personal plugins → `+`**
-3. Click "Upload local plugin", drag/select the zip, click **Upload**
-4. Plugin appears in sidebar under Personal plugins. Trigger by asking for a brainstorm (e.g. "draft a PRD for X")
+## Install
 
 ### Claude Code
 
 ```bash
-git clone https://github.com/rohitgehe05/mindpowers.git
-claude --plugin-dir ./mindpowers
-# Skill namespace: /mindpowers:brainstorming
+claude plugin marketplace add rohitgehe05/mindpowers && claude plugin install mindpowers@mindpowers
+# Skill namespace: /mindpowers:mindstorming
 ```
 
-### Notes
+### Cowork (Claude Desktop)
 
-- Repo uses standard Claude Code plugin layout (`skills/<name>/SKILL.md` nested). Cowork zip is built from the same source via `scripts/build-cowork-zip.sh` and attached automatically to each release tag.
-- Don't zip the repo directly — the release zip strips dev files (CHANGELOG, CONTRIBUTING, .github, scripts, dist) for a clean install bundle.
+1. Download `mindpowers-cowork-v0.3.0.zip` from the [latest release](https://github.com/rohitgehe05/mindpowers/releases/latest)
+2. In Cowork: **Customize → Personal plugins → `+`**
+3. Click "Upload local plugin", drag/select the zip, click **Upload**
+4. Plugin appears in sidebar under Personal plugins. Trigger by asking for a brainstorm (e.g. "draft a PRD for X")
 
-## Quick start
+## Works alongside superpowers
 
-Once it's installed, the skill kicks in on its own when you ask for a real document. You can also call it directly:
+`superpowers:brainstorming` fires for code and features. `mindpowers:mindstorming` fires for documents and comms. Writing a PRD belongs to mindpowers; building what the PRD describes belongs to superpowers. And where coworkpowers is a suite, mindpowers is the one loop that stops Claude from writing the wrong doc in the first place.
+
+## Where files go
 
 ```
-"Help me draft the Q1 product business review"
-"I need a decision doc on whether to extend the partnership"
-"Brainstorm a PRD for the new onboarding flow"
-"What should I say in the OKR defence next week?"
+docs/mindpowers/specs/          locked intent, one file per document
+docs/mindpowers/drafts/         the actual deliverables, same stem as their spec
+docs/mindpowers/reviews/        red-team notes
+docs/mindpowers/preferences.md  what you've liked, by template type
 ```
 
-From there Claude picks the template, asks for the details, saves the spec to a file, and asks how you want to continue.
+Specs often carry sensitive content (leadership comms, OKR politics, exec briefings): in a shared or public git repo, mindstorming warns you and suggests `.gitignore`-ing `docs/mindpowers/` or picking a private location.
+
+## What's new in 0.3
+
+- The `brainstorming` skill is renamed `mindstorming`, ending a three-way name collision with `superpowers:brainstorming` and Anthropic's own brainstorming feature
+- Three new skills complete the loop: `drafting`, `reviewing-docs`, `calibrating`
+- New template: `post-mortem`
+- Output paths moved to flat `docs/mindpowers/specs|drafts|reviews/YYYY-MM-DD-<type>-<slug>.md`; legacy `docs/brainstorm/` is still read if present, nothing migrates automatically
+- No-filesystem/Cowork sessions get the spec shown in full in chat, marked as not saved, with approval still required before drafting
+- Confidentiality warning before writing specs into a shared or public repo
 
 ## Philosophy
 
 - **Two approvals beat one.** Talking it through misses things. Writing it down catches them.
 - **Templates hold the lessons.** Standards you learned the hard way belong in a template, not your memory.
 - **Cut ruthlessly.** Every section in a spec has to earn its place.
-- **When nothing fits, slow down.** No template means one question at a time — which forces you to actually think.
-- **No task is too small.** The spec for a Slack reply is short, but it still exists.
+- **When nothing fits, slow down.** No template means one question at a time, which forces you to actually think.
+- **No task is too small.** The spec for a Slack reply is short, but it still exists, except for short comms, which stay in chat unless you want a record.
 
 ## Credits
 
 Built on:
 
-- [obra/superpowers](https://github.com/obra/superpowers) — the original skills framework and the brainstorming idea
-- [nabeelhyatt/coworkpowers](https://github.com/nabeelhyatt/coworkpowers) — the knowledge-work version that shaped the template approach
+- [obra/superpowers](https://github.com/obra/superpowers): the original skills framework and the brainstorming idea
+- [nabeelhyatt/coworkpowers](https://github.com/nabeelhyatt/coworkpowers): the knowledge-work version that shaped the template approach
 
 ## License
 

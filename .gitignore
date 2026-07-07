@@ -32,5 +32,6 @@ build/
 .env
 .env.local
 
-# Personal brainstorm specs (keep templates public, keep your specs private)
+# Personal specs, drafts, reviews, and preferences (keep templates public, keep your own private)
+docs/mindpowers/
 docs/brainstorm/

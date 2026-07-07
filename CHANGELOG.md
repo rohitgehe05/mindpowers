@@ -4,6 +4,20 @@ All notable changes to mindpowers will be documented here.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.3.0] - 2026-07-07
+
+### Renamed
+- The `brainstorming` skill is now `mindstorming`, to end a three-way name collision with `superpowers:brainstorming` and Anthropic's own "brainstorming" product feature. Invoke it as `/mindpowers:mindstorming` (the old `/mindpowers:brainstorming` no longer resolves).
+
+### Changed
+- Output paths moved from `docs/brainstorm/<type>/YYYY-MM-DD-<slug>.md` to flat `docs/mindpowers/specs/YYYY-MM-DD-<type>-<slug>.md`. Type now lives in the filename, not a subdirectory, and specs and drafts share a stem so pairs sort together. Legacy `docs/brainstorm/` is still read if present; nothing is migrated automatically.
+- Drafts now have a defined home (`docs/mindpowers/drafts/`) instead of being handed back in chat only.
+- Cowork/no-filesystem sessions: if there's no writable folder, the spec is shown in full in chat (or as an artifact), marked as not saved to disk, and still requires explicit written approval before drafting proceeds.
+- Mindstorming now warns before writing a spec into a shared or public git repo, since specs often carry sensitive content (leadership comms, OKR politics, exec briefings), and suggests `.gitignore`-ing `docs/mindpowers/` or picking a private location.
+
+### Fixed
+- Repo hygiene: the built Cowork zip and `.DS_Store` are no longer tracked in git; plugin metadata (`homepage`, `repository`, `license`, author email) is now complete in `plugin.json`.
+
 ## [0.2.0] - 2026-04-30
 
 ### Added
