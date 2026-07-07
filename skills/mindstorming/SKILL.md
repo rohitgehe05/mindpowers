@@ -1,13 +1,15 @@
 ---
 name: mindstorming
-description: Use before drafting any non-code knowledge-work deliverable, including strategic memos, business reviews, OKR defences, PRDs, decision docs, briefing docs, exec talking points, Slack messages to leadership, frameworks. Triggers on asks like "help me write up X", "draft this memo", "what should I say to Y", even casually phrased. NOT for software implementation; for creating features, components, or code changes use superpowers:brainstorming instead; for authoring the PRD document itself, use this skill. For non-code deliverables this skill supersedes generic brainstorming. Refines rough ideas through Socratic dialogue and locks intent in a written spec (verbal + written approval gates) before drafting. Do not skip for simple asks; simple tasks hide the costliest assumptions.
+description: Use before drafting any non-code knowledge-work deliverable, including strategic memos, business reviews, OKR defences, PRDs, decision docs, briefing docs, exec talking points, Slack messages to leadership, frameworks, post-mortems. Triggers on asks like "help me write up X", "draft this memo", "what should I say to Y", even casually phrased. NOT for software implementation; for creating features, components, or code changes use superpowers:brainstorming instead; for authoring the PRD document itself, use this skill. For non-code deliverables this skill supersedes generic brainstorming. Refines rough ideas through Socratic dialogue and locks intent in a written spec (verbal + written approval gates) before drafting. Do not skip for simple asks; simple tasks hide the costliest assumptions.
 ---
 
 # Mindstorming: Brainstorming for Knowledge Work
 
 ## Overview
 
-Help turn rough ideas into locked specs for knowledge-work deliverables (memos, business reviews, decision docs, PRDs, briefing docs, comms, frameworks, talking points) through Socratic dialogue.
+mindpowers does one loop: shape, draft, review. This skill is the "shape" step.
+
+Help turn rough ideas into locked specs for knowledge-work deliverables (memos, business reviews, decision docs, PRDs, briefing docs, comms, frameworks, talking points, post-mortems) through Socratic dialogue.
 
 The skill enforces two approval gates: a verbal section-by-section approval during dialogue, and a final approval of the written spec on disk. Drafting only begins after both.
 
@@ -22,7 +24,7 @@ Every task goes through this process. A Slack reply, a one-paragraph note, a rou
 Track these steps as todos if your harness has a task list, and complete them in order:
 
 1. **Explore context.** Check recent specs in `docs/mindpowers/specs/`, sorted by filename descending (the date prefix keeps them in chronological order); read the frontmatter of the 5-10 most recent. Also scan legacy `docs/brainstorm/` if it exists; always write new files under `docs/mindpowers/`.
-2. **Detect template match.** Does the task fit one of the 7 templates? (See "Template Selection" below.) If yes, load that template's reference file. Also classify: is this routine (a template type with prior locked specs) or exploratory (first time, novel or personal topic)?
+2. **Detect template match.** Does the task fit one of the 8 templates? (See "Template Selection" below.) If yes, load that template's reference file. Also classify: is this routine (a template type with prior locked specs) or exploratory (first time, novel or personal topic)?
 3. **Offer visual companion (if applicable).** Defer until the dialogue is heading into visually-shaped territory. May not happen at all for text-only tasks.
 4. **Adaptive elicitation.** Batched only when template match AND routine. Otherwise one-question-at-a-time.
 5. **Propose 2-3 approaches.** When self-shaping, before presenting the design, propose alternatives with trade-offs and your recommendation. (For template-matched routine tasks, this often happens inside the template's elicitation.)
@@ -82,7 +84,7 @@ digraph mindpowers_mindstorming {
 
 ## Template Selection
 
-Seven templates plus a self-shape fallback for novel tasks.
+Eight templates plus a self-shape fallback for novel tasks.
 
 | Template | When to use |
 |---|---|
@@ -93,6 +95,7 @@ Seven templates plus a self-shape fallback for novel tasks.
 | `comms-draft` | Short-form internal comms. Audience, intent, key message, tone calibration. |
 | `framework` | Methodology or framework documents. Principles, structure, examples. Spec-is-the-deliverable. |
 | `talking-points` | Punchy anticipatory points for verbal delivery. Predicted questions and pithy responses. |
+| `post-mortem` | Incident or project retro. What happened, timeline, root cause, what changes as a result. Spec-is-the-deliverable, like `framework`. |
 | `self-shape` (fallback) | Anything that doesn't clearly match. Skill asks "what shape does this need?" first. |
 
 To select the right template:
@@ -171,12 +174,13 @@ Acceptance does NOT mean every question goes through the visual companion. Per-q
 
 ## File Contract
 
-All paths below are relative to the working folder (see "no filesystem / Cowork" note in "Spec File Format").
+mindpowers is one loop across three skills: shape (`mindstorming`, this skill) -> draft (`drafting`) -> review (`reviewing-docs`). All paths below are relative to the working folder (see "no filesystem / Cowork" note in "Spec File Format").
 
 - **Specs**, written by this skill: `docs/mindpowers/specs/YYYY-MM-DD-<type>-<slug>.md`. Flat, no type subdirectories; the type lives in the filename. YAML frontmatter is authoritative (see "Spec File Format" below).
-- **Drafts**, written at the "Draft now" handoff: `docs/mindpowers/drafts/YYYY-MM-DD-<type>-<slug>.md`, same stem as the spec it came from, so the pair sorts together. Draft frontmatter carries `spec: <path>`, `type`, and `status: draft | final`.
+- **Drafts**, written by `drafting`: `docs/mindpowers/drafts/YYYY-MM-DD-<type>-<slug>.md`, same stem as the spec it came from, so the pair sorts together. Draft frontmatter carries `spec: <path>`, `type`, and `status: draft | final`.
+- **Reviews**, written by `reviewing-docs`: `docs/mindpowers/reviews/YYYY-MM-DD-<type>-<slug>.md`.
 
-**Status protocol:** a spec's `status` moves `draft -> locked -> (optionally) superseded`. This skill writes new specs as `draft` and flips them to `locked` on final approval. Only draft from a spec with `status: locked`; never from an unapproved one.
+**Status protocol:** a spec's `status` moves `draft -> locked -> (optionally) superseded`. This skill writes new specs as `draft` and flips them to `locked` on final approval. `drafting` consumes ONLY specs with `status: locked`; never draft from an unapproved spec. `reviewing-docs` can review any doc regardless of status and may recommend flipping a spec to `superseded` if it's since been reworked.
 
 Also scan legacy `docs/brainstorm/` if it exists; always write new files under `docs/mindpowers/`.
 
@@ -186,7 +190,7 @@ Save to: `docs/mindpowers/specs/YYYY-MM-DD-<type>-<slug>.md`
 
 Where:
 
-- `<type>` is one of the 7 template types or `self-shape`, and lives in the filename (no subdirectories)
+- `<type>` is one of the 8 template types or `self-shape`, and lives in the filename (no subdirectories)
 - `<slug>` is a short kebab-case description (e.g., `q1-product-business-review`, `vendor-selection-decision`)
 - Date is the date of the brainstorming session
 
@@ -198,7 +202,7 @@ Frontmatter:
 
 ```yaml
 ---
-type: business-review | decision-doc | prd | briefing-doc | comms-draft | framework | talking-points | self-shape
+type: business-review | decision-doc | prd | briefing-doc | comms-draft | framework | talking-points | post-mortem | self-shape
 date: YYYY-MM-DD
 topic: <kebab-case slug>
 owner: <user name or handle>
@@ -239,7 +243,7 @@ Fix issues inline before presenting. If a section needs more work, return to eli
 
 The handoff prompt is type-aware. Some specs are briefs for a separate downstream deliverable (BR, decision-doc, briefing-doc, comms-draft, talking-points, prd). Some specs ARE the deliverable themselves and have no separate downstream artefact (framework, post-mortem, and any other spec-is-the-deliverable subtype). The handoff text should match.
 
-Before presenting either handoff option below, flip the spec's `status` from `draft` to `locked`. Drafting only proceeds from locked specs, so this step is what makes the handoff real.
+Before presenting either handoff option below, flip the spec's `status` from `draft` to `locked`. `drafting` only reads locked specs, so this step is what makes the handoff real.
 
 **For brief-style specs (BR, decision-doc, briefing-doc, comms-draft, talking-points, prd):**
 
@@ -247,7 +251,7 @@ Before presenting either handoff option below, flip the spec's `status` from `dr
 
 Then:
 
-- **Draft now:** Write the deliverable using the locked spec as the brief, applying the standards baked into the matched template. Save it to `docs/mindpowers/drafts/` using the same date-type-slug stem, with frontmatter cross-linking the two files (`spec:` in the draft, `draft:` in the spec). Exception: for short comms (a Slack message, a brief email), present the draft in chat instead and only save a file if the user wants a record.
+- **Draft now:** Invoke the mindpowers `drafting` skill (`skills/drafting`). It reads this locked spec and writes the deliverable to `docs/mindpowers/drafts/` using the same date-type-slug stem, with frontmatter cross-linking the two files. Exception: for short comms (a Slack message, a brief email), present the draft in chat instead and only save a file if the user wants a record. Once a draft exists, `reviewing-docs` is the natural next step if the user wants a second pass on it.
 - **Hand back:** Provide the file path (or the in-chat spec, if there's no filesystem) and stop. The user will draft elsewhere.
 - **Stop:** Acknowledge and end the session. The spec stays on disk for later.
 
@@ -260,7 +264,7 @@ The spec itself is the artefact. There is no separate downstream draft. So the s
 Then:
 
 - **Stop:** Acknowledge and end. The spec is the artefact.
-- **Draft derivative:** Ask which derivative artefact, then draft it using this spec as the brief, same path convention as above.
+- **Draft derivative:** Ask which derivative artefact, then invoke the `drafting` skill with this spec as the brief, same path convention as above.
 - **Pause:** Engage in whatever follow-on discussion the user wants.
 
 ## Key Principles

@@ -4,6 +4,13 @@ All notable changes to mindpowers will be documented here.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.4.0] - 2026-07-07
+
+### Added
+- New skill: `drafting`. Turns a locked spec from `docs/mindpowers/specs/` into the finished deliverable, holding it to the matched template's standards, with its own self-review checklist. Saves to `docs/mindpowers/drafts/` with frontmatter cross-links to the spec. Short comms stay in chat unless you want a record.
+- New skill: `reviewing-docs`. Pressure-tests any finished doc (mindpowers-drafted or not) against its spec and the template's standards, through a persona chosen by document type: exec-skeptic, regulator, distracted-skimmer, first-time-implementer, or adversarial-interviewer. Can reverse-engineer a spec when none exists. Findings ranked by severity and saved to `docs/mindpowers/reviews/`.
+- New template: post-mortem, alongside the existing seven. Blameless framing, contributing factors over a single root cause, actions owned and dated.
+
 ## [0.3.0] - 2026-07-07
 
 ### Renamed
