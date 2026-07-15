@@ -89,7 +89,7 @@ claude plugin marketplace add rohitgehe05/mindpowers && claude plugin install mi
 
 ### Cowork (Claude Desktop)
 
-1. Download `mindpowers-cowork-v0.3.0.zip` from the [latest release](https://github.com/rohitgehe05/mindpowers/releases/latest)
+1. Download the `mindpowers-cowork-v*.zip` from the [latest release](https://github.com/rohitgehe05/mindpowers/releases/latest)
 2. In Cowork: **Customize → Personal plugins → `+`**
 3. Click "Upload local plugin", drag/select the zip, click **Upload**
 4. Plugin appears in sidebar under Personal plugins. Trigger by asking for a brainstorm (e.g. "draft a PRD for X")
