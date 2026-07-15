@@ -23,19 +23,11 @@ mindpowers does one loop: shape, draft, review, and remembers what you like.
 
 A cold-drafted business review usually opens like this:
 
-```
-This quarter we shipped 14 features across three teams. Signups were up 8%
-month over month, and support tickets held roughly steady. The team
-continued to invest in onboarding improvements throughout the quarter.
-```
+> This quarter we shipped 14 features across three teams. Signups were up 8% month over month, and support tickets held roughly steady. The team continued to invest in onboarding improvements throughout the quarter.
 
 A mindstorming-spec'd version front-loads the thing that matters:
 
-```
-Growth is masking a retention problem: signups are up 8%, but week-4
-retention slipped from 61% to 54%, the first drop in a year. Onboarding
-shipped 14 features this quarter; none of them targeted the drop.
-```
+> Growth is masking a retention problem: signups are up 8%, but week-4 retention slipped from 61% to 54%, the first drop in a year. Onboarding shipped 14 features this quarter; none of them targeted the drop.
 
 - Same underlying facts, different order: insight and the lowlight lead, not buried three paragraphs in.
 - The spec forces this before drafting starts: "insight before data" is the template's standard, decided at spec time, not fixed in editing later.
@@ -48,15 +40,15 @@ Nine templates, plus a fallback for anything that doesn't fit one:
 
 | Template | When it fires |
 |---|---|
-| `business-review` | Weekly or quarterly product reviews |
-| `decision-doc` | Strategic arguments, OKR defence, build-vs-buy |
-| `one-pager` | Pre-solution pitch for buy-in, before a PRD or a formal decision doc. Sometimes labeled BRD |
-| `prd` | Product specs |
-| `briefing-doc` | Partner meetings, exec syncs, regulator prep |
-| `comms-draft` | Slack messages, team emails, announcements |
-| `framework` | Methods, rubrics, playbooks |
-| `talking-points` | OKR defence, Q&A prep, anything you'll say out loud |
-| `post-mortem` | Incident or project retros: what happened, root cause, what changes |
+| [`business-review`](skills/mindstorming/references/business-review.md) | Weekly or quarterly product reviews |
+| [`decision-doc`](skills/mindstorming/references/decision-doc.md) | Strategic arguments, OKR defence, build-vs-buy |
+| [`one-pager`](skills/mindstorming/references/one-pager.md) | Pre-solution pitch for buy-in, before a PRD or a formal decision doc. Sometimes labeled BRD |
+| [`prd`](skills/mindstorming/references/prd.md) | Product specs |
+| [`briefing-doc`](skills/mindstorming/references/briefing-doc.md) | Partner meetings, exec syncs, regulator prep |
+| [`comms-draft`](skills/mindstorming/references/comms-draft.md) | Slack messages, team emails, announcements |
+| [`framework`](skills/mindstorming/references/framework.md) | Methods, rubrics, playbooks |
+| [`talking-points`](skills/mindstorming/references/talking-points.md) | OKR defence, Q&A prep, anything you'll say out loud |
+| [`post-mortem`](skills/mindstorming/references/post-mortem.md) | Incident or project retros: what happened, root cause, what changes |
 | `self-shape` | Anything else, Claude asks one question at a time |
 
 Each template carries the lessons that make that kind of document good: lead with the insight (not the data) in a business review, put the recommendation first in a decision doc, write hypotheses you can actually prove or disprove in a PRD.
