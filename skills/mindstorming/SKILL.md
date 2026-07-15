@@ -1,6 +1,6 @@
 ---
 name: mindstorming
-description: Use before drafting any non-code knowledge-work deliverable, including strategic memos, business reviews, OKR defences, PRDs, decision docs, briefing docs, exec talking points, Slack messages to leadership, frameworks, post-mortems. Triggers on asks like "help me write up X", "draft this memo", "what should I say to Y", even casually phrased. NOT for software implementation; for creating features, components, or code changes use superpowers:brainstorming instead; for authoring the PRD document itself, use this skill. For non-code deliverables this skill supersedes generic brainstorming. Do not skip for simple asks; simple tasks hide the costliest assumptions.
+description: Use before drafting any non-code knowledge-work deliverable, including strategic memos, business reviews, OKR defences, PRDs, decision docs, briefing docs, exec talking points, Slack messages to leadership, frameworks, post-mortems, one-pagers, BRDs. Triggers on asks like "help me write up X", "draft this memo", "what should I say to Y", even casually phrased. NOT for software implementation; for creating features, components, or code changes use superpowers:brainstorming instead; for authoring the PRD document itself, use this skill. For non-code deliverables this skill supersedes generic brainstorming. Do not skip for simple asks; simple tasks hide the costliest assumptions.
 ---
 
 # Mindstorming: Brainstorming for Knowledge Work
@@ -24,7 +24,7 @@ Every task goes through this process. A Slack reply, a one-paragraph note, a rou
 Track these steps as todos if your harness has a task list, and complete them in order:
 
 1. **Explore context.** Check recent specs in `docs/mindpowers/specs/`, sorted by filename descending (the date prefix keeps them in chronological order); read the frontmatter of the 5-10 most recent. Also check `docs/mindpowers/preferences.md` if it exists; it holds per-template-type notes on what this user likes. Also scan legacy `docs/brainstorm/` if it exists; always write new files under `docs/mindpowers/`.
-2. **Detect template match.** Does the task fit one of the 8 templates? (See "Template Selection" below.) If yes, load that template's reference file. Also classify: is this routine (a template type with prior locked specs and/or a recorded preference in `preferences.md`) or exploratory (first time, novel or personal topic)?
+2. **Detect template match.** Does the task fit one of the 9 templates? (See "Template Selection" below.) If yes, load that template's reference file. Also classify: is this routine (a template type with prior locked specs and/or a recorded preference in `preferences.md`) or exploratory (first time, novel or personal topic)?
 3. **Offer visual companion (if applicable).** Defer until the dialogue is heading into visually-shaped territory. May not happen at all for text-only tasks.
 4. **Adaptive elicitation.** Batched only when template match AND routine. Otherwise one-question-at-a-time.
 5. **Propose 2-3 approaches.** When self-shaping, before presenting the design, propose alternatives with trade-offs and your recommendation. (For template-matched routine tasks, this often happens inside the template's elicitation.)
@@ -84,12 +84,13 @@ digraph mindpowers_mindstorming {
 
 ## Template Selection
 
-Eight templates plus a self-shape fallback for novel tasks.
+Nine templates plus a self-shape fallback for novel tasks.
 
 | Template | When to use |
 |---|---|
 | `business-review` | Weekly or quarterly product BRs. Insight before data, lowlights surfaced. |
 | `decision-doc` | Strategic argument with options, trade-offs, recommendation. OKR defence, build-vs-buy, prioritisation memos. |
+| `one-pager` | Pre-solution pitch for one direction, before a PRD gets written or options get formally weighed. Sometimes labeled BRD (same shape, more depth). New initiatives, cross-team asks, buy-in. |
 | `prd` | Product spec. Problem framing, users, proposed solution, success criteria, open questions. |
 | `briefing-doc` | Meeting prep. Topics, your positions, asks or decisions sought. Partner meetings, exec syncs. |
 | `comms-draft` | Short-form internal comms. Audience, intent, key message, tone calibration. |
@@ -191,7 +192,7 @@ Save to: `docs/mindpowers/specs/YYYY-MM-DD-<type>-<slug>.md`
 
 Where:
 
-- `<type>` is one of the 8 template types or `self-shape`, and lives in the filename (no subdirectories)
+- `<type>` is one of the 9 template types or `self-shape`, and lives in the filename (no subdirectories)
 - `<slug>` is a short kebab-case description (e.g., `q1-product-business-review`, `vendor-selection-decision`)
 - Date is the date of the brainstorming session
 
@@ -203,7 +204,7 @@ Frontmatter:
 
 ```yaml
 ---
-type: business-review | decision-doc | prd | briefing-doc | comms-draft | framework | talking-points | post-mortem | self-shape
+type: business-review | decision-doc | one-pager | prd | briefing-doc | comms-draft | framework | talking-points | post-mortem | self-shape
 date: YYYY-MM-DD
 topic: <kebab-case slug>
 owner: <user name or handle>
@@ -233,7 +234,7 @@ Before showing the spec to the user, run through:
 - [ ] Is the audience explicit?
 - [ ] Is the recommendation or claim crisp (one sentence if possible)?
 - [ ] Are open questions surfaced rather than buried?
-- [ ] For BRs and decision-docs: is the insight or recommendation up front, not buried?
+- [ ] For BRs, decision-docs, and one-pagers: is the insight, recommendation, or ask up front, not buried?
 - [ ] When principles or claims map to existing thinkers' work, are sources attributed?
 
 Fix issues inline before presenting. If a section needs more work, return to elicitation and ask the user.
@@ -246,7 +247,7 @@ The handoff prompt is type-aware. Some specs are briefs for a separate downstrea
 
 Before presenting either handoff option below, flip the spec's `status` from `draft` to `locked`. `drafting` only reads locked specs, so this step is what makes the handoff real.
 
-**For brief-style specs (BR, decision-doc, briefing-doc, comms-draft, talking-points, prd):**
+**For brief-style specs (BR, decision-doc, one-pager, briefing-doc, comms-draft, talking-points, prd):**
 
 > "Spec approved. Want me to draft now, hand it back to you, or stop here?"
 

@@ -6,9 +6,9 @@ For product requirement documents. New feature specs, onboarding flows, platform
 
 | Section | What goes here |
 |---|---|
-| Problem | One paragraph. What user or business problem does this solve? Be concrete. Avoid feature-as-problem framing. |
+| Problem | One paragraph, optionally led by a one-line pitch. What user or business problem does this solve? Be concrete. Avoid feature-as-problem framing. |
 | Users and use cases | Primary user, key use cases, frequency. Who hurts most without this? |
-| Hypothesis or goal | What you believe will happen if this ships. Stated as a falsifiable claim where possible. |
+| Hypothesis or goal | What you believe will happen if this ships. Stated as a falsifiable claim where possible. Note strategic fit in one bullet if it isn't obvious from the problem. |
 | Proposed solution | Functional description. What does it do, not how it's built. Include user flow at high level. |
 | Success criteria | Measurable. How will you know this worked? Lead with the metric, not the activity. |
 | Scope and non-goals | What is explicitly in. What is explicitly out. |
@@ -25,6 +25,7 @@ When self-shaping, one at a time:
 4. What's the success metric, and what's the threshold for "this worked"?
 5. What's explicitly out of scope?
 6. What's the biggest risk that could kill this?
+7. What are you assuming, and how would you know if it's wrong?
 
 When a template match is suspected (user said "PRD" or "spec for X"), batched:
 

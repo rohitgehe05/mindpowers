@@ -4,6 +4,14 @@ All notable changes to mindpowers will be documented here.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.6.0] - 2026-07-15
+
+### Added
+- New template: `one-pager`, alongside the existing eight. For pitching one direction and getting fast alignment before investing in a full spec (new initiatives, cross-team asks, "should we even do this" buy-in). BRD is treated as a heavier weight-tier of the same template (optional stakeholders and rough-milestones sections), not a separate one: research across external one-pager/PR-FAQ standards and sampled internal org documents found no organization drawing a hard line between the two, only a difference in how much business-case detail the ask needs. Explicitly distinguished in the template itself from `decision-doc` (weighs live options; one-pager already has its direction) and `prd` (specs how to build; one-pager stops at direction).
+
+### Changed
+- `prd` template: optional one-line pitch allowed as a lead sentence in Problem (the elevator-pitch job now belongs upstream to `one-pager`); added a strategic-fit prompt to Hypothesis/goal; added an assumptions-check elicitation prompt to Open questions. Kept intentionally close to its prior shape otherwise: DARCI-style stakeholder tables, sign-off gates, features-and-flow tables, and launch-plan mechanics found in heavier real-world PRD templates were evaluated and left out as org-specific process or downstream execution detail, not brainstorming-stage spec content.
+
 ## [0.5.1] - 2026-07-07
 
 ### Changed

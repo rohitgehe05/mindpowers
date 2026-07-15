@@ -44,12 +44,13 @@ shipped 14 features this quarter; none of them targeted the drop.
 
 ## Templates
 
-Eight templates, plus a fallback for anything that doesn't fit one:
+Nine templates, plus a fallback for anything that doesn't fit one:
 
 | Template | When it fires |
 |---|---|
 | `business-review` | Weekly or quarterly product reviews |
 | `decision-doc` | Strategic arguments, OKR defence, build-vs-buy |
+| `one-pager` | Pre-solution pitch for buy-in, before a PRD or a formal decision doc. Sometimes labeled BRD |
 | `prd` | Product specs |
 | `briefing-doc` | Partner meetings, exec syncs, regulator prep |
 | `comms-draft` | Slack messages, team emails, announcements |
@@ -110,9 +111,9 @@ Specs often carry sensitive content (leadership comms, OKR politics, exec briefi
 
 ## What's new
 
+- **0.6**: `one-pager` joins the templates, for pitching a direction and getting fast alignment before a full PRD or decision doc gets written. BRD is the same template at more weight, not a separate one.
 - **0.5**: `calibrating` remembers what landed and what you changed, per template type, in `docs/mindpowers/preferences.md`. Mindstorming reads it at the start of every session, so your fourth business review starts smarter than your first.
 - **0.4**: `drafting` and `reviewing-docs` complete the loop, and `post-mortem` joins the templates.
-- **0.3**: the `brainstorming` skill became `mindstorming`, ending the name collision with `superpowers:brainstorming` and Anthropic's own brainstorming feature. Output paths moved to flat `docs/mindpowers/` (legacy `docs/brainstorm/` still read). Cowork sessions without a filesystem get the spec in chat, approval still required. Confidentiality warning before writing specs into a shared or public repo.
 
 Full history in the [CHANGELOG](CHANGELOG.md).
 
