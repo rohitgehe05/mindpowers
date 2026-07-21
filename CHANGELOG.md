@@ -4,6 +4,19 @@ All notable changes to mindpowers will be documented here.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.7.0] - 2026-07-21
+
+### Added
+- New skill: `validating-problems`. It tests and scopes a customer or business problem against available evidence before a direction is pitched.
+- Problem briefs record supported, partially-supported, unsupported, or contradicted status for each claim.
+
+### Changed
+- Mindstorming can optionally consume a relevant problem brief while preserving its scope, limitations, claim statuses, and `as_of` date.
+- A one-pager can socialise a supported problem or an explicitly provisional problem while prioritisation remains external to problem validation.
+
+### Fixed
+- The calibrating skill now lists all nine template types, including `one-pager`.
+
 ## [0.6.0] - 2026-07-15
 
 ### Added

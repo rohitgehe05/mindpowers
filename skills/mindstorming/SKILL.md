@@ -23,7 +23,7 @@ Every task goes through this process. A Slack reply, a one-paragraph note, a rou
 
 Track these steps as todos if your harness has a task list, and complete them in order:
 
-1. **Explore context.** Check recent specs in `docs/mindpowers/specs/`, sorted by filename descending (the date prefix keeps them in chronological order); read the frontmatter of the 5-10 most recent. Also check `docs/mindpowers/preferences.md` if it exists; it holds per-template-type notes on what this user likes. Also scan legacy `docs/brainstorm/` if it exists; always write new files under `docs/mindpowers/`.
+1. **Explore context.** Check recent specs in `docs/mindpowers/specs/`, sorted by filename descending (the date prefix keeps them in chronological order); read the frontmatter of the 5-10 most recent. Also check `docs/mindpowers/preferences.md` if it exists; it holds per-template-type notes on what this user likes. Also scan legacy `docs/brainstorm/` if it exists; always write new files under `docs/mindpowers/`. If the user supplies a problem brief, or the topic matches one under `docs/mindpowers/problems/`, read it before elicitation and apply the "Optional Problem Brief" rules below. Do not scan unrelated problem briefs.
 2. **Detect template match.** Does the task fit one of the 9 templates? (See "Template Selection" below.) If yes, load that template's reference file. Also classify: is this routine (a template type with prior locked specs and/or a recorded preference in `preferences.md`) or exploratory (first time, novel or personal topic)?
 3. **Offer visual companion (if applicable).** Defer until the dialogue is heading into visually-shaped territory. May not happen at all for text-only tasks.
 4. **Adaptive elicitation.** Batched only when template match AND routine. Otherwise one-question-at-a-time.
@@ -107,6 +107,26 @@ To select the right template:
 4. If genuinely novel, self-shape.
 
 Read the matching template file from `skills/mindstorming/references/<type>.md` to load its sections, elicitation prompts, and standards. Do NOT improvise the section structure when a template exists. The templates encode learned standards; deviating loses that.
+
+## Optional Problem Brief
+
+A problem brief is optional context, not a prerequisite. Never require the user to run `validating-problems`, create a brief, or validate the problem before Mindstorming. When no relevant brief exists, continue the normal context exploration and elicitation flow.
+
+When the user supplies a brief or the topic matches a file under `docs/mindpowers/problems/`:
+
+1. Read the brief before asking elicitation questions.
+2. Treat its recorded scope, `as_of` date, evidence statuses, limitations, unsupported claims, and conflicts as context for the spec.
+3. Do not re-ask questions whose answers are settled by the brief. Ask only about missing or genuinely unresolved inputs needed for the selected template, and let the user correct or update the brief's context.
+4. When writing a one-pager spec, link the source with the optional frontmatter field `problem: docs/mindpowers/problems/YYYY-MM-DD-<slug>.md`.
+
+Apply evidence status exactly as recorded:
+
+- `supported`: may be stated within recorded scope.
+- `partially-supported`: preserve the qualification.
+- `unsupported`: discuss only as a hypothesis.
+- `contradicted`: warn and require reframing before using it as the pitch premise.
+
+Validation does not imply prioritisation, approval, or permission to build. A workflow decision such as `ready-to-socialize` does not override the evidence status of any claim.
 
 ## Adaptive Elicitation
 

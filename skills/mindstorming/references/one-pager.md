@@ -6,13 +6,25 @@ For pitching one direction and getting fast alignment before investing in a full
 
 **Not prd:** prd specs how to build what this got a yes on — user flows, acceptance criteria, build-ready detail. One-pager stops at direction.
 
+## Optional problem brief input
+
+A one-pager may consume a supplied or topic-matched brief from `docs/mindpowers/problems/YYYY-MM-DD-<slug>.md`. The brief is optional: when none exists, use the normal elicitation flow and do not require validation first.
+
+Read a relevant brief before elicitation. Use settled facts instead of asking for them again, and ask only for inputs that remain missing or unresolved. Preserve each claim's evidence status: state `supported` claims only within their recorded scope, keep `partially-supported` qualifications intact, discuss `unsupported` claims only as hypotheses, and warn and require reframing before using a `contradicted` claim as the pitch premise. Validation does not imply prioritisation, approval, or permission to build.
+
+When a brief is used, the one-pager spec must link it in frontmatter:
+
+```yaml
+problem: docs/mindpowers/problems/YYYY-MM-DD-<slug>.md
+```
+
 ## Sections
 
 | Section | What goes here |
 |---|---|
 | One-line framing | For [audience], [problem], we propose [direction] — unlike [status quo]. Forces the pitch into one sentence before any prose. |
 | Background | 2-4 bullets. Context a reader needs to follow the problem; cite prior art or competitor moves if the direction draws on them. Resist over-explaining. |
-| Problem | The pain, concrete. Why now. |
+| Problem | The pain, concrete. Why now. When a problem brief is used, preserve its recorded scope, evidence status, limitations, and `as_of` date. |
 | Goal | What "solved" looks like. Include a metric if one honestly exists; don't force false precision. |
 | Proposed direction | The one direction you're pitching, not a menu. High-level shape, enough to react to, not enough to build from. No user flows, no acceptance criteria, no options-with-trade-offs. |
 | Key principles | Non-negotiables the direction must respect. Stand-in for formal non-goals. |
@@ -22,6 +34,8 @@ For pitching one direction and getting fast alignment before investing in a full
 | Rough milestones (BRD-weight only, add if leadership wants a timeline sense) | Directional, not commitments. |
 
 ## Elicitation prompts
+
+These prompts are a coverage guide, not a script. If a problem brief settles a prompt, carry that answer forward and skip the question. Do not ask the user to restate the brief.
 
 When self-shaping, one at a time:
 
