@@ -96,7 +96,7 @@ claude plugin marketplace add rohitgehe05/mindpowers && claude plugin install mi
 ## Where files go
 
 ```
-docs/mindpowers/problems/       evidence-backed problem briefs
+docs/mindpowers/problems/       evidence-assessed problem briefs
 docs/mindpowers/specs/          locked intent, one file per document
 docs/mindpowers/drafts/         the actual deliverables, same stem as their spec
 docs/mindpowers/reviews/        red-team notes
