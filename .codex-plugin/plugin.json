@@ -1,7 +1,7 @@
 {
   "name": "mindpowers",
-  "version": "0.7.1",
-  "description": "One loop for knowledge work: optionally validate the problem, then shape, draft, review, and remember.",
+  "version": "0.8.0",
+  "description": "One loop for knowledge work: optionally validate the problem, then shape adaptive specs, draft, review, and remember.",
   "author": {
     "name": "Rohit Gehe",
     "email": "rohitgehe05@gmail.com",
@@ -16,13 +16,15 @@
     "writing",
     "prd",
     "problem-validation",
-    "product-management"
+    "product-management",
+    "requirements",
+    "acceptance-criteria"
   ],
   "skills": "./skills/",
   "interface": {
     "displayName": "Mindpowers",
     "shortDescription": "Validate, shape, draft, review, and learn.",
-    "longDescription": "A problem-first workflow for turning rough knowledge-work ideas into evidence-assessed briefs, locked specs, finished documents, reviews, and reusable preferences.",
+    "longDescription": "A problem-first workflow for turning rough knowledge-work ideas into evidence-assessed briefs, locked specs, adaptive and traceable PRDs, finished documents, reviews, and reusable preferences.",
     "developerName": "Rohit Gehe",
     "category": "Productivity",
     "capabilities": [

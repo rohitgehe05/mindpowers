@@ -53,7 +53,7 @@ The template reference file is the source of truth, but a few examples of what "
 
 - **business-review**: insight before data. Lead with what changed and why it matters, then back it with numbers. Don't open with a metrics dump.
 - **decision-doc**: recommendation up front, in one sentence, before the reasoning.
-- **prd**: success criteria stated in a way that's actually checkable later, not vague aspirations.
+- **prd**: preserve every `US-###`, `REQ-###`, `AC-###`, and `OD-###` identifier; keep evidence qualifications intact; ensure each requirement links to a verifiable acceptance criterion; include every triggered conditional contract; and never call the PRD `build-ready` while a blocking product decision remains open.
 - **briefing-doc**: the asks or decisions sought are explicit, not left for the reader to infer from context.
 - **comms-draft**: one key message, matched to the stated tone, with every "What NOT to say" item actually absent from the draft.
 - **framework**: principles are illustrated with concrete examples, not left abstract.

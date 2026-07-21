@@ -4,7 +4,7 @@
 
 ![Demo: mindstorming a business review](docs/assets/demo.gif)
 
-Mindpowers gives Claude a careful way to handle documents that aren't code: memos, reviews, PRDs, decisions, comms. When the problem itself needs scrutiny, Claude can validate it first. Then it asks you questions until the rough idea becomes a clear, written spec, carries that spec through drafting and review, and remembers what worked so the next one starts smarter.
+Mindpowers gives Claude a careful way to handle documents that aren't code: memos, reviews, PRDs, decisions, comms. When the problem itself needs scrutiny, Claude can validate it first. Then it asks you questions until the rough idea becomes a clear, written spec, carries that spec through drafting and review, and remembers what worked so the next one starts smarter. For PRDs, that includes a risk-adaptive, traceable engineering contract rather than a polished outline that still needs side-channel decisions.
 
 It's the knowledge-work version of [obra/superpowers](https://github.com/obra/superpowers), and a cousin of [coworkpowers](https://github.com/nabeelhyatt/coworkpowers).
 
@@ -44,7 +44,7 @@ Nine templates, plus a fallback for anything that doesn't fit one:
 | [`business-review`](skills/mindstorming/references/business-review.md) | Weekly or quarterly product reviews |
 | [`decision-doc`](skills/mindstorming/references/decision-doc.md) | Strategic arguments, OKR defence, build-vs-buy |
 | [`one-pager`](skills/mindstorming/references/one-pager.md) | Pre-solution pitch for buy-in, before a PRD or a formal decision doc. Sometimes labeled BRD |
-| [`prd`](skills/mindstorming/references/prd.md) | Product specs |
+| [`prd`](skills/mindstorming/references/prd.md) | Adaptive product specs with evidence, traceable requirements, acceptance criteria, measurement, and honest build readiness |
 | [`briefing-doc`](skills/mindstorming/references/briefing-doc.md) | Partner meetings, exec syncs, regulator prep |
 | [`comms-draft`](skills/mindstorming/references/comms-draft.md) | Slack messages, team emails, announcements |
 | [`framework`](skills/mindstorming/references/framework.md) | Methods, rubrics, playbooks |
@@ -52,11 +52,11 @@ Nine templates, plus a fallback for anything that doesn't fit one:
 | [`post-mortem`](skills/mindstorming/references/post-mortem.md) | Incident or project retros: what happened, root cause, what changes |
 | `self-shape` | Anything else, Claude asks one question at a time |
 
-Each template carries the lessons that make that kind of document good: lead with the insight (not the data) in a business review, put the recommendation first in a decision doc, write hypotheses you can actually prove or disprove in a PRD.
+Each template carries the lessons that make that kind of document good: lead with the insight (not the data) in a business review, put the recommendation first in a decision doc, and make PRD requirements traceable and verifiable without inventing missing product decisions.
 
 ## How it works
 
-Before shaping, `validating-problems` can test whether a customer or business problem is supported by available evidence. It records claim-level evidence statuses in `docs/mindpowers/problems/YYYY-MM-DD-<slug>.md`, then optionally hands the brief to Mindstorming. A one-pager can socialise a supported problem or an explicitly provisional one with its unresolved claims visible. Prioritisation happens in an external workflow, not inside problem validation.
+Before shaping, `validating-problems` can test whether a customer or business problem is supported by available evidence. It records claim-level evidence statuses in `docs/mindpowers/problems/YYYY-MM-DD-<slug>.md`, then optionally hands the brief to Mindstorming. A one-pager can socialise a supported problem or an explicitly provisional one with its unresolved claims visible. A later PRD can consume that brief or an approved one-pager without requiring either. Prioritisation happens in an external workflow, not inside problem validation or the PRD.
 
 Mindstorming, the "shape" step, runs a 10-step process:
 
@@ -72,6 +72,8 @@ Mindstorming, the "shape" step, runs a 10-step process:
 10. Hand off in a way that fits the document: "draft it, hand back, or stop?" for brief-style docs; "stop, draft something, or pause?" when the spec itself is the deliverable
 
 From there, `drafting` turns the locked spec into the document, `reviewing-docs` pressure-tests it on request (yours or something someone else wrote), and `calibrating` banks what you learned for next time.
+
+PRDs use a compact core plus conditional modules. Every PRD covers evidence and baseline, users and scope, the selected solution and credible alternatives, stable `US-###` / `REQ-###` / `AC-###` contracts, measurement, risks, and open decisions. Telemetry, AI evaluations, decision rights, privacy, integration, operational, and rollout sections appear only when the product's actual risk triggers them. Small reversible changes stay small. If a build-critical choice is missing, the PRD says `needs-decision` instead of inventing a number, event, date, or owner.
 
 ## Install
 
@@ -132,6 +134,7 @@ Specs often carry sensitive content (leadership comms, OKR politics, exec briefi
 
 ## What's new
 
+- **0.8**: PRDs become adaptive engineering contracts with scoped evidence, stable requirement and acceptance-criteria IDs, risk-triggered telemetry and AI evaluation modules, and honest `build-ready` / `needs-decision` status.
 - **0.7.1**: Native Codex and ChatGPT desktop plugin packaging, a tested Codex install path, and Cursor's supported GitHub import flow.
 - **0.7**: `validating-problems` adds an optional evidence step before Mindstorming, with claim-level statuses that carry into a one-pager without implying prioritisation.
 - **0.6**: `one-pager` joins the templates, for pitching a direction and getting fast alignment before a full PRD or decision doc gets written. BRD is the same template at more weight, not a separate one.

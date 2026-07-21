@@ -5,16 +5,16 @@
   },
   "metadata": {
     "description": "One loop for knowledge work: optionally validate the problem, then shape, draft, review, remember",
-    "version": "0.7.1",
+    "version": "0.8.0",
     "pluginRoot": "."
   },
   "plugins": [
     {
       "name": "mindpowers",
       "source": "./",
-      "description": "One loop for knowledge work: optionally validate the problem, then shape, draft, review, remember. Validating-problems tests customer or business problems against evidence; Mindstorming (formerly brainstorming) refines rough ideas into locked specs through Socratic dialogue; drafting turns locked specs into deliverables; reviewing-docs checks any doc against the template's standards; calibrating remembers what you like for next time. Templates cover business reviews, decision docs, one-pagers/BRDs, PRDs, briefing docs, comms drafts, frameworks, talking points, and post-mortems.",
-      "version": "0.7.1",
-      "keywords": ["brainstorming", "mindstorming", "knowledge-work", "specs", "decision-making", "writing", "frameworks", "cowork", "claude-cowork", "prd", "productivity", "templates", "problem-validation", "product-discovery", "product-management"]
+      "description": "One loop for knowledge work: optionally validate the problem, then shape, draft, review, remember. Validating-problems tests customer or business problems against evidence; Mindstorming (formerly brainstorming) refines rough ideas into locked specs through Socratic dialogue and produces adaptive, traceable PRD contracts; drafting turns locked specs into deliverables; reviewing-docs checks any doc against the template's standards; calibrating remembers what you like for next time. Templates cover business reviews, decision docs, one-pagers/BRDs, PRDs, briefing docs, comms drafts, frameworks, talking points, and post-mortems.",
+      "version": "0.8.0",
+      "keywords": ["brainstorming", "mindstorming", "knowledge-work", "specs", "decision-making", "writing", "frameworks", "cowork", "claude-cowork", "prd", "productivity", "templates", "problem-validation", "product-discovery", "product-management", "requirements", "acceptance-criteria"]
     }
   ]
 }
