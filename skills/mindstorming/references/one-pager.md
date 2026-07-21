@@ -12,7 +12,7 @@ A one-pager may consume a supplied or topic-matched brief from `docs/mindpowers/
 
 Read a relevant brief before elicitation. Use settled facts instead of asking for them again, and ask only for inputs that remain missing or unresolved. Preserve each claim's evidence status: state `supported` claims only within their recorded scope, keep `partially-supported` qualifications intact, discuss `unsupported` claims only as hypotheses, and warn and require reframing before using a `contradicted` claim as the pitch premise. Validation does not imply prioritisation, approval, or permission to build.
 
-When a brief is used, the one-pager spec may link it in frontmatter:
+When a brief is used, the one-pager spec must link it in frontmatter:
 
 ```yaml
 problem: docs/mindpowers/problems/YYYY-MM-DD-<slug>.md
