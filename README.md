@@ -1,12 +1,25 @@
 # Mindpowers
 
-**Problem-first knowledge-work skills for Claude Code, Cowork, Codex, ChatGPT desktop, and Cursor.**
+**Your AI should ask better questions before it writes.**
 
-![Demo: mindstorming a business review](docs/assets/demo.gif)
+Most AI writing tools turn ambiguity into polished prose. Mindpowers does the opposite: it validates the problem, challenges premises, explores credible alternatives, and locks the important decisions before drafting.
 
-Mindpowers gives AI agents a careful way to handle documents that aren't code: memos, reviews, PRDs, decisions, comms. When the problem itself needs scrutiny, the agent can validate it first. Then it asks you questions until the rough idea becomes a clear, written spec, carries that spec through drafting and review, and remembers what worked so the next one starts smarter. For PRDs, that includes a risk-adaptive, traceable engineering contract rather than a polished outline that still needs side-channel decisions.
+Use it to turn rough thinking into one-pagers people can align around, PRDs engineering can build from without side-channel decisions, business reviews that surface the real story, and everyday documents that hold up under scrutiny.
 
-It's the knowledge-work version of [obra/superpowers](https://github.com/obra/superpowers), and a cousin of [coworkpowers](https://github.com/nabeelhyatt/coworkpowers).
+![Demo: Mindpowers turns raw business-review data into a decision-ready story before drafting](docs/assets/demo.gif)
+
+*The useful insight appears before the first paragraph.*
+
+Mindpowers is a problem-first knowledge-work skillset for Claude Code, Cowork, Codex, ChatGPT desktop, Cursor, and other Agent Skills clients.
+
+## Try it
+
+- “Validate whether this customer problem is actually supported.”
+- “Grill this idea until the problem and solution are clear.”
+- “Turn this approved direction into a build-ready PRD.”
+- “Review this document like a skeptical product leader.”
+
+Mindpowers routes each ask into one connected loop while keeping you in control of the consequential decisions.
 
 ## The loop
 
