@@ -1,49 +1,262 @@
-# PRD Template
+# PRD template
 
-For product requirement documents. New feature specs, onboarding flows, platform changes, internal tools.
+Use after a direction has been selected for specification. Prioritisation
+happens elsewhere. A PRD defines the product decisions and observable contract
+needed to build and evaluate the selected direction.
 
-## Sections
+**Not one-pager:** a one-pager earns alignment on a direction and stops before
+build-ready detail. A PRD carries the selected direction into user behaviour,
+requirements, acceptance criteria, measurement, and risk handling.
 
-| Section | What goes here |
+**Not decision-doc:** a decision-doc weighs live alternatives. If the team is
+still choosing between directions, route there instead of disguising an open
+choice as a PRD.
+
+## Optional upstream inputs
+
+A PRD remains independently usable. Never require a problem brief, one-pager,
+or a new validation exercise before proceeding.
+
+When a relevant problem brief exists, read it before elicitation. Preserve its
+scope, `as_of` date, evidence statuses, limitations, conflicts, and unsupported
+claims. Link it in frontmatter:
+
+```yaml
+problem: docs/mindpowers/problems/YYYY-MM-DD-<slug>.md
+```
+
+When an approved one-pager exists, carry forward its selected direction,
+constraints, and unresolved product questions. Link it in frontmatter:
+
+```yaml
+one_pager: docs/mindpowers/specs/YYYY-MM-DD-one-pager-<slug>.md
+```
+
+Neither input implies prioritisation, approval to ship, or strong problem
+evidence. When evidence is incomplete, proceed with the PRD if the direction
+was selected elsewhere, keep the claim provisional, and make the evidence gap
+an explicit risk. Leadership urgency and engineering readiness may influence
+an upstream prioritisation decision, but they do not substantiate the customer
+or business problem. Record the supplied prioritisation decision as context;
+do not infer or revisit it inside the PRD.
+
+## Adaptive rule
+
+Use the core contract for every PRD. Combine adjacent sections when the change
+is small, but keep every core field visible. Add a conditional module only when
+its observable predicate is true.
+
+A reversible single-team change can fit in four short sections with one user
+story and a few requirements. AI, regulated, multi-team, migration-heavy, or
+high-impact work needs the additional contracts its risks trigger.
+
+## Core contract
+
+Write these concepts in order. Adjacent concepts may share a heading in a
+small PRD.
+
+### 1. TL;DR and ownership
+
+- State the user, problem, selected direction, intended outcome, and current
+  readiness in one short paragraph.
+- Name the product owner or PIC. Name a separate decision owner only when one
+  exists.
+- State `Readiness: build-ready` or `Readiness: needs-decision`.
+
+### 2. Problem, evidence, and baseline
+
+- State the solution-free problem and affected workflow.
+- Record current behaviour or the closest honest baseline, plus source, scope,
+  and recency.
+- Clarify an ambiguous denominator, population, aggregation, or time window
+  before repeating the baseline as fact.
+- Separate observed or reported evidence from interpretation.
+- Preserve qualifications from a problem brief. Without a brief, state which
+  claims are direct or behavioural evidence and which remain assumptions.
+- If no numeric baseline exists, describe the current workflow or failure mode.
+  Do not invent a number.
+
+### 3. Users, use cases, goals, and non-goals
+
+- Name the primary user and the highest-frequency or highest-consequence use
+  cases.
+- State the desired outcome and a falsifiable hypothesis when useful.
+- Define what is in scope and explicitly out of scope.
+
+### 4. Selected solution and premise check
+
+- Describe required product behaviour and the primary user flow, including
+  material empty, error, permission, and recovery states.
+- Record at least one credible alternative and why the selected direction fits
+  better. Include a non-product alternative when one is plausible.
+- Name assumptions that could make the selected solution fail to address the
+  problem.
+- If an upstream document already assessed alternatives, link it and summarize
+  the selected rationale instead of reopening prioritisation.
+
+### 5. Engineering contract
+
+Use stable identifiers. Keep each row atomic so humans and agents can trace the
+contract.
+
+**User stories**
+
+| ID | User, job, and value |
 |---|---|
-| Problem | One paragraph, optionally led by a one-line pitch. What user or business problem does this solve? Be concrete. Avoid feature-as-problem framing. |
-| Users and use cases | Primary user, key use cases, frequency. Who hurts most without this? |
-| Hypothesis or goal | What you believe will happen if this ships. Stated as a falsifiable claim where possible. Note strategic fit in one bullet if it isn't obvious from the problem. |
-| Proposed solution | Functional description. What does it do, not how it's built. Include user flow at high level. |
-| Success criteria | Measurable. How will you know this worked? Lead with the metric, not the activity. |
-| Scope and non-goals | What is explicitly in. What is explicitly out. |
-| Risks and dependencies | Technical, operational, regulatory, partner-side. |
-| Open questions | What's still unresolved. |
+| `US-001` | As a specific user, I want a specific capability so that I receive a specific outcome. |
+
+**Requirements**
+
+| ID | Story | Required product behaviour |
+|---|---|---|
+| `REQ-001` | `US-001` | State observable required behaviour without prescribing an implementation task. |
+
+**Acceptance criteria**
+
+| ID | Requirement | Verifiable condition |
+|---|---|---|
+| `AC-001` | `REQ-001` | State the observable condition that proves the requirement is satisfied. Use Given/When/Then only when sequence matters. |
+
+Attach edge cases and failure states to the affected `REQ-###` and `AC-###`.
+Every requirement needs at least one linked acceptance criterion. Preserve IDs
+unchanged through drafting and review.
+
+### 6. Measurement contract
+
+Record:
+
+- outcome metric or qualitative decision rule;
+- current baseline when available;
+- target or decision threshold supplied or explicitly accepted by the user;
+- measurement method and source; and
+- guardrails that prevent a local improvement from hiding wider harm.
+
+Never invent a threshold, window, sample size, confidence method, or owner. If
+a decision-critical value is missing, create an `OD-###` entry and mark the PRD
+`needs-decision`.
+
+### 7. Risks, dependencies, and open decisions
+
+Record only risks and dependencies that could change product behaviour, scope,
+measurement, safety, or delivery confidence. Add mitigation and ownership when
+known.
+
+Use this open-decision contract:
+
+| ID | Decision | Why it matters | Owner | Blocking? |
+|---|---|---|---|---|
+| `OD-001` | Name the unresolved choice. | State what changes based on it. | Named owner or `unassigned`. | yes or no |
+
+If any blocking open decision remains, readiness is `needs-decision`.
+
+## Conditional modules
+
+| Observable predicate | Required module |
+|---|---|
+| More than one team, approver, or operating owner must act | **Stakeholders and decision rights:** driver, approver, contributors, informed groups, and the decision each owns. Do not force a full DARCI table on a single-team change. |
+| Success cannot be observed with existing measurement | **Telemetry contract:** exact event name, trigger, required properties, sensitive fields excluded, metric served, consumer or dashboard, and analytics owner or sign-off. |
+| Product behaviour depends on model output or another probabilistic system | **Evaluation contract:** task, representative cases and source, grader or rubric, user-accepted threshold, failure classes, human fallback, safety checks, and production monitoring. |
+| Release failure could materially harm users, revenue, data, or operations | **Rollout and rollback:** stages, entry and exit signals, monitoring, rollback trigger, and accountable owner. |
+| The change handles sensitive data, permissions, abuse, or regulated activity | **Privacy, security, and compliance:** data handled, access, retention, consent, misuse cases, and required review. |
+| The change migrates data or depends on complex integrations or state | **Integration and state contract:** upstream and downstream dependencies, states, errors, compatibility, migration, and recovery. |
+| The change creates customer-support or operating work | **Operational readiness:** support flow, alerts, documentation, escalation, and operating owner. |
+
+If a predicate is false, omit the module. If applicability is unknown and could
+change scope or safety, ask one decision-critical question.
 
 ## Elicitation prompts
 
-When self-shaping, one at a time:
+These are a coverage guide, not a questionnaire. Inspect supplied documents,
+analytics, research, designs, support material, and existing behaviour before
+asking. Do not re-ask what an upstream artifact already settles.
 
-1. Who is the primary user, and what's the specific pain you're solving?
-2. What's your hypothesis? "If we ship X, then Y will happen because Z."
-3. What's the simplest version that tests the hypothesis? (YAGNI everything else.)
-4. What's the success metric, and what's the threshold for "this worked"?
-5. What's explicitly out of scope?
-6. What's the biggest risk that could kill this?
-7. What are you assuming, and how would you know if it's wrong?
+For an exploratory PRD, ask exactly one highest-value question per turn. Route
+to the unknown most likely to change scope, user-visible behaviour,
+measurement, or launch safety:
 
-When a template match is suspected (user said "PRD" or "spec for X"), batched:
+1. Has the direction already been selected for specification, and what remains
+   outside this PRD's decision boundary?
+2. What direct customer or behavioural evidence and current baseline support
+   the problem within the stated scope, denominator, and time period?
+3. Who is the primary user, and which job or failure matters most?
+4. What must the product do in the primary flow and the most consequential
+   failure state?
+5. Which assumption or credible alternative could make this solution the wrong
+   response to the problem?
+6. What supplied or explicitly accepted outcome threshold and guardrail define
+   success?
+7. Which unresolved decision could still change behaviour, scope,
+   measurement, or launch safety?
 
-> "To frame the PRD: who's the primary user, what's the specific pain, what would success look like in numbers, and what's explicitly out of scope?"
+For a routine PRD with prior locked specs or recorded preferences, batch only
+the genuinely unresolved fields. A useful maximum is three to five short
+questions, not the entire template.
+
+When offering choices, lead with a recommendation and its trade-off. Never use
+"reasonable assumptions" as permission to fabricate product decisions,
+metrics, events, owners, dates, or rollout values.
+
+## Build-ready test
+
+Mark `Readiness: build-ready` only when:
+
+- the selected direction, users, scope, and non-goals are explicit;
+- evidence claims are scoped and unsupported assumptions remain visible;
+- every `REQ-###` has at least one linked, verifiable `AC-###`;
+- material failure states and edge cases are resolved;
+- success and guardrails have a baseline, target or decision rule, and
+  measurement method;
+- every triggered conditional module is complete; and
+- no open decision can still change scope, product behaviour, measurement, or
+  launch safety.
+
+Otherwise mark `Readiness: needs-decision` and list the exact blocking
+`OD-###` entries. Readiness is not prioritisation or permission to ship.
 
 ## Standards baked in
 
-- **Problem before solution.** No "feature as problem" framing.
-- **Falsifiable hypothesis.** "If X then Y because Z," not "we think this is good."
-- **Measurable success criteria.** Lead with the metric, not the activity.
-- **YAGNI scope.** Smallest version that tests the hypothesis. Cut everything else.
-- **Non-goals matter.** Explicit out-of-scope prevents drift.
-- **Source attribution where applicable.** If the design draws on jobs-to-be-done, design patterns, or competitor analysis, cite. Adds rigour and traceability.
+- **Evidence before assertion.** Direct customer and behavioural evidence is
+  the strongest default. Preserve scope, recency, limitations, and conflicts.
+- **Problem before solution.** No feature-as-problem framing.
+- **Premise challenged.** A selected direction still faces credible
+  alternatives and disconfirming assumptions without reopening prioritisation.
+- **Traceable requirements.** Stories, requirements, acceptance criteria, and
+  open decisions use stable IDs and explicit links.
+- **Verifiable handoff.** Requirements describe observable product behaviour;
+  acceptance criteria define how to prove it.
+- **Honest measurement.** Baselines, targets, methods, and guardrails are
+  explicit. Missing values stay open rather than being invented.
+- **Risk-adaptive depth.** Conditional modules appear because their predicates
+  are true, not because a heavyweight template demands them.
+- **No side-channel readiness.** Build-critical decisions are resolved in the
+  PRD or named as blockers.
+- **YAGNI scope.** Specify the smallest coherent solution that can achieve and
+  measure the intended outcome.
 
 ## Anti-patterns
 
-- Solution-shaped problem statements ("users need a button to do X")
-- Vague success criteria ("improved engagement")
-- Feature creep dressed up as scope ("nice-to-haves")
-- Skipping non-goals because they feel obvious
-- Hiding risks in a single line at the bottom
+- Treating urgency, stakeholder belief, a feature request, or engineering
+  availability as problem evidence
+- Inferring or revisiting prioritisation instead of recording the supplied
+  upstream decision, or silently choosing a denominator, population,
+  aggregation, or time window for ambiguous evidence
+- Inventing thresholds, windows, samples, event names, rollout values, dates,
+  or owners to make the PRD look complete
+- Calling a PRD build-ready while exact requirements, acceptance criteria,
+  measurement, or safety decisions remain in a future ticket or conversation
+- Generic edge-case lists that are not linked to affected requirements
+- Requirements written as implementation tasks or acceptance criteria that
+  cannot be observed or tested
+- A universal stakeholder, telemetry, rollout, or launch-plan section with no
+  triggering need
+- Reprioritising the initiative inside the PRD
+- Hiding unresolved decisions in prose instead of `OD-###` entries
+
+## Sources
+
+- [NASA software requirements analysis](https://swehb.nasa.gov/spaces/SWEHBVD/pages/102695426/SWE-051%2B-%2BSoftware%2BRequirements%2BAnalysis?desktop=true&macroName=set-data)
+- [Atlassian user stories](https://www.atlassian.com/agile/project-management/user-stories)
+- [Atlassian acceptance criteria](https://www.atlassian.com/work-management/project-management/acceptance-criteria)
+- [GOV.UK service measurement](https://www.gov.uk/service-manual/service-standard/point-10-define-success-publish-performance-data)
+- [Basecamp risks and rabbit holes](https://basecamp.com/shapeup/1.4-chapter-05)
+- [OpenAI eval-driven system design](https://developers.openai.com/cookbook/examples/partners/eval_driven_system_design/receipt_inspection)

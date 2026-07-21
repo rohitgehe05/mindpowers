@@ -4,6 +4,23 @@ All notable changes to mindpowers will be documented here.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.8.0] - 2026-07-21
+
+### Added
+- The PRD template now uses stable `US-###`, `REQ-###`, `AC-###`, and `OD-###` identifiers for traceable user stories, requirements, acceptance criteria, and open decisions.
+- Risk-triggered PRD modules cover stakeholders and decision rights, telemetry, AI evaluations, rollout and rollback, privacy and security, integrations and state, and operational readiness.
+- PRDs explicitly report `build-ready` or `needs-decision` and list any blocking product decisions.
+
+### Changed
+- PRD depth now adapts to observable risk. Small reversible changes keep a compact core; high-impact, probabilistic, regulated, multi-team, or integration-heavy changes add only the contracts they need.
+- PRDs may consume an optional problem brief or approved one-pager while preserving evidence scope and keeping prioritisation external.
+- Drafting preserves PRD identifiers and evidence qualifications. Reviewing-docs treats false build-readiness and side-channel dependencies as blockers.
+
+### Fixed
+- PRD elicitation separates leadership urgency and engineering readiness from problem evidence while treating prioritisation as supplied upstream context.
+- Ambiguous evidence denominators and time windows must be clarified before they are repeated as baselines.
+- Missing metrics, thresholds, event names, rollout values, dates, and owners remain explicit open decisions instead of being invented to make a PRD look complete.
+
 ## [0.7.1] - 2026-07-21
 
 ### Added

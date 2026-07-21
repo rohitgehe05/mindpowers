@@ -91,7 +91,7 @@ Nine templates plus a self-shape fallback for novel tasks.
 | `business-review` | Weekly or quarterly product BRs. Insight before data, lowlights surfaced. |
 | `decision-doc` | Strategic argument with options, trade-offs, recommendation. OKR defence, build-vs-buy, prioritisation memos. |
 | `one-pager` | Pre-solution pitch for one direction, before a PRD gets written or options get formally weighed. Sometimes labeled BRD (same shape, more depth). New initiatives, cross-team asks, buy-in. |
-| `prd` | Product spec. Problem framing, users, proposed solution, success criteria, open questions. |
+| `prd` | Product spec after a direction is selected elsewhere. Evidence, traceable requirements, acceptance criteria, measurement, risks, and honest build readiness. |
 | `briefing-doc` | Meeting prep. Topics, your positions, asks or decisions sought. Partner meetings, exec syncs. |
 | `comms-draft` | Short-form internal comms. Audience, intent, key message, tone calibration. |
 | `framework` | Methodology or framework documents. Principles, structure, examples. Spec-is-the-deliverable. |
@@ -117,7 +117,7 @@ When the user supplies a brief or the topic matches a file under `docs/mindpower
 1. Read the brief before asking elicitation questions.
 2. Treat its recorded scope, `as_of` date, evidence statuses, limitations, unsupported claims, and conflicts as context for the spec.
 3. Do not re-ask questions whose answers are settled by the brief. Ask only about missing or genuinely unresolved inputs needed for the selected template, and let the user correct or update the brief's context.
-4. When writing a one-pager spec, link the source with the optional frontmatter field `problem: docs/mindpowers/problems/YYYY-MM-DD-<slug>.md`.
+4. When writing a one-pager or PRD spec, link the source with the optional frontmatter field `problem: docs/mindpowers/problems/YYYY-MM-DD-<slug>.md`.
 
 Apply evidence status exactly as recorded:
 
@@ -127,6 +127,24 @@ Apply evidence status exactly as recorded:
 - `contradicted`: warn and require reframing before using it as the pitch premise.
 
 Validation does not imply prioritisation, approval, or permission to build. A workflow decision such as `ready-to-socialize` does not override the evidence status of any claim.
+
+## Optional Upstream One-Pager
+
+A PRD may consume an approved one-pager, but never require one. When a relevant
+one-pager exists, read it before PRD elicitation, carry forward its selected
+direction and constraints, and focus questions on unresolved product decisions
+needed for a build-ready handoff. Do not reopen prioritisation inside the PRD.
+
+Link the consumed source in PRD frontmatter:
+
+```yaml
+one_pager: docs/mindpowers/specs/YYYY-MM-DD-one-pager-<slug>.md
+```
+
+If the upstream direction is still one option among live alternatives, use a
+`decision-doc` instead. If the direction has not earned alignment yet, use a
+`one-pager`. A PRD specifies a selected direction; it does not select or
+prioritise one.
 
 ## Adaptive Elicitation
 
@@ -234,6 +252,16 @@ draft: <path to the drafts/ file, once one exists, optional>
 ---
 ```
 
+Optional upstream links for one-pager and PRD specs:
+
+```yaml
+problem: docs/mindpowers/problems/YYYY-MM-DD-<slug>.md
+one_pager: docs/mindpowers/specs/YYYY-MM-DD-one-pager-<slug>.md
+```
+
+Use `problem` only when a problem brief is actually consumed. Use `one_pager`
+only for a PRD that consumes that approved source.
+
 Body structure depends on template (see `references/<type>.md`). For self-shape, default sections:
 
 - Audience
@@ -255,6 +283,8 @@ Before showing the spec to the user, run through:
 - [ ] Is the recommendation or claim crisp (one sentence if possible)?
 - [ ] Are open questions surfaced rather than buried?
 - [ ] For BRs, decision-docs, and one-pagers: is the insight, recommendation, or ask up front, not buried?
+- [ ] For PRDs: are evidence claims scoped, every requirement linked to a verifiable acceptance criterion, and readiness honest about blocking open decisions?
+- [ ] For PRDs: did any threshold, window, sample, event, rollout value, date, or owner get invented rather than supplied or explicitly accepted?
 - [ ] When principles or claims map to existing thinkers' work, are sources attributed?
 
 Fix issues inline before presenting. If a section needs more work, return to elicitation and ask the user.

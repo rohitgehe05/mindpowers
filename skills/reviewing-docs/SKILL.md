@@ -41,7 +41,13 @@ Either way, don't skip Step 1 to save time. A doc that fails its own spec is a d
 1. Identify the doc's type from its content and shape (business review, decision doc, PRD, briefing doc, comms draft, framework, talking points, post-mortem) or from its frontmatter `type:` field if present.
 2. Load `skills/mindstorming/references/<type>.md`.
 3. Treat that file's **Standards baked in** and **Anti-patterns** sections as the objective rubric, not your own taste. Check the doc against them directly (e.g., for a decision doc: is the recommendation up front? Is a real counter-argument engaged, or a strawman?).
-4. If the doc doesn't match any of the eight templates, treat it as self-shape: there's no reference file to load, so the rubric is whatever structure the (reverse-engineered or real) spec implies, plus general clarity and completeness.
+4. If the doc doesn't match any of the nine templates, treat it as self-shape: there's no reference file to load, so the rubric is whatever structure the (reverse-engineered or real) spec implies, plus general clarity and completeness.
+
+For a PRD marked `build-ready`, treat any missing evidence boundary,
+untraceable requirement, unverifiable acceptance criterion, incomplete
+triggered conditional module, or blocking open decision as a blocker. A
+polished outline that still depends on a private follow-up conversation is not
+build-ready.
 
 Do not invent a rubric when a template exists. The template encodes standards someone already learned the hard way; skipping it means re-deriving from scratch and probably missing something the template would have caught.
 
