@@ -4,6 +4,17 @@ All notable changes to mindpowers will be documented here.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.7.1] - 2026-07-21
+
+### Added
+- Native Codex plugin metadata and a repository marketplace for Codex and ChatGPT desktop installation.
+- Cursor installation instructions using its documented GitHub skill import flow.
+- Portable installation guidance for other clients that implement the Agent Skills specification.
+
+### Changed
+- Installation documentation now distinguishes Claude Code, Cowork, Codex and ChatGPT desktop, and Cursor.
+- The release workflow creates a GitHub release when a version tag is pushed without one.
+
 ## [0.7.0] - 2026-07-21
 
 ### Added

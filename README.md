@@ -1,6 +1,6 @@
 # Mindpowers
 
-**Claude Code and Claude Cowork plugin: brainstorming superpowers for knowledge workers.**
+**Problem-first knowledge-work skills for Claude Code, Cowork, Codex, ChatGPT desktop, and Cursor.**
 
 ![Demo: mindstorming a business review](docs/assets/demo.gif)
 
@@ -89,6 +89,31 @@ claude plugin marketplace add rohitgehe05/mindpowers && claude plugin install mi
 3. Click "Upload local plugin", drag/select the zip, click **Upload**
 4. Plugin appears in sidebar under Personal plugins. Trigger by asking for a brainstorm (e.g. "draft a PRD for X")
 
+### Codex and ChatGPT desktop
+
+Add the repository as a Codex plugin marketplace, then install Mindpowers:
+
+```bash
+codex plugin marketplace add rohitgehe05/mindpowers
+codex plugin add mindpowers@mindpowers
+```
+
+Start a new Codex chat after installation. In ChatGPT desktop, the same plugin is available in Work mode under **Plugins** after the marketplace is added.
+
+### Cursor
+
+1. Open **Customize** in the sidebar
+2. Go to **Rules** and click **Add Rule**
+3. Select **Remote Rule (GitHub)**
+4. Enter `https://github.com/rohitgehe05/mindpowers`
+5. Review the imported skills under **Customize -> Skills**
+
+[Cursor discovers Agent Skills](https://cursor.com/docs/skills) and invokes them when their descriptions match. You can also name a skill explicitly in your prompt.
+
+### Other Agent Skills clients
+
+Each directory under `skills/` follows the open [Agent Skills specification](https://agentskills.io/specification). Copy the skill directories you want into the user-level or project-level skills location documented by your client. Paths and plugin packaging vary by client, so use the native instructions above where available.
+
 ## Works alongside superpowers
 
 `superpowers:brainstorming` fires for code and features. `mindpowers:mindstorming` fires for documents and comms. Writing a PRD belongs to mindpowers; building what the PRD describes belongs to superpowers. And where coworkpowers is a suite, mindpowers is the one loop that stops Claude from writing the wrong doc in the first place.
@@ -107,6 +132,7 @@ Specs often carry sensitive content (leadership comms, OKR politics, exec briefi
 
 ## What's new
 
+- **0.7.1**: Native Codex and ChatGPT desktop plugin packaging, a tested Codex install path, and Cursor's supported GitHub import flow.
 - **0.7**: `validating-problems` adds an optional evidence step before Mindstorming, with claim-level statuses that carry into a one-pager without implying prioritisation.
 - **0.6**: `one-pager` joins the templates, for pitching a direction and getting fast alignment before a full PRD or decision doc gets written. BRD is the same template at more weight, not a separate one.
 - **0.5**: `calibrating` remembers what landed and what you changed, per template type, in `docs/mindpowers/preferences.md`. Mindstorming reads it at the start of every session, so your fourth business review starts smarter than your first.
