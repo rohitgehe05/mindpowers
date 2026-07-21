@@ -88,6 +88,8 @@ Make each conversational turn contain:
 3. Summarise evidence that supports, weakens, or limits that claim.
 4. Ask exactly one highest-value question, adding one concrete example only when helpful.
 
+When the user asks what can be said now or whether to proceed, include the current workflow decision label in the current assessment. Before presenting a current statement as safe to pitch or socialise, surface at least one plausible alternative framing or one route that could weaken or disconfirm it. Do not require alternatives in an early elicitation turn that offers no conclusion.
+
 Choose the question most likely to change the decision, narrow the scope, or distinguish between competing explanations. Do not march through a fixed questionnaire or batch questions.
 
 Keep the evidence status separate from the decision to socialise, gather evidence, or stop. Treat leadership urgency, sales pressure, and engineering readiness as decision context, not as problem evidence.
