@@ -35,8 +35,10 @@ one_pager: docs/mindpowers/specs/YYYY-MM-DD-one-pager-<slug>.md
 Neither input implies prioritisation, approval to ship, or strong problem
 evidence. When evidence is incomplete, proceed with the PRD if the direction
 was selected elsewhere, keep the claim provisional, and make the evidence gap
-an explicit risk. Leadership urgency and engineering readiness are decision
-context only. They neither validate the problem nor establish prioritisation.
+an explicit risk. Leadership urgency and engineering readiness may influence
+an upstream prioritisation decision, but they do not substantiate the customer
+or business problem. Record the supplied prioritisation decision as context;
+do not infer or revisit it inside the PRD.
 
 ## Adaptive rule
 
@@ -235,8 +237,9 @@ Otherwise mark `Readiness: needs-decision` and list the exact blocking
 
 - Treating urgency, stakeholder belief, a feature request, or engineering
   availability as problem evidence
-- Inferring prioritisation from urgency or silently choosing a denominator,
-  population, aggregation, or time window for ambiguous evidence
+- Inferring or revisiting prioritisation instead of recording the supplied
+  upstream decision, or silently choosing a denominator, population,
+  aggregation, or time window for ambiguous evidence
 - Inventing thresholds, windows, samples, event names, rollout values, dates,
   or owners to make the PRD look complete
 - Calling a PRD build-ready while exact requirements, acceptance criteria,

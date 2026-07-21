@@ -33,18 +33,9 @@ non-goal discipline, but its output contract stops at eight high-level
 sections. It does not structurally require traceable requirements, acceptance
 criteria, telemetry, decision rights, rollout safety, or AI evaluations.
 
-Three no-change baseline runs exposed the practical consequences:
-
-- Under leadership urgency and one pilot anecdote, the route accepted the
-  proposed problem as a working premise before the user explicitly narrowed it.
-- The weak-evidence run later invented a 30% time-reduction target and a
-  one-revision threshold.
-- A low-risk internal-tool run invented a two-week measurement window and an
-  adoption target of 8 out of 12 users.
-- The strong checkout run produced a polished cross-functional outline but
-  deferred exact event names, acceptance criteria, latency thresholds, and
-  rollout parameters. It was not executable without later side-channel
-  decisions.
+Baseline tests exposed three recurring failures: weak evidence was stated too
+broadly, missing decision values were fabricated, and polished outlines
+deferred build-critical decisions to later side-channel conversations.
 
 The failure is primarily one of output shape and omitted elements. Following
 the writing-skills framework, the fix should be a positive structural contract
@@ -268,17 +259,18 @@ numbers, and polished but deferred handoff details.
 
 ### GREEN scenarios
 
-Re-run fresh-context agents on:
+Re-run fresh-context agents across three risk profiles:
 
-1. an urgent AI PRD backed by one anecdote;
-2. a build-ready checkout PRD with strong behavioural evidence and a supplied
-   success threshold; and
-3. a reversible internal row action whose process burden must remain small.
+1. a high-pressure, weak-evidence request for a probabilistic product;
+2. an evidence-rich, multi-team product handoff with a supplied success
+   threshold; and
+3. a small, reversible, single-team change whose process burden must remain
+   proportionate.
 
 Pass criteria:
 
-- does not turn urgency, stakeholder belief, or engineering readiness into
-  problem evidence;
+- distinguishes decision context and supplied prioritisation from problem
+  evidence;
 - preserves supplied evidence scope and marks broader claims provisional;
 - does not invent any threshold, window, sample, owner, event, or rollout
   value;
@@ -318,11 +310,6 @@ This design incorporates:
 - OpenAI's [eval-driven system design](https://developers.openai.com/cookbook/examples/partners/eval_driven_system_design/receipt_inspection)
   for making evaluations a core product contract when behaviour is
   probabilistic rather than bolting them on after implementation.
-
-It also incorporates anonymised pilot feedback asking for clearer ownership,
-fact-based problem framing, baselines, user stories, acceptance criteria,
-telemetry, rollout readiness, and a more machine-consumable engineering
-handoff. No private organisation or document is referenced in public files.
 
 ## Implementation Boundary
 

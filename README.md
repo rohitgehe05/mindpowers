@@ -4,7 +4,7 @@
 
 ![Demo: mindstorming a business review](docs/assets/demo.gif)
 
-Mindpowers gives Claude a careful way to handle documents that aren't code: memos, reviews, PRDs, decisions, comms. When the problem itself needs scrutiny, Claude can validate it first. Then it asks you questions until the rough idea becomes a clear, written spec, carries that spec through drafting and review, and remembers what worked so the next one starts smarter. For PRDs, that includes a risk-adaptive, traceable engineering contract rather than a polished outline that still needs side-channel decisions.
+Mindpowers gives AI agents a careful way to handle documents that aren't code: memos, reviews, PRDs, decisions, comms. When the problem itself needs scrutiny, the agent can validate it first. Then it asks you questions until the rough idea becomes a clear, written spec, carries that spec through drafting and review, and remembers what worked so the next one starts smarter. For PRDs, that includes a risk-adaptive, traceable engineering contract rather than a polished outline that still needs side-channel decisions.
 
 It's the knowledge-work version of [obra/superpowers](https://github.com/obra/superpowers), and a cousin of [coworkpowers](https://github.com/nabeelhyatt/coworkpowers).
 

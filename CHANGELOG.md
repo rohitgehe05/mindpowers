@@ -17,7 +17,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Drafting preserves PRD identifiers and evidence qualifications. Reviewing-docs treats false build-readiness and side-channel dependencies as blockers.
 
 ### Fixed
-- PRD elicitation no longer treats leadership urgency or engineering readiness as problem evidence or inferred prioritisation.
+- PRD elicitation separates leadership urgency and engineering readiness from problem evidence while treating prioritisation as supplied upstream context.
 - Ambiguous evidence denominators and time windows must be clarified before they are repeated as baselines.
 - Missing metrics, thresholds, event names, rollout values, dates, and owners remain explicit open decisions instead of being invented to make a PRD look complete.
 
