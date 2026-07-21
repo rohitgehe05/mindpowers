@@ -4,16 +4,17 @@
 
 ![Demo: mindstorming a business review](docs/assets/demo.gif)
 
-Mindpowers gives Claude a careful way to handle documents that aren't code: memos, reviews, PRDs, decisions, comms. Instead of jumping straight to a draft, Claude asks you questions until the rough idea becomes a clear, written spec, then carries that spec through drafting and review, and remembers what worked so the next one starts smarter.
+Mindpowers gives Claude a careful way to handle documents that aren't code: memos, reviews, PRDs, decisions, comms. When the problem itself needs scrutiny, Claude can validate it first. Then it asks you questions until the rough idea becomes a clear, written spec, carries that spec through drafting and review, and remembers what worked so the next one starts smarter.
 
 It's the knowledge-work version of [obra/superpowers](https://github.com/obra/superpowers), and a cousin of [coworkpowers](https://github.com/nabeelhyatt/coworkpowers).
 
 ## The loop
 
-mindpowers does one loop: shape, draft, review, and remembers what you like.
+mindpowers does one loop: optionally validate the problem, then shape, draft, review, and remember what you like.
 
 | Skill | What it does |
 |---|---|
+| `validating-problems` | Tests and scopes a customer or business problem against available evidence before a direction is pitched |
 | `mindstorming` | Turns a rough idea into a locked spec through Socratic dialogue (verbal approval, then written approval) |
 | `drafting` | Turns a locked spec into the actual deliverable, holding it to the template's standards |
 | `reviewing-docs` | Red-teams any doc, drafted here or pasted in, against its spec and template before it ships |
@@ -55,6 +56,8 @@ Each template carries the lessons that make that kind of document good: lead wit
 
 ## How it works
 
+Before shaping, `validating-problems` can test whether a customer or business problem is supported by available evidence. It records claim-level evidence statuses in `docs/mindpowers/problems/YYYY-MM-DD-<slug>.md`, then optionally hands the brief to Mindstorming. A one-pager can socialise a supported problem or an explicitly provisional one with its unresolved claims visible. Prioritisation happens in an external workflow, not inside problem validation.
+
 Mindstorming, the "shape" step, runs a 10-step process:
 
 1. Read context: recent specs in `docs/mindpowers/specs/` and `docs/mindpowers/preferences.md`, so it knows what you've done before and what you like
@@ -93,6 +96,7 @@ claude plugin marketplace add rohitgehe05/mindpowers && claude plugin install mi
 ## Where files go
 
 ```
+docs/mindpowers/problems/       evidence-backed problem briefs
 docs/mindpowers/specs/          locked intent, one file per document
 docs/mindpowers/drafts/         the actual deliverables, same stem as their spec
 docs/mindpowers/reviews/        red-team notes
@@ -103,6 +107,7 @@ Specs often carry sensitive content (leadership comms, OKR politics, exec briefi
 
 ## What's new
 
+- **0.7**: `validating-problems` adds an optional evidence step before Mindstorming, with claim-level statuses that carry into a one-pager without implying prioritisation.
 - **0.6**: `one-pager` joins the templates, for pitching a direction and getting fast alignment before a full PRD or decision doc gets written. BRD is the same template at more weight, not a separate one.
 - **0.5**: `calibrating` remembers what landed and what you changed, per template type, in `docs/mindpowers/preferences.md`. Mindstorming reads it at the start of every session, so your fourth business review starts smarter than your first.
 - **0.4**: `drafting` and `reviewing-docs` complete the loop, and `post-mortem` joins the templates.

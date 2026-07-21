@@ -40,7 +40,7 @@ Markdown, sectioned by template type, each section a flat bullet list of dated o
 - 2026-01-20: keep recommendations to one sentence, always up front
 ```
 
-Sections match the 8 template types (`business-review`, `decision-doc`, `prd`, `briefing-doc`, `comms-draft`, `framework`, `talking-points`, `post-mortem`) plus `general` for anything cross-cutting. If the file doesn't exist, create it with the header comment above and only the section(s) you're writing to, no need to pre-populate all 9.
+Sections match the 9 template types (`business-review`, `decision-doc`, `one-pager`, `prd`, `briefing-doc`, `comms-draft`, `framework`, `talking-points`, `post-mortem`) plus `general` for anything cross-cutting. If the file doesn't exist, create it with the header comment above and only the section(s) you're writing to, no need to pre-populate all 10.
 
 ## Rules
 
