@@ -106,7 +106,7 @@ Generate at least two plausible alternative framings or mechanisms before settli
 
 ## Stop for real-world evidence
 
-Stop questioning when the remaining decision-critical gap requires research, observation, or data. Do not simulate missing evidence through more conversation.
+Stop speculative elicitation when the remaining decision-critical gap requires research, observation, or data. Do not simulate missing evidence through more conversation.
 
 Issue one specific evidence assignment containing:
 
@@ -119,7 +119,9 @@ Issue one specific evidence assignment containing:
 - what would weaken or contradict it; and
 - which decision the result will affect.
 
-Ask the user to provide or explicitly accept any useful threshold before the test. Never invent sample sizes, durations, confidence scores, or success thresholds and present them as standards.
+End the evidence-assignment turn with exactly one decision-relevant next-step question asking whether the user can supply or collect the named evidence. Do not add an arbitrary coordination questionnaire.
+
+After the user confirms the evidence can be supplied or collected, ask in a later one-question turn for the user to provide or explicitly accept any useful threshold before the test. Never invent sample sizes, durations, confidence scores, or success thresholds and present them as standards.
 
 ## Decide and write the brief
 
