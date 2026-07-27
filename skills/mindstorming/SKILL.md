@@ -23,14 +23,14 @@ Every task goes through this process. A Slack reply, a one-paragraph note, a rou
 
 Track these steps as todos if your harness has a task list, and complete them in order:
 
-1. **Explore context.** Check recent specs in `docs/mindpowers/specs/`, sorted by filename descending (the date prefix keeps them in chronological order); read the frontmatter of the 5-10 most recent. Also check `docs/mindpowers/preferences.md` if it exists; it holds per-template-type notes on what this user likes. Also scan legacy `docs/brainstorm/` if it exists; always write new files under `docs/mindpowers/`. If the user supplies a problem brief, or the topic matches one under `docs/mindpowers/problems/`, read it before elicitation and apply the "Optional Problem Brief" rules below. Do not scan unrelated problem briefs.
+1. **Explore context.** Check recent specs in `docs/mindpowers/specs/`, sorted by filename descending (the date prefix keeps them in chronological order); read the frontmatter of the 5-10 most recent. Also check `docs/mindpowers/preferences.md` if it exists; it holds per-template-type notes on what this user likes. Also scan legacy `docs/brainstorm/` if it exists; always write new files under `docs/mindpowers/`. If the user supplies a problem brief, or the topic matches one under `docs/mindpowers/problems/`, read it before elicitation and apply the "Optional Problem Brief" rules below. Do not scan unrelated problem briefs. Follow "Source Boundaries" for every other source.
 2. **Detect template match.** Does the task fit one of the 9 templates? (See "Template Selection" below.) If yes, load that template's reference file. Also classify: is this routine (a template type with prior locked specs and/or a recorded preference in `preferences.md`) or exploratory (first time, novel or personal topic)?
 3. **Offer visual companion (if applicable).** Defer until the dialogue is heading into visually-shaped territory. May not happen at all for text-only tasks.
 4. **Adaptive elicitation.** Batched only when template match AND routine. Otherwise one-question-at-a-time.
 5. **Propose 2-3 approaches.** When self-shaping, before presenting the design, propose alternatives with trade-offs and your recommendation. (For template-matched routine tasks, this often happens inside the template's elicitation.)
 6. **Present design sections.** Scaled to complexity, get verbal approval after each section. If the user rejects a structure, invoke Research as Recovery before re-proposing.
 7. **Write spec to file.** At `docs/mindpowers/specs/YYYY-MM-DD-<type>-<slug>.md` with YAML frontmatter. Before writing, if the working folder is a shared or public git repo, warn the user that specs often contain sensitive content (leadership comms, OKR politics, exec briefings) and suggest adding `docs/mindpowers/` to `.gitignore` or choosing a private location.
-8. **Self-review and report.** Inline check for placeholders, contradictions, ambiguity, scope creep, source attribution. Report the checklist results to the user when handing the file over.
+8. **Self-review and report.** Inline check for placeholders, contradictions, ambiguity, scope creep, source attribution, readiness, material blockers, and required external approval. Report the checklist results to the user when handing the file over.
 9. **User reviews written spec.** Explicitly ask the user to read the file and approve before drafting.
 10. **Type-aware handoff.** On approval, flip the spec's `status` to `locked`. For brief-style specs ask "draft now, hand back, or stop?". For spec-is-the-deliverable specs (frameworks, post-mortems) ask "stop, draft a derivative, or pause?".
 
@@ -106,11 +106,49 @@ To select the right template:
 3. If two templates could fit (e.g., a briefing doc that contains a decision), pick the one that better matches the primary deliverable shape and ask the user to confirm.
 4. If genuinely novel, self-shape.
 
+When the match is ambiguous, unfamiliar, or consequential, visibly recommend
+the deliverable and explain why, then say you will use it unless the user wants
+another. For example:
+
+> I recommend a decision document because you are comparing live alternatives
+> and need a durable record of the choice. I will use that shape unless you
+> want a different deliverable.
+
+Do not add a confirmation interruption when the requested format and intended
+outcome are already unambiguous.
+
 Read the matching template file from `skills/mindstorming/references/<type>.md` to load its sections, elicitation prompts, and standards. Do NOT improvise the section structure when a template exists. The templates encode learned standards; deviating loses that.
+
+## Source Boundaries
+
+Inspect material the user supplies, connected sources the user points toward,
+and relevant workspace artifacts already inside the stated task scope without
+asking for another confirmation. A repository or folder the user places in
+scope may be searched for relevant artifacts.
+
+Do not broaden an internal search merely because a connector is available.
+Before searching connected or internal material outside the stated scope, or
+when no scoped source can be identified, ask the user to point to the source or
+location. When a decision-critical evidence gap remains and the user has named
+no other source, offer broader internet research without blocking progress. If
+the user declines, continue with the claim at its honest evidence status.
 
 ## Optional Problem Brief
 
 A problem brief is optional context, not a prerequisite. Never require the user to run `validating-problems`, create a brief, or validate the problem before Mindstorming. When no relevant brief exists, continue the normal context exploration and elicitation flow.
+
+When the deliverable depends on a customer or business problem claim, first
+inspect whether the problem is solution-free, who experiences it, what supports
+it, what remains assumed, and whether another explanation could change the
+direction. This is a lightweight premise check, not a mandatory validation
+exercise.
+
+If a central claim is unsupported or contradicted, state the evidence gap and
+why it matters, recommend `validating-problems`, and ask the user to confirm
+before switching skills. In the same turn, offer to continue provisionally with
+the claim at its honest evidence status. If a relevant problem brief already
+exists, preserve its findings and offer to resume or update only the material
+gap. Do not restart validation or re-ask settled questions.
 
 When the user supplies a brief or the topic matches a file under `docs/mindpowers/problems/`:
 
@@ -126,7 +164,7 @@ Apply evidence status exactly as recorded:
 - `unsupported`: discuss only as a hypothesis.
 - `contradicted`: warn and require reframing before using it as the pitch premise.
 
-Validation does not imply prioritisation, approval, or permission to build. A workflow decision such as `ready-to-socialize` does not override the evidence status of any claim.
+Validation does not imply prioritisation, approval, or permission to build. A workflow decision such as `ready-to-socialise` does not override the evidence status of any claim.
 
 ## Optional Upstream One-Pager
 
@@ -222,6 +260,15 @@ mindpowers is one loop across four skills: shape (`mindstorming`, this skill) ->
 
 **Status protocol:** a spec's `status` moves `draft -> locked -> (optionally) superseded`. This skill writes new specs as `draft` and flips them to `locked` on final approval. `drafting` consumes ONLY specs with `status: locked`; never draft from an unapproved spec. `reviewing-docs` can review any doc regardless of status and may recommend flipping a spec to `superseded` if it's since been reworked. `calibrating` only appends to `preferences.md`.
 
+Lifecycle status is separate from content readiness. A locked spec may remain
+`not-ready`; drafting may continue, but its provisional state and material
+blockers remain visible. A gap blocks readiness only when leaving it unresolved
+could materially change what the audience decides, does, builds, measures, or
+understands. Keep optional improvements as non-blocking notes.
+
+Content readiness never implies external approval. Record an explicitly
+required approval separately and never claim it was received without evidence.
+
 Also scan legacy `docs/brainstorm/` if it exists; always write new files under `docs/mindpowers/`.
 
 ## Spec File Format
@@ -248,9 +295,30 @@ topic: <kebab-case slug>
 owner: <user name or handle>
 audience: <primary audience for the eventual deliverable>
 status: draft | locked | superseded
+readiness: ready | not-ready
 draft: <path to the drafts/ file, once one exists, optional>
 ---
 ```
+
+Every `not-ready` spec names its material blockers. `status: locked` means the
+user approved the working brief; it does not erase blockers or imply that the
+eventual artifact is ready for its consequential action.
+
+Use these user-facing labels while keeping frontmatter readiness as `ready` or
+`not-ready`:
+
+| Template | Ready label |
+|---|---|
+| `business-review` | ready-to-present |
+| `decision-doc` | decision-ready |
+| `one-pager` | ready-to-socialise |
+| `prd` | build-ready |
+| `briefing-doc` | meeting-ready |
+| `comms-draft` | ready-to-send |
+| `framework` | ready-to-apply |
+| `talking-points` | ready-to-deliver |
+| `post-mortem` | action-ready |
+| `self-shape` | define the consequential action during elicitation |
 
 Optional upstream links for one-pager and PRD specs:
 
@@ -282,6 +350,8 @@ Before showing the spec to the user, run through:
 - [ ] Is the audience explicit?
 - [ ] Is the recommendation or claim crisp (one sentence if possible)?
 - [ ] Are open questions surfaced rather than buried?
+- [ ] Does readiness reflect every material blocker without treating optional improvements as blocking?
+- [ ] Is any required external approval recorded separately and supported by evidence?
 - [ ] For BRs, decision-docs, and one-pagers: is the insight, recommendation, or ask up front, not buried?
 - [ ] For PRDs: are evidence claims scoped, every requirement linked to a verifiable acceptance criterion, and readiness honest about blocking open decisions?
 - [ ] For PRDs: did any threshold, window, sample, event, rollout value, date, or owner get invented rather than supplied or explicitly accepted?
@@ -295,7 +365,7 @@ Fix issues inline before presenting. If a section needs more work, return to eli
 
 The handoff prompt is type-aware. Some specs are briefs for a separate downstream deliverable (BR, decision-doc, briefing-doc, comms-draft, talking-points, prd). Some specs ARE the deliverable themselves and have no separate downstream artefact (framework, post-mortem, and any other spec-is-the-deliverable subtype). The handoff text should match.
 
-Before presenting either handoff option below, flip the spec's `status` from `draft` to `locked`. `drafting` only reads locked specs, so this step is what makes the handoff real.
+Before presenting either handoff option below, flip the spec's `status` from `draft` to `locked`. `drafting` only reads locked specs, so this step makes the handoff available. It does not change `readiness`, erase blockers, or imply external approval.
 
 **For brief-style specs (BR, decision-doc, one-pager, briefing-doc, comms-draft, talking-points, prd):**
 
@@ -329,6 +399,7 @@ Then:
 - **Incremental validation.** Present design sections, get approval before moving on.
 - **Research as recovery.** When structure feedback is "too generic," research before re-proposing.
 - **Source attribution.** When principles map to existing thinkers, cite.
+- **Confirmed routing.** Recommend a skill handoff with a reason and wait for the user to confirm before switching.
 - **Be flexible.** Go back and clarify when something doesn't make sense.
 
 ## Anti-Patterns (Never Do)
@@ -340,3 +411,6 @@ Then:
 - Reproducing the user's original request as the "claim" or "recommendation" without refinement
 - Producing a spec longer than it needs to be (a Slack reply spec is 3-5 lines, not 30)
 - Loading a template and ignoring its standards (e.g., putting data before insight in a BR)
+- Exposing internal template coverage as a batch questionnaire
+- Silently searching broad connected sources outside the user's stated scope
+- Treating `locked`, `ready`, and externally approved as synonyms
