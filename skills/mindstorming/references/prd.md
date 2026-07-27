@@ -164,6 +164,18 @@ If any blocking open decision remains, readiness is `needs-decision`.
 If a predicate is false, omit the module. If applicability is unknown and could
 change scope or safety, ask one decision-critical question.
 
+Labels such as `acceptable risk`, `low confidence`, `uncertain`, or `high
+risk` do not by themselves define an evaluation boundary. If product behaviour
+branches on a probabilistic assessment, record the supplied or explicitly
+accepted rule or threshold that selects each branch. When that boundary is
+missing, keep it as a blocking open decision and mark the PRD
+`needs-decision`; do not describe the PRD as build-ready.
+
+Conditional-module fields are internal coverage, not one conversational
+target. In exploratory work, ask about only the single field whose answer is
+most likely to change the module's need or content; gather other independently
+answerable fields in later turns.
+
 ## Elicitation prompts
 
 These are a coverage guide, not a questionnaire. Inspect supplied documents,
@@ -174,23 +186,37 @@ For an exploratory PRD, ask exactly one highest-value question per turn. Route
 to the unknown most likely to change scope, user-visible behaviour,
 measurement, or launch safety:
 
-1. Has the direction already been selected for specification, and what remains
-   outside this PRD's decision boundary?
-2. What direct customer or behavioural evidence and current baseline support
-   the problem within the stated scope, denominator, and time period?
-3. Who is the primary user, and which job or failure matters most?
-4. What must the product do in the primary flow and the most consequential
-   failure state?
-5. Which assumption or credible alternative could make this solution the wrong
-   response to the problem?
-6. What supplied or explicitly accepted outcome threshold and guardrail define
-   success?
-7. Which unresolved decision could still change behaviour, scope,
-   measurement, or launch safety?
+1. Which part of the PRD's decision boundary remains unresolved?
+2. What direct customer or behavioural evidence supports the problem?
+3. Who is the primary user?
+4. Which user-visible failure state has the highest consequence?
+5. Which assumption could make this solution the wrong response?
+6. Which single supplied or accepted outcome threshold defines success?
+7. Which one unresolved decision most affects launch safety?
+
+Each example above is one information target. Treat related baseline,
+denominator, job, primary-flow, guardrail, and recovery details as separate
+later targets when they remain material.
+
+Avoid umbrella prompts such as "What is the operating context?", "What must
+happen on the failure branch?", and "What recovery behavior should the
+customer see?" Context dimensions such as device state, timing, location, and
+connectivity are separate targets. Branch or recovery dimensions such as
+retained state, next state, user-facing message, retry trigger, retry action,
+failed-retry fallback, owner, response time, and data-access rule are also
+separate targets. Ask only the one dimension most likely to change the next
+decision. Product ownership, approval, operations, rollout authority, and
+rollback authority are separate targets; do not collect multiple
+responsibilities with one "who owns..." question.
 
 For a routine PRD with prior locked specs or recorded preferences, batch only
 the genuinely unresolved fields. A useful maximum is three to five short
 questions, not the entire template.
+
+When the user explicitly reuses a prior locked PRD and supplies every stated
+delta, proceed to the written spec without presenting inherited or
+just-supplied content for another design-section approval. Still require the
+separate final review and approval of the written spec before locking it.
 
 When offering choices, lead with a recommendation and its trade-off. Never use
 "reasonable assumptions" as permission to fabricate product decisions,

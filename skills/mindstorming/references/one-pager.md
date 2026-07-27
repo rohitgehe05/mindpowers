@@ -37,21 +37,26 @@ problem: docs/mindpowers/problems/YYYY-MM-DD-<slug>.md
 
 These prompts are a coverage guide, not a script. If a problem brief settles a prompt, carry that answer forward and skip the question. Do not ask the user to restate the brief.
 
-When self-shaping, one at a time:
+For an exploratory one-pager, use each line below as one information target and
+ask only one per turn:
 
-1. One sentence: for whom, what problem, what direction, unlike what today?
+1. Who is the primary audience?
 2. Is there one direction here, or are you still weighing live alternatives against each other? (Weighing alternatives — even "build vs. buy" — is decision-doc, not this template.)
-3. What's the background a reader needs before the problem makes sense — any prior art or competitor moves worth citing?
-4. What's the problem, concretely, and why does it matter now?
-5. What does "solved" look like? Is there a real metric, or is it directional?
+3. Which single background fact must the reader know first?
+4. What observable problem occurs?
+5. What does "solved" look like?
 6. What direction are you leaning, at a level someone could react to (not build from)?
 7. What are the non-negotiables this direction has to respect?
-8. What's the exact ask, and from whom?
-9. Is this a quick gut-check, or does the ask need BRD-weight (stakeholders, milestones, heavier business case) for sign-off?
+8. What exact yes/no approval is being requested?
+9. Does the ask need BRD-weight for sign-off?
 
-When a template match is suspected (user said "one-pager", "BRD", "pitch for X", "need buy-in on"), batched:
+Treat user group, failure step, why-now context, evidence, metric, decision-maker,
+and requested approval as independently answerable targets. Gather any material
+follow-up in later turns.
 
-> "Quick frame: do you have one clear direction or are you still weighing options, what's the one-sentence pitch, what's the problem, what does solved look like, and what's the exact ask?"
+For a routine one-pager with prior locked one-pagers or recorded preferences,
+batch only genuinely unresolved targets. Do not use a template match by itself
+as permission to batch.
 
 ## Standards baked in
 

@@ -122,6 +122,12 @@ Classify the cause of each surfaced finding before recommending the next action:
 | `preference` | Final human edits reveal a stable preference. | `calibrating` |
 | `approval` | Required external approval is pending. | `none`; record the pending approval and do not switch skills. |
 
+When the artifact or its linked spec explicitly says the underlying reasoning,
+scope, or decision is settled and identifies only dense, vague, or repetitive
+expression, preserve that boundary: classify the finding as `writing` and
+route it to `drafting`. Do not reopen it as a missing decision unless the
+source actually leaves substantive content unresolved or contradictory.
+
 External approval is permission from outside this workflow, not evidence of content readiness. Give an approval finding `readiness_impact: none` unless it exposes a separate unresolved evidence or decision issue; classify that issue as its own finding.
 
 After the findings, recommend the next skill and explain why. Wait for the user to confirm before switching skills. When several skill routes are recommended, require confirmation before each actual switch; one confirmation is not blanket authorization for the chain. For a confirmed handoff, carry forward the source artifact, exact finding, unresolved question, affected section or identifier, severity, and readiness impact so the next skill resumes from the finding instead of restarting.

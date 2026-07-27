@@ -11,7 +11,11 @@ mindpowers does one loop: shape, draft, review, and remembers what you like. Thi
 
 Help turn rough ideas into locked specs for knowledge-work deliverables (memos, business reviews, decision docs, PRDs, briefing docs, comms, frameworks, talking points, post-mortems) through Socratic dialogue.
 
-The skill enforces two approval gates: a verbal section-by-section approval during dialogue, and a final approval of the written spec on disk. Drafting only begins after both.
+The skill enforces a verbal design-approval gate and a final approval of the
+written spec on disk. For routine reuse of a prior locked spec, the user's
+explicit reuse instruction plus answers to every stated delta satisfies the
+verbal gate; do not ask for a second verbal approval. Drafting begins only after
+the applicable verbal gate and the written-spec approval.
 
 Do NOT draft any deliverable, write any prose, or otherwise produce output until you have presented a design, written it to disk, and the user has approved the written spec. This applies to EVERY task regardless of perceived simplicity.
 
@@ -28,7 +32,12 @@ Track these steps as todos if your harness has a task list, and complete them in
 3. **Offer visual companion (if applicable).** Defer until the dialogue is heading into visually-shaped territory. May not happen at all for text-only tasks.
 4. **Adaptive elicitation.** Batched only when template match AND routine. Otherwise one-question-at-a-time.
 5. **Propose 2-3 approaches.** When self-shaping, before presenting the design, propose alternatives with trade-offs and your recommendation. (For template-matched routine tasks, this often happens inside the template's elicitation.)
-6. **Present design sections.** Scaled to complexity, get verbal approval after each section. If the user rejects a structure, invoke Research as Recovery before re-proposing.
+6. **Present design sections.** Scaled to complexity, get verbal approval after
+   each section. Exception: when routine reuse of a prior locked spec is
+   explicit and the user has supplied every stated delta, skip this step
+   entirely: do not present design sections in chat and do not ask another
+   verbal approval question; proceed directly to writing the spec. If the user
+   rejects a structure, invoke Research as Recovery before re-proposing.
 7. **Write spec to file.** At `docs/mindpowers/specs/YYYY-MM-DD-<type>-<slug>.md` with YAML frontmatter. Before writing, if the working folder is a shared or public git repo, warn the user that specs often contain sensitive content (leadership comms, OKR politics, exec briefings) and suggest adding `docs/mindpowers/` to `.gitignore` or choosing a private location.
 8. **Self-review and report.** Inline check for placeholders, contradictions, ambiguity, scope creep, source attribution, readiness, material blockers, and required external approval. Report the checklist results to the user when handing the file over.
 9. **User reviews written spec.** Explicitly ask the user to read the file and approve before drafting.
@@ -45,6 +54,7 @@ digraph mindpowers_mindstorming {
     "Visual questions ahead?" [shape=diamond];
     "Offer visual companion (own message)" [shape=box];
     "Batched elicitation" [shape=box];
+    "Routine reuse complete?" [shape=diamond];
     "One-at-a-time elicitation" [shape=box];
     "Propose 2-3 approaches" [shape=box];
     "Present design sections" [shape=box];
@@ -66,7 +76,9 @@ digraph mindpowers_mindstorming {
     "Visual questions ahead?" -> "One-at-a-time elicitation" [label="no, exploratory or self-shape"];
     "Offer visual companion (own message)" -> "Batched elicitation" [label="template+routine"];
     "Offer visual companion (own message)" -> "One-at-a-time elicitation" [label="exploratory or self-shape"];
-    "Batched elicitation" -> "Present design sections";
+    "Batched elicitation" -> "Routine reuse complete?";
+    "Routine reuse complete?" -> "Write spec to file" [label="yes, explicit reuse + all deltas"];
+    "Routine reuse complete?" -> "Present design sections" [label="no"];
     "One-at-a-time elicitation" -> "Propose 2-3 approaches";
     "Propose 2-3 approaches" -> "Present design sections";
     "Present design sections" -> "Verbal approval?";
@@ -150,6 +162,11 @@ the claim at its honest evidence status. If a relevant problem brief already
 exists, preserve its findings and offer to resume or update only the material
 gap. Do not restart validation or re-ask settled questions.
 
+If the user declines validation and continues provisionally, make the next
+premise-check question atomic: ask either which user is affected or what
+observable failure occurs, never both. Gather the other target in a later turn
+only if it remains material.
+
 When the user supplies a brief or the topic matches a file under `docs/mindpowers/problems/`:
 
 1. Read the brief before asking elicitation questions.
@@ -194,7 +211,44 @@ The elicitation rhythm depends on TWO axes: template match (yes/no) and topic fa
 
 **No template match (self-shape):** One question per message. Multiple-choice preferred when possible. Focus on understanding purpose, audience, constraints, success criteria. Only after the shape is clear, propose 2-3 approaches with trade-offs.
 
+For one-question-at-a-time work, ask for one information target per turn. Do
+not pack multiple unresolved fields into one grammatical question joined by
+`and` or `or`. A shared topic or contract label does not make independently
+answerable clauses, stages, or dimensions one target; split them across turns.
+Treat who, where, when, what behavior, and why as separate targets: for
+example, ask either who is affected or where the failure occurs, never both in
+the same turn. Before sending an exploratory question, test whether the user
+could answer one requested clause while leaving another unanswered. If so,
+split the question and send only the highest-value clause.
+
+Do not disguise a batch behind an umbrella noun. Questions such as "What is
+the operating context?", "What must happen in this branch?", "What recovery
+behavior should the customer see?", or "How should this workflow behave?"
+usually invite several independent answers even though they contain one
+question mark. Narrow context to one dimension (for example, device state,
+location, timing, or connectivity). Narrow a flow or recovery branch to one
+observable contract field (for example, its retained state, next state, user
+message, retry trigger, retry action, failed-retry fallback, owner, response
+time, or access rule). Ask the remaining dimensions in later turns only when
+they are still decision-critical. Different
+responsibilities are different targets: product owner, approver, operational
+owner, rollout decision owner, and rollback owner remain separate even if one
+person may eventually hold more than one role. Never join two responsibility
+questions behind one "who owns..." prompt.
+
+Use a mechanical pre-send check: if a prompt says `either` or `both`, names
+more than one condition, branch, or measure, or asks broadly for "behavior" or
+"what happens," rewrite it to request exactly one observable field for exactly
+one condition or branch. Do this even when the combined items share a contract
+label or are usually implemented together.
+
 **Heuristic for "routine vs exploratory":** Does `docs/mindpowers/specs/` contain a prior locked spec of this template type, or does `docs/mindpowers/preferences.md` have a recorded entry for it? Routine. Is this the first spec of this type on file, or is the subject highly personal, philosophical, or open-ended? Exploratory. This file-based check replaces guessing from conversation history, which doesn't persist across sessions. When in doubt, default to one-at-a-time, since over-batching costs more than under-batching.
+
+For routine work, an explicit request to reuse a prior locked spec plus the
+user's answers to every stated delta input counts as verbal approval of the
+unchanged sections and that supplied delta. Do not ask another approval
+question that merely restates those inherited or just-supplied choices. Ask
+again only when presenting a new decision or trade-off the user did not supply.
 
 Either way:
 
@@ -342,6 +396,24 @@ Body structure depends on template (see `references/<type>.md`). For self-shape,
 
 ## Self-Review Checklist
 
+Before writing the spec, and again before locking it, diff the written contract
+against the user's supplied decisions and the explicitly accepted design.
+Trace every requirement behavior, acceptance detail, threshold, target, window,
+sample, event name, owner, cadence, rollout gate, and rollout action. Also
+account for every required field in each triggered conditional module. Make
+this audit field-by-field: copy the required field names from the triggered
+module and mark each one `resolved` with its supplied or accepted source, an
+exact blocking `OD-###`, or `not applicable` with a reason. A module-level
+summary does not count. `resolved(source)` is valid only when that source
+entails the entire field. Names or members do not imply their relationships,
+order, transitions, or behavior; one supplied item does not resolve the rest
+of a list or category. Mark uncovered remainder as an exact blocking `OD-###`
+or `not applicable` with a reason. A value or required field that has no
+supplied or explicitly accepted source is not completion: return to
+elicitation or create an exact blocking open decision and withhold readiness.
+A deadline, pressure to look complete, or blanket approval of the written spec
+never authorizes filling or silently omitting it.
+
 Before showing the spec to the user, run through:
 
 - [ ] Are there any TODO or [TBD] placeholders? Replace or flag explicitly.
@@ -396,7 +468,9 @@ Then:
 - **Batched questions only when template matches AND the topic is routine.** Faster when the user is filling in known slots; otherwise revert to one-at-a-time.
 - **YAGNI ruthlessly.** Every section in the spec must justify its presence.
 - **Lead with the recommendation.** When proposing alternatives, state your view first.
-- **Incremental validation.** Present design sections, get approval before moving on.
+- **Incremental validation.** Present design sections and get approval before
+  moving on. In the routine-reuse exception defined above, skip section
+  presentation and proceed directly to the written-spec approval gate.
 - **Research as recovery.** When structure feedback is "too generic," research before re-proposing.
 - **Source attribution.** When principles map to existing thinkers, cite.
 - **Confirmed routing.** Recommend a skill handoff with a reason and wait for the user to confirm before switching.
