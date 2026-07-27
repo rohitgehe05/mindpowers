@@ -28,6 +28,8 @@ Inspect relevant conversation context, linked workspace files, research, analyti
 
 When no evidence is available, mark the claims unsupported and identify the smallest useful evidence assignment. Do not manufacture a verdict.
 
+When a current problem brief exists, preserve its settled boundaries, evidence, claim statuses, and original `as_of` values. Before relying on a settled claim, check for materially new evidence, changed scope, expired relevance, or contradiction. Reopen only an affected claim and date its new assessment to the relevant new evidence. Do not advance an unaffected claim's `as_of` merely because the freshness check happened later. Otherwise resume only the unresolved or newly disputed claim, and do not restart the whole brief unless the user explicitly reopens it.
+
 ## Evaluate four claims
 
 Evaluate these claims independently:

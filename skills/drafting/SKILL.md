@@ -20,6 +20,8 @@ This skill needs a spec with `status: locked` from `docs/mindpowers/specs/`.
 3. **Status is `superseded`.** Warn the user this spec was superseded (and by what, if the frontmatter or a newer spec says so). Confirm they still want to draft from it before proceeding.
 4. **No spec exists for the ask.** Do not draft cold. Give one short pitch for running mindstorming first, something like "I don't see a spec for this. Mindstorming takes a few minutes and usually saves a redraft later, want to run it first?" Respect whatever the user decides. If they insist on skipping it, draft anyway, but say plainly that the quality bars (audience fit, standards, anti-pattern checks) will be weaker without a spec to hold the draft to.
 
+A locked spec approves the working brief for drafting. It does not establish content readiness or grant external approval. A locked spec may therefore have `readiness: not-ready`. When the user asks to proceed from one, draft it while keeping the deliverable provisional: preserve the spec's readiness value, evidence qualifications, material blocking gaps, and external-review status. Keep `readiness` limited to `ready | not-ready`; never encode approval in it. Do not polish any of these states into unsupported certainty, readiness, or approval.
+
 ## Process
 
 1. **Read the spec and its template.** Load the spec file, then load `skills/mindstorming/references/<type>.md` using the spec's `type` frontmatter field. If `type` is `self-shape`, there's no template file to load; draft against the spec's own sections instead.
@@ -35,12 +37,15 @@ This skill needs a spec with `status: locked` from `docs/mindpowers/specs/`.
    - [ ] Does the draft match the spec's stated audience and tone?
    - [ ] Are the template's anti-patterns absent (e.g. insight before data for business-reviews, recommendation up front for decision-docs)?
    - [ ] Is every claim traceable to the spec or clearly flagged as new information introduced during drafting?
+   - [ ] Does the draft preserve readiness, material blockers, evidence qualifications, and external-review status without implying unrecorded certainty or approval?
 
    Fix what you can inline before showing the draft. Anything you can't fix without more input, flag rather than silently paper over.
 4. **Report the checklist results inline.** When you hand the draft to the user, list what the self-review checked and what it found, including any deviations from the spec and why. Don't bury this in a preamble; make it visible.
 5. **Save the draft.** Following the file contract:
    - Path: `docs/mindpowers/drafts/YYYY-MM-DD-<type>-<slug>.md`, same date and slug as the spec so the pair sorts together.
-   - Frontmatter: `spec: <path to the spec>`, `type`, `status: draft` (or `final` once the user says it's done).
+   - Frontmatter: `spec: <path to the spec>`, `type`, `status: draft` (or `final` once the user says it's done), and `readiness: <value from the spec>`.
+   - Keep material blockers visible in the draft body and the handoff report. When readiness is `not-ready`, retain the provisional `status: draft` label rather than presenting the document as final.
+   - Preserve external review and approval status in a clearly labeled body section such as `External reviews and approvals`, unless the selected template defines a dedicated field. Never put approval state in `readiness`.
    - Update the spec's own frontmatter with `draft: <path to the draft>` so the link goes both ways.
    - **Comms exception:** for short comms (a Slack message, a brief email), present the draft in chat instead of writing a file. Only save a file if the user asks for a record.
 6. **Handoff.** Ask: "Want to revise this, run it through reviewing-docs, or call it done?"
@@ -87,3 +92,4 @@ Paths above are relative to the working folder. In Cowork, that's the user's sha
 - Including anything the spec's exclusions ruled out (most commonly, saying something the comms-draft's "What NOT to say" flagged)
 - Silently deviating from the spec instead of flagging the deviation inline in the self-review report
 - Treating "no spec exists" as a green light to draft cold without at least offering mindstorming once
+- Polishing qualified evidence, unresolved blockers, pending external review, or `readiness: not-ready` into false certainty, readiness, or approval

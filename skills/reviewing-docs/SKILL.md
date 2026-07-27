@@ -43,11 +43,16 @@ Either way, don't skip Step 1 to save time. A doc that fails its own spec is a d
 3. Treat that file's **Standards baked in** and **Anti-patterns** sections as the objective rubric, not your own taste. Check the doc against them directly (e.g., for a decision doc: is the recommendation up front? Is a real counter-argument engaged, or a strawman?).
 4. If the doc doesn't match any of the nine templates, treat it as self-shape: there's no reference file to load, so the rubric is whatever structure the (reverse-engineered or real) spec implies, plus general clarity and completeness.
 
-For a PRD marked `build-ready`, treat any missing evidence boundary,
-untraceable requirement, unverifiable acceptance criterion, incomplete
-triggered conditional module, or blocking open decision as a blocker. A
-polished outline that still depends on a private follow-up conversation is not
-build-ready.
+Treat frontmatter `readiness` as the canonical binary field:
+`readiness: ready | not-ready`. Never put a type-specific label such as
+`build-ready` in frontmatter. For a PRD, canonical `ready` means the body must
+satisfy and show the user-facing `Readiness: build-ready` bar. Treat any missing
+evidence boundary, untraceable requirement, unverifiable acceptance criterion,
+incomplete triggered conditional module, or blocking open decision as a
+blocker and report any mismatch with canonical `ready`. Canonical `not-ready`
+must retain its named material blockers. For other document types, apply the
+same rule using the selected template's type-specific ready label or readiness
+bar where one exists.
 
 Do not invent a rubric when a template exists. The template encodes standards someone already learned the hard way; skipping it means re-deriving from scratch and probably missing something the template would have caught.
 
@@ -82,6 +87,15 @@ Produce findings, not a rewrite.
 - Rank findings by severity: **blocker** (this will get called out and the doc won't survive it as-is) → **weakens** (undercuts the doc but survivable) → **polish** (worth fixing, not urgent).
 - Every finding anchors to a **quoted line** from the doc; don't describe a problem in the abstract, point at the sentence.
 - Every finding carries a **suggested fix**: a direction, not necessarily rewritten prose.
+- Every surfaced finding classifies its root cause, recommended route, and readiness impact using this exact metadata:
+
+  ```yaml
+  severity: blocker | weakens | polish
+  root_cause: evidence | decision | writing | verification | preference | approval
+  recommended_route: validating-problems | mindstorming | drafting | reviewing-docs | calibrating | none
+  readiness_impact: blocking | non-blocking | none
+  ```
+
 - Cap it at the **top 8 findings**, ranked. This is a red-team pass, not a laundry list; if there are 20 problems, surface the 8 that matter most and say so.
 - One line of praise is fine if genuinely earned. No more than one line, and don't lead with it.
 
@@ -95,6 +109,25 @@ If there are zero findings above "polish," say that plainly instead of manufactu
 
 **If the spec itself was wrong:** when the fidelity check or persona pass reveals that the problem traces back to the spec (wrong audience, wrong claim, wrong structure from the start, not just an execution slip), say so plainly and recommend flipping that spec's `status` to `superseded`, then rerunning mindstorming on the delta rather than patching the draft in place.
 
+## Root-cause routing
+
+Classify the cause of each surfaced finding before recommending the next action:
+
+| Root cause | Signal | Recommended route |
+|---|---|---|
+| `evidence` | Problem evidence is missing or weak. | `validating-problems` |
+| `decision` | A scope, product, requirement, or measurement decision is missing. | `mindstorming` |
+| `writing` | Settled reasoning is expressed poorly. | `drafting` |
+| `verification` | A corrected artifact needs another verification pass. | `reviewing-docs` |
+| `preference` | Final human edits reveal a stable preference. | `calibrating` |
+| `approval` | Required external approval is pending. | `none`; record the pending approval and do not switch skills. |
+
+External approval is permission from outside this workflow, not evidence of content readiness. Give an approval finding `readiness_impact: none` unless it exposes a separate unresolved evidence or decision issue; classify that issue as its own finding.
+
+After the findings, recommend the next skill and explain why. Wait for the user to confirm before switching skills. When several skill routes are recommended, require confirmation before each actual switch; one confirmation is not blanket authorization for the chain. For a confirmed handoff, carry forward the source artifact, exact finding, unresolved question, affected section or identifier, severity, and readiness impact so the next skill resumes from the finding instead of restarting.
+
+When findings are mixed, resolve evidence and decision reasoning before prose work. Rerun `reviewing-docs` after the routed corrections are made.
+
 ## Cowork / no-filesystem fallback
 
 Paths above are relative to the working folder; in Cowork that's the user's shared folder. If no writable folder exists, present the full review in chat (or as an artifact) and say plainly it was not saved to disk.
@@ -105,4 +138,5 @@ Paths above are relative to the working folder; in Cowork that's the user's shar
 - At most the top 8 findings, ranked by severity. Not exhaustive, not a laundry list.
 - Praise is allowed, capped at one line.
 - Always name which persona you're reading as before giving findings, so the user knows the lens.
+- Never switch skills before the user confirms the recommended route.
 - If asked to review code, decline and point at a code-review tool instead; this skill is for prose deliverables.
