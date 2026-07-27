@@ -4,6 +4,28 @@ All notable changes to mindpowers will be documented here.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.9.0] - 2026-07-27
+
+### Added
+- Shared readiness states with template-specific user-facing labels and named
+  material blockers.
+- Root-cause routes from document review to problem validation, mindstorming,
+  drafting, verification, or calibration.
+
+### Changed
+- Mindstorming recommends validating-problems when a central problem claim is
+  unsupported while allowing explicitly provisional continuation.
+- PRD conditional modules are recommended through contextual questions rather
+  than silently omitted or presented as a template checklist.
+- Drafting preserves provisional evidence, readiness, blockers, and recorded
+  external-review status.
+
+### Fixed
+- Connected internal sources are no longer broadened beyond the user's stated
+  scope merely because a connector is available.
+- Content readiness no longer implies that an external approval was received.
+- Skill switches require user confirmation and carry the exact finding forward.
+
 ## [0.8.0] - 2026-07-21
 
 ### Added
