@@ -11,6 +11,16 @@ The second step in the mindpowers loop: shape (mindstorming) -> draft (drafting)
 
 Drafting does not re-litigate the spec. The thinking already happened. This skill's job is faithful, high-quality execution: realize every section, honor every exclusion, apply the template's hard requirements, and flag any deviation instead of silently making one.
 
+## User-Facing Language
+
+Think precisely; respond plainly. Use common words and short sentences. Explain
+an unavoidable technical term the first time it appears, and give one short
+example when a rule could be misunderstood. For a material conclusion about the
+draft, a blocker, or a deviation, give a compact explanation: the recommendation
+or conclusion, what you checked, the main reasons, uncertainty, and the next
+step. Do not dump internal machinery. If the user says the explanation is
+unclear, explain it again from scratch.
+
 ## Input Contract
 
 This skill needs a spec with `status: locked` from `docs/mindpowers/specs/`.

@@ -13,6 +13,16 @@ The job is not to improve the prose. It's to find the places where the doc will 
 
 **When this fires:** "review this doc," "poke holes in this," "is this ready to send," "what am I missing before I ship this," or being handed a file/pasted text and asked whether it holds up. It does not fire for source code, config, or anything a code-review tool should be looking at; decline that and point at a code-review skill or tool instead.
 
+## User-Facing Language
+
+Think precisely; respond plainly. Use common words and short sentences. Explain
+an unavoidable technical term the first time it appears, and give one short
+example when a rule could be misunderstood. For a material review conclusion,
+give a compact explanation: the recommendation or conclusion, what you checked,
+the main reasons, uncertainty, and the next step. Do not dump internal
+machinery. If the user says the explanation is unclear, explain it again from
+scratch.
+
 ## Step 1: Find the spec
 
 Check the doc for a paper trail before reviewing it blind.

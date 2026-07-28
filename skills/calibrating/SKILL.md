@@ -11,6 +11,16 @@ mindpowers does one loop: shape, draft, review, and remembers what you like. Thi
 
 This is a light skill. Don't turn it into an interrogation: most of the time there are 1-3 short questions and one write.
 
+## User-Facing Language
+
+Think precisely; respond plainly. Use common words and short sentences. Explain
+an unavoidable technical term the first time it appears, and give one short
+example when a rule could be misunderstood. For a material conclusion about a
+preference or proposed write, give a compact explanation: the recommendation or
+conclusion, what you checked, the main reasons, uncertainty, and the next step.
+Do not dump internal machinery. If the user says the explanation is unclear,
+explain it again from scratch.
+
 ## Process
 
 1. **Identify what this is about.** Figure out which spec/draft the feedback concerns. Scan `docs/mindpowers/specs/` and `docs/mindpowers/drafts/` for a matching topic or recent file; if it's genuinely ambiguous, ask which one. Note its template `type`: preferences are filed under that type.
