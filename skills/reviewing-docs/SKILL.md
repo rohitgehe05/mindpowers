@@ -134,6 +134,13 @@ Classify the cause of each surfaced finding before recommending the next action:
 | `preference` | Final human edits reveal a stable preference. | `calibrating` |
 | `approval` | Required external approval is pending. | `none`; record the pending approval and do not switch skills. |
 
+For a PRD, reserve `evidence` and `validating-problems` for missing or weak
+customer or business problem evidence. Missing support for an already chosen
+target, threshold, scoring cutoff, pilot, or other PRD-hardening choice is a
+product or measurement `decision` finding routed to `mindstorming`. Preserve
+the chosen value; the unresolved work is its basis or readiness support, not
+the value itself.
+
 When the artifact or its linked spec explicitly says the underlying reasoning,
 scope, or decision is settled and identifies only dense, vague, or repetitive
 expression, preserve that boundary: classify the finding as `writing` and

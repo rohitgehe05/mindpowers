@@ -163,7 +163,7 @@ traded, and do not present it as evidence-backed.
 
 Never invent a threshold, window, sample size, confidence method, or owner. If
 the value itself is unresolved, create an `OD-###` entry. If a chosen value has
-no adequate basis, name that evidence blocker without pretending the choice is
+no adequate basis, name that basis blocker without pretending the choice is
 still open. In either case, mark the PRD `needs-decision` when the gap could
 change the product or how success is judged.
 
