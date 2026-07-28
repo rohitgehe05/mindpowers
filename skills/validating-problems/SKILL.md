@@ -169,11 +169,16 @@ Before writing customer-sensitive evidence in a shared or public workspace, warn
 
 ## Hand off
 
-Hand a completed brief to the next workflow without changing its evidence status:
+Recommend the next action in plain language and explain why. Name the internal
+skill when useful, but wait for explicit user confirmation before switching.
+Completing the brief is not permission to invoke another skill.
 
-- For a one-pager or other direction-setting conversation, hand the brief to `mindstorming` and require downstream claims to preserve scope, status, limitations, and the `as_of` date.
+Carry a completed brief into the confirmed next workflow without changing its
+evidence status:
+
+- For a one-pager or other direction-setting conversation, recommend `mindstorming` and require downstream claims to preserve scope, status, limitations, and the `as_of` date.
 - For prioritisation, hand the brief to an external prioritisation workflow. Do not prioritise inside this skill.
-- For solution selection or solution validation, hand off to `mindstorming`. Do not design a pilot, prototype, feature, or solution here.
+- For solution selection or solution validation, recommend `mindstorming`. Do not design a pilot, prototype, feature, or solution here.
 
 Keep this skill and `mindstorming` independently usable. Do not require a one-pager or any other downstream artifact to complete problem validation.
 
