@@ -18,7 +18,7 @@ This skill needs a spec with `status: locked` from `docs/mindpowers/specs/`.
 1. **Find the spec.** Use the one the user names, or the most recent spec in `docs/mindpowers/specs/` if the request is ambiguous (e.g. "draft it" right after a mindstorming session). Also check legacy `docs/brainstorm/` if it exists and nothing newer is in `docs/mindpowers/specs/`.
 2. **Status is `draft`.** Do not draft from it. Tell the user the spec isn't locked yet, and ask whether to lock it now or go back to mindstorming to finish shaping it.
 3. **Status is `superseded`.** Warn the user this spec was superseded (and by what, if the frontmatter or a newer spec says so). Confirm they still want to draft from it before proceeding.
-4. **No spec exists for the ask.** Do not draft cold. Give one short pitch for running mindstorming first, something like "I don't see a spec for this. Mindstorming takes a few minutes and usually saves a redraft later, want to run it first?" Respect whatever the user decides. If they insist on skipping it, draft anyway, but say plainly that the quality bars (audience fit, standards, anti-pattern checks) will be weaker without a spec to hold the draft to.
+4. **No spec exists for the ask.** Do not draft cold. Give one short pitch for shaping the audience, goal, and constraints first, something like "I don't see a spec for this. Want to shape the audience, goal, and constraints first so the draft has something clear to follow?" Respect whatever the user decides. If they insist on skipping it, draft anyway, but say plainly that the quality bars (audience fit, standards, anti-pattern checks) will be weaker without a spec to hold the draft to.
 
 A locked spec approves the working brief for drafting. It does not establish content readiness or grant external approval. A locked spec may therefore have `readiness: not-ready`. When the user asks to proceed from one, draft it while keeping the deliverable provisional: preserve the spec's readiness value, evidence qualifications, material blocking gaps, and external-review status. Keep `readiness` limited to `ready | not-ready`; never encode approval in it. Do not polish any of these states into unsupported certainty, readiness, or approval.
 
@@ -48,7 +48,7 @@ A locked spec approves the working brief for drafting. It does not establish con
    - Preserve external review and approval status in a clearly labeled body section such as `External reviews and approvals`, unless the selected template defines a dedicated field. Never put approval state in `readiness`.
    - Update the spec's own frontmatter with `draft: <path to the draft>` so the link goes both ways.
    - **Comms exception:** for short comms (a Slack message, a brief email), present the draft in chat instead of writing a file. Only save a file if the user asks for a record.
-6. **Handoff.** Ask: "Want to revise this, run it through reviewing-docs, or call it done?"
+6. **Handoff.** Ask: "Want to revise this, review it, or call it done?"
 
 If your harness has a task list, track these steps as todos so nothing gets skipped mid-draft; if it doesn't, just work through them in order.
 

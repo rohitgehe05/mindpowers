@@ -28,9 +28,11 @@ Check the doc for a paper trail before reviewing it blind.
 
 Fidelity problems are worth surfacing on their own, separate from the persona pass below, because they mean the doc stopped tracking its own plan somewhere along the way.
 
-**If no spec exists:** offer to reverse-engineer one before reviewing.
+**If no spec exists:** offer to write down the document's intended audience,
+main claim, and shape before reviewing.
 
-> "There's no spec for this doc. Want me to reverse-engineer one first, covering the audience, the claim, and the structure this doc implies, so we can check it says what you meant it to say? Takes about two minutes."
+> "There's no spec for this doc. Want me to first write down its audience, main
+> claim, and shape so we can check that it says what you intended?"
 
 This is worth doing even when it feels like a formality: it's often where the real problem surfaces, because writing down "here's the claim this doc is actually making" tends to expose that the claim isn't the one the author intended. A doc that reads fine sentence-by-sentence can still imply a claim nobody signed up for once you state it plainly. If the user declines, proceed straight to the template rubric and persona pass without it.
 
@@ -130,7 +132,14 @@ source actually leaves substantive content unresolved or contradictory.
 
 External approval is permission from outside this workflow, not evidence of content readiness. Give an approval finding `readiness_impact: none` unless it exposes a separate unresolved evidence or decision issue; classify that issue as its own finding.
 
-After the findings, recommend the next skill and explain why. Wait for the user to confirm before switching skills. When several skill routes are recommended, require confirmation before each actual switch; one confirmation is not blanket authorization for the chain. For a confirmed handoff, carry forward the source artifact, exact finding, unresolved question, affected section or identifier, severity, and readiness impact so the next skill resumes from the finding instead of restarting.
+After the findings, recommend the next action in common words and explain why.
+Name the internal skill route after the action when useful. Wait for the user to
+confirm before switching skills. When several skill routes are recommended,
+require confirmation before each actual switch; one confirmation is not blanket
+authorization for the chain. For a confirmed handoff, carry forward the source
+artifact, exact finding, unresolved question, affected section or identifier,
+severity, and readiness impact so the next skill resumes from the finding
+instead of restarting.
 
 When findings are mixed, resolve evidence and decision reasoning before prose work. Rerun `reviewing-docs` after the routed corrections are made.
 
