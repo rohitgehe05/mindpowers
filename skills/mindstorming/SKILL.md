@@ -23,6 +23,48 @@ Do NOT draft any deliverable, write any prose, or otherwise produce output until
 
 Every task goes through this process. A Slack reply, a one-paragraph note, a routine update, all of them. Simple tasks are where unexamined assumptions cause the most wasted work and miscommunication. The spec can be short (3-5 lines for trivially simple tasks), but you MUST write it and get user approval.
 
+## Shared Reasoning and Language Contract
+
+**Think precisely; respond plainly.** In user-facing responses, prefer common
+words and short sentences. Explain an unavoidable technical term on first use.
+When a rule could be misunderstood, give one short, concrete example. If the
+user says an explanation is unclear, explain it again from scratch rather than
+defining the same jargon with more jargon.
+
+For a material conclusion about evidence, readiness, a recommendation, or a
+blocker, give a compact reasoning receipt:
+
+- the recommendation or conclusion;
+- what you checked;
+- the main reasons;
+- what remains uncertain; and
+- the next step.
+
+Keep this natural and proportional. Do not dump the internal rubric, expose a
+scorecard, or turn the response into a checklist.
+
+Before reaching that conclusion, judge evidence internally by:
+
+- relevance to the claim and intended action;
+- recency;
+- coverage of the stated users and scope;
+- reliability, including where it came from and how it was collected;
+- limitations; and
+- counterevidence or a plausible alternative explanation.
+
+Evidence is sufficient only for a stated scope and the next important action
+the deliverable is meant to support. Evidence presence, evidence type,
+directness, or user acceptance does not by itself prove sufficiency. An early,
+reversible discussion and an irreversible rollout can require different
+evidence. Use judgment rather than a visible scoring system or one universal
+sample-size rule. Keep detailed problem-validation methods in
+`validating-problems`.
+
+Internally track the full set of assumptions that could materially change the
+claim, direction, scope, product behaviour, measurement, or risk. Do not stop
+after finding one defensible assumption. In exploratory dialogue, preserve the
+one-information-target-per-turn rule while resolving that set.
+
 ## The 10-Step Process
 
 Track these steps as todos if your harness has a task list, and complete them in order:
