@@ -11,6 +11,25 @@ Determine what can defensibly be said about a customer or business problem befor
 
 Keep problem validation separate from prioritisation and solution validation. Remain useful when evidence is incomplete without lowering the standard for calling a claim supported.
 
+## Explain the conclusion plainly
+
+Think precisely and respond in common words. Keep the detailed assessment in
+the claim and evidence ledgers; do not dump that machinery into the
+conversation or present it as a scorecard.
+
+For a material user-facing conclusion, give a compact reasoning receipt:
+
+1. lead with the conclusion or recommendation;
+2. say what evidence you checked and the main reasons;
+3. state the important uncertainty; and
+4. give one next step, ending with one concrete question when a response is
+   needed.
+
+Use internal status and schema terms only when they help the user act. Explain
+an unavoidable technical term on first use. When a rule could be misunderstood,
+give one short example. If the user says the explanation is unclear, explain
+again from scratch rather than defining the same jargon with more jargon.
+
 ## Bound the decision
 
 Establish or infer these boundaries before evaluating the problem:
@@ -85,12 +104,19 @@ Match coverage to the decision and relevant user variation. Never apply a univer
 
 Make each conversational turn contain:
 
-1. Give a concise current assessment.
-2. Name the decision-critical claim and its current status.
-3. Summarise evidence that supports, weakens, or limits that claim.
+1. Give the concise plain-language conclusion or current assessment.
+2. Internally identify the claim most likely to change the decision and its
+   status; name the status label only when it helps the user act.
+3. Summarise in common words the evidence that supports, weakens, or limits
+   that claim.
 4. Ask exactly one highest-value question, adding one concrete example only when helpful.
 
-When the user asks what can be said now or whether to proceed, include the current workflow decision label in the current assessment. Before presenting a current statement as safe to pitch or socialise, surface at least one plausible alternative framing or one route that could weaken or disconfirm it. Do not require alternatives in an early elicitation turn that offers no conclusion.
+When the user asks what can be said now or whether to proceed, state the current
+workflow decision in common words; name its stable label only when that helps
+the user act. Before presenting a current statement as safe to pitch or
+socialise, surface at least one plausible alternative framing or one route
+that could weaken or disconfirm it. Do not require alternatives in an early
+elicitation turn that offers no conclusion.
 
 Choose the question most likely to change the decision, narrow the scope, or distinguish between competing explanations. Do not march through a fixed questionnaire or batch questions.
 
