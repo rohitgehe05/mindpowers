@@ -40,6 +40,25 @@ an upstream prioritisation decision, but they do not substantiate the customer
 or business problem. Record the supplied prioritisation decision as context;
 do not infer or revisit it inside the PRD.
 
+## Evidence bar for build readiness
+
+A PRD may be drafted provisionally with incomplete evidence. Build readiness is
+a separate judgment: ask whether the evidence is strong enough for this
+product, audience, scope, and release action. Evidence is not sufficient merely
+because it exists, is direct, or was accepted by a senior user. Consider its
+relevance, recency, coverage, reliability, limitations, and any evidence that
+points the other way.
+
+Weak evidence blocks build readiness only when the gap could materially change
+the purpose, direction, audience or scope, product behaviour, measurement, or
+risk. Keep provisional drafting available, mark the PRD `needs-decision`, and
+name the evidence blocker in common words. Do not turn an evidence gap into an
+`OD-###` unless a product or measurement choice is also unresolved.
+
+For example, three recent enterprise interviews may support an
+enterprise-scoped problem claim. They do not support an irreversible rollout
+to all customers when smaller customers have not been studied.
+
 ## Adaptive rule
 
 Use the core contract for every PRD. Combine adjacent sections when the change
@@ -80,7 +99,8 @@ small PRD.
 
 - Name the primary user and the highest-frequency or highest-consequence use
   cases.
-- State the desired outcome and a falsifiable hypothesis when useful.
+- State the desired outcome and, when useful, a testable prediction plus the
+  result that would show it is wrong.
 - Define what is in scope and explicitly out of scope.
 
 ### 4. Selected solution and premise check
@@ -89,8 +109,11 @@ small PRD.
   material empty, error, permission, and recovery states.
 - Record at least one credible alternative and why the selected direction fits
   better. Include a non-product alternative when one is plausible.
-- Name assumptions that could make the selected solution fail to address the
-  problem.
+- Keep the full set of load-bearing assumptions that could make the selected
+  solution fail to address the problem.
+- For each load-bearing assumption, record one plain observation that would
+  weaken it or cause the team to change direction. Gather these one assumption
+  and one observation at a time in exploratory conversation.
 - If an upstream document already assessed alternatives, link it and summarize
   the selected rationale instead of reopening prioritisation.
 
@@ -127,13 +150,22 @@ Record:
 
 - outcome metric or qualitative decision rule;
 - current baseline when available;
-- target or decision threshold supplied or explicitly accepted by the user;
+- target or decision threshold and its understandable basis;
 - measurement method and source; and
 - guardrails that prevent a local improvement from hiding wider harm.
 
+A target or threshold needs at least one recorded basis: a baseline, benchmark,
+customer expectation, research or test, financial or operational requirement,
+or deliberate business trade-off. User acceptance records who has authority to
+choose the number; it does not show that the number is valid. A deliberate
+trade-off is allowed, but label it as a `business decision`, state what is being
+traded, and do not present it as evidence-backed.
+
 Never invent a threshold, window, sample size, confidence method, or owner. If
-a decision-critical value is missing, create an `OD-###` entry and mark the PRD
-`needs-decision`.
+the value itself is unresolved, create an `OD-###` entry. If a chosen value has
+no adequate basis, name that evidence blocker without pretending the choice is
+still open. In either case, mark the PRD `needs-decision` when the gap could
+change the product or how success is judged.
 
 ### 7. Risks, dependencies, and open decisions
 
@@ -155,14 +187,15 @@ If any blocking open decision remains, readiness is `needs-decision`.
 |---|---|
 | More than one team, approver, or operating owner must act | **Stakeholders and decision rights:** driver, approver, contributors, informed groups, and the decision each owns. Do not force a full DARCI table on a single-team change. |
 | Success cannot be observed with existing measurement | **Telemetry contract:** exact event name, trigger, required properties, sensitive fields excluded, metric served, consumer or dashboard, and analytics owner or sign-off. |
-| Product behaviour depends on model output or another probabilistic system | **Evaluation contract:** task, representative cases and source, grader or rubric, user-accepted threshold, failure classes, human fallback, safety checks, and production monitoring. |
+| Product behaviour depends on model output or another probabilistic system | **Evaluation contract:** task, cases and source that reflect the intended users and situations, grader or rubric, threshold, evidence that the signal and threshold work for the stated use, failure classes, human fallback, safety checks, and production monitoring. |
 | Release failure could materially harm users, revenue, data, or operations | **Rollout and rollback:** stages, entry and exit signals, monitoring, rollback trigger, and accountable owner. |
 | The change handles sensitive data, permissions, abuse, or regulated activity | **Privacy, security, and compliance:** data handled, access, retention, consent, misuse cases, and required review. |
 | The change migrates data or depends on complex integrations or state | **Integration and state contract:** upstream and downstream dependencies, states, errors, compatibility, migration, and recovery. |
 | The change creates customer-support or operating work | **Operational readiness:** support flow, alerts, documentation, escalation, and operating owner. |
 
 If a predicate is false, omit the module. If applicability is unknown and could
-change scope or safety, ask one decision-critical question.
+change scope or safety, ask the one question most likely to change that scope
+or safety judgment.
 
 Labels such as `acceptable risk`, `low confidence`, `uncertain`, or `high
 risk` do not by themselves define an evaluation boundary. If product behaviour
@@ -170,6 +203,12 @@ branches on a probabilistic assessment, record the supplied or explicitly
 accepted rule or threshold that selects each branch. When that boundary is
 missing, keep it as a blocking open decision and mark the PRD
 `needs-decision`; do not describe the PRD as build-ready.
+
+A supplied or accepted probabilistic cutoff records the decision; it does not
+show that the signal or cutoff works. Before build readiness, use cases that
+reflect the stated users and situations to show what the system gets right and
+wrong around the cutoff. The acceptable trade-off depends on the use and risk;
+do not prescribe one universal statistical method.
 
 Conditional-module fields are internal coverage, not one conversational
 target. In exploratory work, ask about only the single field whose answer is
@@ -190,9 +229,11 @@ measurement, or launch safety:
 2. What direct customer or behavioural evidence supports the problem?
 3. Who is the primary user?
 4. Which user-visible failure state has the highest consequence?
-5. Which assumption could make this solution the wrong response?
-6. Which single supplied or accepted outcome threshold defines success?
-7. Which one unresolved decision most affects launch safety?
+5. Which load-bearing assumption should we test next?
+6. What observable result would weaken that assumption or change the direction?
+7. Which single outcome threshold defines success?
+8. What is the basis for that threshold?
+9. Which one unresolved decision most affects launch safety?
 
 Each example above is one information target. Treat related baseline,
 denominator, job, primary-flow, guardrail, and recovery details as separate
@@ -227,7 +268,10 @@ metrics, events, owners, dates, or rollout values.
 Mark `Readiness: build-ready` only when:
 
 - the selected direction, users, scope, and non-goals are explicit;
-- evidence claims are scoped and unsupported assumptions remain visible;
+- evidence is strong enough for the stated product, audience, scope, and
+  release action; claims remain scoped and counterevidence stays visible;
+- every load-bearing assumption has an observation that would weaken it or
+  change the direction;
 - every `REQ-###` has at least one linked, verifiable `AC-###`;
 - material failure states and edge cases are resolved;
 - success and guardrails have a baseline, target or decision rule, and
@@ -237,12 +281,21 @@ Mark `Readiness: build-ready` only when:
   launch safety.
 
 Otherwise mark `Readiness: needs-decision` and list the exact blocking
-`OD-###` entries. Readiness is not prioritisation or permission to ship.
+evidence gaps and `OD-###` entries. Readiness is not prioritisation or
+permission to ship.
+
+A limited, reversible pilot may be build-ready for its stated learning scope
+when it tests a named assumption, success and failure can be observed, a stop,
+change, or rollback condition exists, and full rollout is explicitly out of
+scope. Readiness belongs only to that scope. A material scope change, including
+expansion toward full rollout, requires a new build-readiness check; pilot
+readiness never carries over automatically.
 
 ## Standards baked in
 
 - **Evidence before assertion.** Direct customer and behavioural evidence is
-  the strongest default. Preserve scope, recency, limitations, and conflicts.
+  the strongest default, not automatic proof. Judge it against the stated
+  action and preserve scope, recency, limitations, and conflicts.
 - **Problem before solution.** No feature-as-problem framing.
 - **Premise challenged.** A selected direction still faces credible
   alternatives and disconfirming assumptions without reopening prioritisation.
@@ -263,6 +316,8 @@ Otherwise mark `Readiness: needs-decision` and list the exact blocking
 
 - Treating urgency, stakeholder belief, a feature request, or engineering
   availability as problem evidence
+- Treating evidence presence, evidence type, seniority, or user acceptance as
+  proof that evidence or a target is good enough for the stated action
 - Inferring or revisiting prioritisation instead of recording the supplied
   upstream decision, or silently choosing a denominator, population,
   aggregation, or time window for ambiguous evidence
@@ -276,6 +331,7 @@ Otherwise mark `Readiness: needs-decision` and list the exact blocking
 - A universal stakeholder, telemetry, rollout, or launch-plan section with no
   triggering need
 - Reprioritising the initiative inside the PRD
+- Carrying limited-pilot readiness into a wider rollout without a new check
 - Hiding unresolved decisions in prose instead of `OD-###` entries
 
 ## Sources

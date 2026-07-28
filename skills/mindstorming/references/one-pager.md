@@ -18,6 +18,25 @@ When a brief is used, the one-pager spec must link it in frontmatter:
 problem: docs/mindpowers/problems/YYYY-MM-DD-<slug>.md
 ```
 
+## Evidence bar for early socialisation
+
+Judge the evidence against the action this one-pager asks for. Limited but
+relevant evidence can support `ready-to-socialise` when the ask is an early
+discussion, the claim stays inside the studied scope, uncertainty is visible,
+and the next step fits what the evidence can support. This readiness does not
+prove that the problem is widespread or grant approval to build.
+
+For example, three recent interviews with enterprise customers can support an
+early discussion about enterprise account recovery. They do not show that
+smaller customers have the same problem, so the one-pager must not make that
+broader claim or use it to seek an all-customer build approval.
+
+If a central claim is unsupported, recommend `validating-problems` and explain
+the gap in common words. Wait for confirmation before switching skills, and
+offer to continue provisionally with the claim labelled as a hypothesis. Make
+the next step proportionate to the evidence: discuss a scoped hypothesis,
+gather the missing evidence, or stop the pitch.
+
 ## Sections
 
 | Section | What goes here |
@@ -65,6 +84,9 @@ as permission to batch.
 - **Direction, not spec.** No user flows, acceptance criteria, or build-ready detail — that's what a PRD is for, after this earns a yes.
 - **One direction, not options.** Enforced above, not just asserted: elicitation prompt 2 gates it, and the Proposed direction cell rules out options-with-trade-offs. A menu is a decision-doc, even at the earliest single-lean stage of a build-vs-buy call.
 - **Ask stated explicitly.** Name the yes/no and the decision-maker, not "thoughts welcome."
+- **Evidence fits the ask.** Early discussion can proceed on narrow evidence
+  when its scope and uncertainty are clear. Broader claims or stronger actions
+  need stronger coverage.
 - **Weight scales to stakes, not habit.** Default is the eight unconditional sections (framing, background, problem, goal, direction, principles, ask, open questions). Multi-team or budget asks pull in stakeholders and milestones (BRD-weight) — don't add them out of habit.
 - **Source attribution where applicable, via Background.** If the direction draws on prior art, competitor moves, or an existing framework, cite it there (elicitation prompt 3) — not a separate section.
 
@@ -74,6 +96,7 @@ as permission to batch.
 - Presenting 2-3 options with trade-offs instead of one direction — that's a decision-doc, even if the options are just "build" vs "buy"
 - Padding with architecture or process detail nobody asked for, to look thorough
 - A vague ask ("let's discuss", "thoughts?") instead of a named yes/no
+- Treating `ready-to-socialise` as proof that the problem is widespread
 - Skipping the problem because it feels obvious to the author
 - No signal at all of what "solved" looks like, because "it's just a one-pager"
 - Reaching for BRD-weight (stakeholders, milestones) on a pitch that only needed the default frame
