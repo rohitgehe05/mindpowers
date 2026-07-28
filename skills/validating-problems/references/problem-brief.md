@@ -33,6 +33,24 @@ Write these sections in order:
 9. **Next validation action:** Include one specific evidence assignment for `gather-evidence`; otherwise explain why the team should socialise or stop.
 10. **Handoff:** State how a one-pager may use the result and which scope, status, limitations, and `as_of` caveats it must preserve.
 
+Keep stable claim, status, and evidence-class values for traceability, but do not
+leave them unexplained in user-facing prose or tables. Use a plain display label
+or explain the term at first use:
+
+- `Existence`: whether the problem happened;
+- `Audience`: who experiences it;
+- `Materiality`: whether the impact matters for the decision;
+- `Mechanism / context`: the conditions or possible explanations;
+- `anchor`: direct starting evidence;
+- `corroborating`: supporting evidence from another source;
+- `hypothesis-only`: a clue or belief, not proof;
+- `partially-supported`: some evidence exists, but important gaps remain;
+- `unsupported`: no adequate evidence yet; and
+- `contradicted`: credible evidence points the other way.
+
+Describe evidence provenance in common words: where it came from and how it was
+collected.
+
 # Evidence assignment
 
 Use this contract whenever the workflow decision is `gather-evidence`:
@@ -69,7 +87,11 @@ decision: gather-evidence
 
 ## Current assessment
 
-The existence claim is partially supported only within one pilot PM's reported workflow. Audience, materiality, and mechanism / context are unsupported. Gather evidence before describing the problem beyond this pilot or claiming meaningful delay or rework.
+Some evidence shows that the problem happened in one pilot PM's reported
+workflow. Important gaps remain: there is no adequate evidence yet about who
+else experiences it, whether the impact matters, or what conditions explain it.
+Gather evidence before describing the problem beyond this pilot or claiming
+meaningful delay or rework.
 
 ## Scoped problem statement
 
@@ -83,20 +105,20 @@ In one pilot PM's most recent PRD workflow, the PM reported that reaching an eng
 
 ## Claim ledger
 
-| Claim | Status | Evidence | Limitations and conflicts |
+| Claim (plain meaning) | Status (plain meaning) | Evidence | Limitations and conflicts |
 |---|---|---|---|
-| Existence | partially-supported | One pilot PM reported delay, inconsistency, and missed edge cases in that PM's most recent PRD workflow. | Self-report from one workflow with no artefact review or behavioural corroboration. |
-| Audience | unsupported | No evidence covers other PMs, teams, product areas, or workflow contexts. | The pilot PM may not represent any broader audience. |
-| Materiality | unsupported | No elapsed time, revision count, clarification load, rework, or business consequence was supplied. | Leadership urgency does not establish impact. |
-| Mechanism / context | unsupported | No evidence distinguishes authoring difficulty from process, review, training, data access, incentives, or organisational constraints. | Engineering readiness does not explain the reported symptom. |
+| Existence (did the problem happen?) | partially-supported — some evidence, important gaps remain | One pilot PM reported delay, inconsistency, and missed edge cases in that PM's most recent PRD workflow. | Self-report from one workflow with no artefact review or supporting behaviour from another source. |
+| Audience (who experiences it?) | unsupported — no adequate evidence yet | No evidence covers other PMs, teams, product areas, or workflow contexts. | The pilot PM may not represent any broader audience. |
+| Materiality (does the impact matter?) | unsupported — no adequate evidence yet | No elapsed time, revision count, clarification load, rework, or business consequence was supplied. | Leadership urgency does not establish impact. |
+| Mechanism / context (what conditions may explain it?) | unsupported — no adequate evidence yet | No evidence distinguishes authoring difficulty from process, review, training, data access, incentives, or organisational constraints. | Engineering readiness does not explain the reported symptom. |
 
 ## Evidence ledger
 
 | Source | Class | Raw observation | Scope | Recency | Limitations | Interpretation |
 |---|---|---|---|---|---|---|
-| Pilot PM feedback supplied in conversation | anchor | The pilot PM reported that PRD work took too long, was inconsistent, and missed edge cases. | One PM's most recent PRD workflow | Reported 2026-07-21 | No transcript, artefact, telemetry, elapsed time, or downstream record was supplied. | Partially supports existence only for the pilot's workflow; does not support broader audience, materiality, or mechanism claims. |
-| Leadership request for a proposal | hypothesis-only | Leadership wants a proposal quickly. | Internal decision context | Current as of 2026-07-21 | Reflects urgency, not customer or workflow evidence. | Does not strengthen any problem claim. |
-| Engineering readiness | hypothesis-only | Engineering is ready to work on the proposed direction. | Internal delivery context | Current as of 2026-07-21 | Reflects capacity, not problem evidence. | Does not strengthen any problem claim. |
+| Pilot PM feedback supplied in conversation | anchor — direct starting evidence | The pilot PM reported that PRD work took too long, was inconsistent, and missed edge cases. | One PM's most recent PRD workflow | Reported 2026-07-21 | No transcript, artefact, telemetry, elapsed time, or downstream record was supplied. | Supports that the problem happened only in the pilot's workflow; does not show a broader audience, meaningful impact, or what explains the pattern. |
+| Leadership request for a proposal | hypothesis-only — a clue or belief, not proof | Leadership wants a proposal quickly. | Internal decision context | Current as of 2026-07-21 | Reflects urgency, not customer or workflow evidence. | Does not strengthen any problem claim. |
+| Engineering readiness | hypothesis-only — a clue or belief, not proof | Engineering is ready to work on the proposed direction. | Internal delivery context | Current as of 2026-07-21 | Reflects capacity, not problem evidence. | Does not strengthen any problem claim. |
 
 ## Alternative framings and mechanisms
 
@@ -119,16 +141,21 @@ The framing would weaken if the pilot's recent PRDs reached engineering-ready st
 
 | Field | Assignment |
 |---|---|
-| Claim to test | Materiality within the pilot PM's most recent PRD workflow. |
+| Claim to test | Whether the impact matters within the pilot PM's most recent PRD workflow. |
 | Evidence needed | A reconstruction of the workflow from first draft to engineering-ready, supported by available document history and downstream records. |
 | Source or participant profile | The pilot PM, the most recent PRD artefact and revision history, and engineering clarification or rework records tied to that PRD. |
 | Method | Conduct a recent-behaviour interview and inspect the corresponding artefacts and records. |
 | Observation or measure | Record elapsed time, revision rounds, blocked handoffs, clarification requests, and downstream rework without applying an invented threshold. |
 | Strengthening result | The records show meaningful delay, repeated revision, blocked handoffs, clarification, or rework attributable to the PRD workflow. |
 | Weakening or contradicting result | The records show a normal workflow with little delay or rework, or show that the main constraint occurred outside PRD authoring. |
-| Decision affected | Whether materiality may be stated in the one-pager and whether the problem statement should focus on authoring or another workflow constraint. |
+| Decision affected | Whether the one-pager may claim meaningful impact and whether the problem statement should focus on authoring or another workflow constraint. |
 
 ## Handoff
 
-A one-pager may state only that one pilot PM reported this pattern in that PM's most recent PRD workflow as of 2026-07-21. Preserve the partially-supported status, the single-workflow scope, and the unsupported audience, materiality, and mechanism claims. Do not imply prioritisation, approval, or permission to build.
+A one-pager may state only that one pilot PM reported this pattern in that PM's
+most recent PRD workflow as of 2026-07-21. Preserve the `partially-supported`
+status—some evidence exists, but important gaps remain—and the single-workflow
+scope. State plainly that there is no adequate evidence yet about a broader
+audience, meaningful impact, or what conditions explain the pattern. Do not
+imply prioritisation, approval, or permission to build.
 ```
