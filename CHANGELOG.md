@@ -11,6 +11,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   material blockers.
 - Root-cause routes from document review to problem validation, mindstorming,
   drafting, verification, or calibration.
+- Plain-language explanations for important conclusions: the recommendation,
+  what was checked, the main reasons, uncertainty, and the next step.
+- Scope-bound build readiness for small, reversible pilots with a named
+  learning goal, observable result, and stop or change condition.
 
 ### Changed
 - Mindstorming recommends validating-problems when a central problem claim is
@@ -19,12 +23,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   than silently omitted or presented as a template checklist.
 - Drafting preserves provisional evidence, readiness, blockers, and recorded
   external-review status.
+- One-pagers and PRDs now judge evidence against different actions: narrow
+  evidence may support early discussion but can still block a wider build.
+- PRD targets require an understandable basis. A deliberate unsupported target
+  is labelled as a business decision and records its trade-off.
+- PRD premise checks keep the full set of important assumptions and record what
+  observation would weaken each one or change direction.
 
 ### Fixed
 - Connected internal sources are no longer broadened beyond the user's stated
   scope merely because a connector is available.
 - Content readiness no longer implies that an external approval was received.
 - Skill switches require user confirmation and carry the exact finding forward.
+- Direct evidence and senior-user acceptance are no longer treated as automatic
+  proof that evidence or a target is good enough for the stated action.
+- Pilot readiness no longer carries into a wider rollout without another
+  readiness check.
 
 ## [0.8.0] - 2026-07-21
 

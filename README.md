@@ -4,7 +4,10 @@
 
 Most AI writing tools turn ambiguity into polished prose. Mindpowers does the opposite: it validates the problem, challenges premises, explores credible alternatives, and locks the important decisions before drafting.
 
-Use it to turn rough thinking into one-pagers people can align around, PRDs engineering can build from without side-channel decisions, business reviews that surface the real story, and everyday documents that hold up under scrutiny.
+Use it to turn rough thinking into one-pagers people can align around, PRDs
+engineering can build from without decisions left in side conversations,
+business reviews that surface the real story, and everyday documents that hold
+up under scrutiny.
 
 ![Demo: Mindpowers turns raw business-review data into a decision-ready story before drafting](docs/assets/demo.gif)
 
@@ -19,7 +22,8 @@ Mindpowers is a problem-first knowledge-work skillset for Claude Code, Cowork, C
 - “Turn this approved direction into a build-ready PRD.”
 - “Review this document like a skeptical product leader.”
 
-Mindpowers routes each ask into one connected loop while keeping you in control of the consequential decisions.
+Mindpowers routes each ask into one connected loop while keeping you in control
+of the important decisions.
 
 ## The loop
 
@@ -33,7 +37,7 @@ hiding the blockers that still matter.
 | `mindstorming` | Recommends the right deliverable when needed, asks contextual questions, and turns the result into a spec with honest readiness |
 | `drafting` | Turns an approved spec into the deliverable while preserving provisional evidence, blockers, and review status |
 | `reviewing-docs` | Red-teams a document, classifies each finding by root cause, and recommends the right next skill without switching automatically |
-| `calibrating` | Compares a Mindpowers draft with the final human-edited artifact and records approved, stable preferences |
+| `calibrating` | Compares a Mindpowers draft with the final human-edited version and records approved, stable preferences |
 
 ## Before / after
 
@@ -83,7 +87,7 @@ remain unresolved. Prioritisation stays outside problem validation and the PRD.
 Mindstorming, the "shape" step, runs a 10-step process:
 
 1. Read the context you supplied, workspace material already in scope, recent specs, and `docs/mindpowers/preferences.md`. It does not broaden connected internal searches without your direction
-2. Pick the matching template, or `self-shape` if nothing fits. When the format is ambiguous or consequential, recommend a deliverable and explain why
+2. Pick the matching template, or `self-shape` if nothing fits. When the format is ambiguous or high-stakes, recommend a deliverable and explain why
 3. Offer a visual companion if the conversation looks like it needs sketches or diagrams
 4. Ask contextual questions: reuse settled routine contracts, otherwise ask one independently answerable question at a time
 5. Propose two or three approaches when the path isn't obvious
@@ -100,6 +104,28 @@ preferences, and pending approvals differently. It explains the recommended
 handoff and waits for your confirmation before each switch. `calibrating`
 compares the Mindpowers draft with the final artifact and, with approval,
 records reusable preferences for next time.
+
+### Evidence that fits the next action
+
+Mindpowers checks more than whether evidence exists. It asks whether the
+evidence is strong enough for the document's stated scope and next action. For
+an important conclusion, it gives a short explanation of its recommendation,
+what it checked, the main reasons, what remains uncertain, and the next step.
+It does not dump an internal scoring checklist.
+
+- A one-pager can be ready for an early discussion with narrow evidence when
+  the scope and uncertainty are clear. That does not prove the problem is
+  widespread or approve a build.
+- A PRD stays `not-ready` when weak evidence could change what gets built, how
+  success is measured, or an important risk. Drafting can still continue
+  provisionally with the blocker visible.
+- A user may choose a target without strong evidence. Mindpowers records that
+  honestly as a business decision, including the trade-off, rather than calling
+  it an evidence-backed target.
+- A small, reversible pilot can be ready for its limited scope when it tests a
+  named assumption, has an observable result, and defines when to stop or
+  change course. Expanding the scope requires a new readiness check; pilot
+  readiness does not carry over to a full rollout.
 
 PRDs use a compact core plus conditional modules. Every PRD covers evidence and baseline, users and scope, the selected solution and credible alternatives, stable `US-###` / `REQ-###` / `AC-###` contracts, measurement, risks, and open decisions. Telemetry, AI evaluations, decision rights, privacy, integration, operational, and rollout sections appear only when the product's actual risk triggers them. Small reversible changes stay small. If a build-critical choice is missing, the PRD says `needs-decision` instead of inventing a number, event, date, or owner.
 
@@ -162,10 +188,10 @@ Specs often carry sensitive content (leadership comms, OKR politics, exec briefi
 
 ## What's new
 
-- **0.9**: Mindstorming now recommends problem validation when a central claim
-  is unsupported, surfaces conditional sections through contextual questions,
-  keeps provisional readiness separate from human approval, and routes review
-  findings to the right skill with confirmation before switching.
+- **0.9**: Mindpowers now checks whether evidence is strong enough for the next
+  action, explains important conclusions in plain language, keeps limited-pilot
+  readiness tied to its scope, and separates business choices, content
+  readiness, and human approval.
 - **0.8**: PRDs become adaptive engineering contracts with scoped evidence, stable requirement and acceptance-criteria IDs, risk-triggered telemetry and AI evaluation modules, and honest `build-ready` / `needs-decision` status.
 - **0.7.1**: Native Codex and ChatGPT desktop plugin packaging, a tested Codex install path, and Cursor's supported GitHub import flow.
 - **0.7**: `validating-problems` adds an optional evidence step before Mindstorming, with claim-level statuses that carry into a one-pager without implying prioritisation.
