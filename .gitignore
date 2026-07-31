@@ -7,6 +7,7 @@ desktop.ini
 .vscode/
 .idea/
 .worktrees/
+/.superpowers/
 *.swp
 *.swo
 *~
@@ -28,6 +29,7 @@ venv/
 *.zip
 dist/
 build/
+/tmp/
 
 # Environment files
 .env
