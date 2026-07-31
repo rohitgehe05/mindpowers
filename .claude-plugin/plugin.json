@@ -1,7 +1,7 @@
 {
   "name": "mindpowers",
-  "version": "0.8.0",
-  "description": "One loop for knowledge work: optionally validate the problem, then shape, draft, review, remember. Validating-problems tests customer or business problems against evidence; Mindstorming (formerly brainstorming) refines rough ideas into locked specs through Socratic dialogue and produces adaptive, traceable PRD contracts; drafting turns locked specs into deliverables; reviewing-docs checks any doc against the template's standards; calibrating remembers what you like for next time. Templates cover business reviews, decision docs, one-pagers/BRDs, PRDs, briefing docs, comms drafts, frameworks, talking points, and post-mortems.",
+  "version": "0.9.0",
+  "description": "One loop for clear knowledge work: check whether evidence is strong enough for the next action, shape the deliverable one useful question at a time, draft from an approved spec, review the result, and remember what you like. Missing decisions, evidence limits, readiness, and required human approval stay visible.",
   "author": {
     "name": "Rohit Gehe",
     "email": "rohitgehe05@gmail.com"

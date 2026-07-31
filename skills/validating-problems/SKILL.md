@@ -11,6 +11,25 @@ Determine what can defensibly be said about a customer or business problem befor
 
 Keep problem validation separate from prioritisation and solution validation. Remain useful when evidence is incomplete without lowering the standard for calling a claim supported.
 
+## Explain the conclusion plainly
+
+Think precisely and respond in common words. Keep the detailed assessment in
+the claim and evidence ledgers; do not dump that machinery into the
+conversation or present it as a scorecard.
+
+For a material user-facing conclusion, give a compact reasoning receipt:
+
+1. lead with the conclusion or recommendation;
+2. say what evidence you checked and the main reasons;
+3. state the important uncertainty; and
+4. give one next step, ending with one concrete question when a response is
+   needed.
+
+Use internal status and schema terms only when they help the user act. Explain
+an unavoidable technical term on first use. When a rule could be misunderstood,
+give one short example. If the user says the explanation is unclear, explain
+again from scratch rather than defining the same jargon with more jargon.
+
 ## Bound the decision
 
 Establish or infer these boundaries before evaluating the problem:
@@ -27,6 +46,8 @@ Do not force the user to restate a boundary already present in the conversation 
 Inspect relevant conversation context, linked workspace files, research, analytics summaries, support material, and previous problem briefs before asking a question. Cite each inspected source or path in the evidence ledger. Never ask the user to transcribe evidence that can be accessed safely.
 
 When no evidence is available, mark the claims unsupported and identify the smallest useful evidence assignment. Do not manufacture a verdict.
+
+When a current problem brief exists, preserve its settled boundaries, evidence, claim statuses, and original `as_of` values. Before relying on a settled claim, check for materially new evidence, changed scope, expired relevance, or contradiction. Reopen only an affected claim and date its new assessment to the relevant new evidence. Do not advance an unaffected claim's `as_of` merely because the freshness check happened later. Otherwise resume only the unresolved or newly disputed claim, and do not restart the whole brief unless the user explicitly reopens it.
 
 ## Evaluate four claims
 
@@ -83,12 +104,19 @@ Match coverage to the decision and relevant user variation. Never apply a univer
 
 Make each conversational turn contain:
 
-1. Give a concise current assessment.
-2. Name the decision-critical claim and its current status.
-3. Summarise evidence that supports, weakens, or limits that claim.
+1. Give the concise plain-language conclusion or current assessment.
+2. Internally identify the claim most likely to change the decision and its
+   status; name the status label only when it helps the user act.
+3. Summarise in common words the evidence that supports, weakens, or limits
+   that claim.
 4. Ask exactly one highest-value question, adding one concrete example only when helpful.
 
-When the user asks what can be said now or whether to proceed, include the current workflow decision label in the current assessment. Before presenting a current statement as safe to pitch or socialise, surface at least one plausible alternative framing or one route that could weaken or disconfirm it. Do not require alternatives in an early elicitation turn that offers no conclusion.
+When the user asks what can be said now or whether to proceed, state the current
+workflow decision in common words; name its stable label only when that helps
+the user act. Before presenting a current statement as safe to pitch or
+socialise, surface at least one plausible alternative framing or one route
+that could weaken or disconfirm it. Do not require alternatives in an early
+elicitation turn that offers no conclusion.
 
 Choose the question most likely to change the decision, narrow the scope, or distinguish between competing explanations. Do not march through a fixed questionnaire or batch questions.
 
@@ -141,11 +169,16 @@ Before writing customer-sensitive evidence in a shared or public workspace, warn
 
 ## Hand off
 
-Hand a completed brief to the next workflow without changing its evidence status:
+Recommend the next action in plain language and explain why. Name the internal
+skill when useful, but wait for explicit user confirmation before switching.
+Completing the brief is not permission to invoke another skill.
 
-- For a one-pager or other direction-setting conversation, hand the brief to `mindstorming` and require downstream claims to preserve scope, status, limitations, and the `as_of` date.
+Carry a completed brief into the confirmed next workflow without changing its
+evidence status:
+
+- For a one-pager or other direction-setting conversation, recommend `mindstorming` and require downstream claims to preserve scope, status, limitations, and the `as_of` date.
 - For prioritisation, hand the brief to an external prioritisation workflow. Do not prioritise inside this skill.
-- For solution selection or solution validation, hand off to `mindstorming`. Do not design a pilot, prototype, feature, or solution here.
+- For solution selection or solution validation, recommend `mindstorming`. Do not design a pilot, prototype, feature, or solution here.
 
 Keep this skill and `mindstorming` independently usable. Do not require a one-pager or any other downstream artifact to complete problem validation.
 

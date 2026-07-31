@@ -18,6 +18,25 @@ When a brief is used, the one-pager spec must link it in frontmatter:
 problem: docs/mindpowers/problems/YYYY-MM-DD-<slug>.md
 ```
 
+## Evidence bar for early socialisation
+
+Judge the evidence against the action this one-pager asks for. Limited but
+relevant evidence can support `ready-to-socialise` when the ask is an early
+discussion, the claim stays inside the studied scope, uncertainty is visible,
+and the next step fits what the evidence can support. This readiness does not
+prove that the problem is widespread or grant approval to build.
+
+For example, three recent interviews with enterprise customers can support an
+early discussion about enterprise account recovery. They do not show that
+smaller customers have the same problem, so the one-pager must not make that
+broader claim or use it to seek an all-customer build approval.
+
+If a central claim is unsupported, recommend `validating-problems` and explain
+the gap in common words. Wait for confirmation before switching skills, and
+offer to continue provisionally with the claim labelled as a hypothesis. Make
+the next step proportionate to the evidence: discuss a scoped hypothesis,
+gather the missing evidence, or stop the pitch.
+
 ## Sections
 
 | Section | What goes here |
@@ -37,21 +56,26 @@ problem: docs/mindpowers/problems/YYYY-MM-DD-<slug>.md
 
 These prompts are a coverage guide, not a script. If a problem brief settles a prompt, carry that answer forward and skip the question. Do not ask the user to restate the brief.
 
-When self-shaping, one at a time:
+For an exploratory one-pager, use each line below as one information target and
+ask only one per turn:
 
-1. One sentence: for whom, what problem, what direction, unlike what today?
+1. Who is the primary audience?
 2. Is there one direction here, or are you still weighing live alternatives against each other? (Weighing alternatives — even "build vs. buy" — is decision-doc, not this template.)
-3. What's the background a reader needs before the problem makes sense — any prior art or competitor moves worth citing?
-4. What's the problem, concretely, and why does it matter now?
-5. What does "solved" look like? Is there a real metric, or is it directional?
+3. Which single background fact must the reader know first?
+4. What observable problem occurs?
+5. What does "solved" look like?
 6. What direction are you leaning, at a level someone could react to (not build from)?
 7. What are the non-negotiables this direction has to respect?
-8. What's the exact ask, and from whom?
-9. Is this a quick gut-check, or does the ask need BRD-weight (stakeholders, milestones, heavier business case) for sign-off?
+8. What exact yes/no approval is being requested?
+9. Does the ask need BRD-weight for sign-off?
 
-When a template match is suspected (user said "one-pager", "BRD", "pitch for X", "need buy-in on"), batched:
+Treat user group, failure step, why-now context, evidence, metric, decision-maker,
+and requested approval as independently answerable targets. Gather any material
+follow-up in later turns.
 
-> "Quick frame: do you have one clear direction or are you still weighing options, what's the one-sentence pitch, what's the problem, what does solved look like, and what's the exact ask?"
+For a routine one-pager with prior locked one-pagers or recorded preferences,
+batch only genuinely unresolved targets. Do not use a template match by itself
+as permission to batch.
 
 ## Standards baked in
 
@@ -60,6 +84,9 @@ When a template match is suspected (user said "one-pager", "BRD", "pitch for X",
 - **Direction, not spec.** No user flows, acceptance criteria, or build-ready detail — that's what a PRD is for, after this earns a yes.
 - **One direction, not options.** Enforced above, not just asserted: elicitation prompt 2 gates it, and the Proposed direction cell rules out options-with-trade-offs. A menu is a decision-doc, even at the earliest single-lean stage of a build-vs-buy call.
 - **Ask stated explicitly.** Name the yes/no and the decision-maker, not "thoughts welcome."
+- **Evidence fits the ask.** Early discussion can proceed on narrow evidence
+  when its scope and uncertainty are clear. Broader claims or stronger actions
+  need stronger coverage.
 - **Weight scales to stakes, not habit.** Default is the eight unconditional sections (framing, background, problem, goal, direction, principles, ask, open questions). Multi-team or budget asks pull in stakeholders and milestones (BRD-weight) — don't add them out of habit.
 - **Source attribution where applicable, via Background.** If the direction draws on prior art, competitor moves, or an existing framework, cite it there (elicitation prompt 3) — not a separate section.
 
@@ -69,6 +96,7 @@ When a template match is suspected (user said "one-pager", "BRD", "pitch for X",
 - Presenting 2-3 options with trade-offs instead of one direction — that's a decision-doc, even if the options are just "build" vs "buy"
 - Padding with architecture or process detail nobody asked for, to look thorough
 - A vague ask ("let's discuss", "thoughts?") instead of a named yes/no
+- Treating `ready-to-socialise` as proof that the problem is widespread
 - Skipping the problem because it feels obvious to the author
 - No signal at all of what "solved" looks like, because "it's just a one-pager"
 - Reaching for BRD-weight (stakeholders, milestones) on a pitch that only needed the default frame
