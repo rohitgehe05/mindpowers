@@ -2,7 +2,9 @@
 
 **Your AI should ask better questions before it writes.**
 
-Most AI writing tools turn ambiguity into polished prose. Mindpowers does the opposite: it validates the problem, challenges premises, explores credible alternatives, and locks the important decisions before drafting.
+Most AI writing tools turn ambiguity into polished prose. Mindpowers does the
+opposite: it checks the problem, challenges assumptions, explores credible
+alternatives, and locks the important decisions before drafting.
 
 Use it to turn rough thinking into one-pagers people can align around, PRDs
 engineering can build from without decisions left in side conversations,
@@ -13,121 +15,176 @@ up under scrutiny.
 
 *The useful insight appears before the first paragraph.*
 
-Mindpowers is a problem-first knowledge-work skillset for Claude Code, Cowork, Codex, ChatGPT desktop, Cursor, and other Agent Skills clients.
+Mindpowers is a problem-first knowledge-work skillset for Claude Code, Cowork,
+Codex, ChatGPT desktop, Cursor, and other Agent Skills clients.
 
-## Try it
+## Try it in one minute
+
+Ask naturally:
 
 - “Validate whether this customer problem is actually supported.”
 - “Grill this idea until the problem and solution are clear.”
 - “Turn this approved direction into a build-ready PRD.”
 - “Review this document like a skeptical product leader.”
 
-Mindpowers routes each ask into one connected loop while keeping you in control
-of the important decisions.
+Mindpowers will:
 
-## The loop
+1. Recommend the right deliverable or skill when the next step is unclear.
+2. Ask only the questions the context needs.
+3. Write down the agreed direction, remaining uncertainty, and readiness.
+4. Draft, review, or remember your preferences only after you confirm the handoff.
 
-mindpowers does one loop: validate the problem when needed, then shape, draft,
-review, and remember what you like. It keeps provisional work moving without
-hiding the blockers that still matter.
+Natural requests trigger the skills. You can also name a skill explicitly, such
+as `/mindpowers:mindstorming`, when your client supports slash commands.
+
+## A real example
+
+Imagine you ask Mindpowers to turn an approved idea into a build-ready PRD. The
+idea says:
+
+> Reduce handling time by 40%.
+
+Mindpowers does not accept the number just because it is present. It asks:
+
+> What makes 40% the right target?
+
+If the answer is “leadership chose it” with no reason, the spec can still be
+written, but it is not build-ready when that target affects the solution or how
+success will be judged.
+
+| What gets recorded | Result |
+|---|---|
+| Working direction | Reduce handling time by 40% |
+| Spec status | `locked`, if you approve the written brief |
+| Readiness | `not-ready` |
+| Visible blocker | The 40% target has no understandable basis |
+| Next step | Add a basis, or record the business trade-off behind the choice |
+
+Now imagine the answer is:
+
+> A reduction below 40% would not cover the cost of the investment. We accept
+> the risk that the first release may miss it.
+
+That is a usable basis. Mindpowers labels it as a **business decision**, records
+the trade-off, and does not pretend that research proved the target. If the rest
+of the PRD is ready, this target no longer blocks the build.
+
+This is the difference between a polished document and an honest working
+contract.
+
+## The five-skill loop
+
+Mindpowers uses one connected loop. It validates the problem when needed, then
+shapes, drafts, reviews, and remembers what you like. It keeps provisional work
+moving without hiding the blockers that still matter.
 
 | Skill | What it does |
 |---|---|
-| `validating-problems` | Tests and scopes a customer or business problem against available evidence, resuming only claims that still need work |
-| `mindstorming` | Recommends the right deliverable when needed, asks contextual questions, and turns the result into a spec with honest readiness |
-| `drafting` | Turns an approved spec into the deliverable while preserving provisional evidence, blockers, and review status |
-| `reviewing-docs` | Red-teams a document, classifies each finding by root cause, and recommends the right next skill without switching automatically |
+| `validating-problems` | Tests and scopes a customer or business problem against the available evidence |
+| `mindstorming` | Recommends a deliverable, asks contextual questions, and turns the answers into a spec with honest readiness |
+| `drafting` | Turns an approved spec into the deliverable while preserving uncertainty, blockers, and review status |
+| `reviewing-docs` | Red-teams a document, explains each problem, and recommends the right next skill |
 | `calibrating` | Compares a Mindpowers draft with the final human-edited version and records approved, stable preferences |
 
-## Before / after
+Mindpowers explains a recommended handoff and asks for confirmation before
+switching skills.
 
-A cold-drafted business review usually opens like this:
+## Better reasoning produces better writing
 
-> This quarter we shipped 14 features across three teams. Signups were up 8% month over month, and support tickets held roughly steady. The team continued to invest in onboarding improvements throughout the quarter.
+A cold-drafted business review might open like this:
 
-A mindstorming-spec'd version front-loads the thing that matters:
+> This quarter we shipped 14 features across three teams. Signups were up 8%
+> month over month, and support tickets held roughly steady.
 
-> Growth is masking a retention problem: signups are up 8%, but week-4 retention slipped from 61% to 54%, the first drop in a year. Onboarding shipped 14 features this quarter; none of them targeted the drop.
+A Mindpowers-shaped version leads with the decision-relevant insight:
 
-- Same underlying facts, different order: insight and the lowlight lead, not buried three paragraphs in.
-- The spec forces this before drafting starts: "insight before data" is the template's standard, decided at spec time, not fixed in editing later.
+> Growth is masking a retention problem: signups are up 8%, but week-4
+> retention slipped from 61% to 54%, the first drop in a year. Onboarding
+> shipped 14 features this quarter; none of them targeted the drop.
 
-(Illustrative excerpt, not a real review.)
+The facts did not change. Mindpowers decided the story and its standards before
+drafting, so the important point did not need to be rescued during editing.
 
-## Templates
+*Illustrative excerpt, not a real review.*
 
-Nine templates, plus a fallback for anything that doesn't fit one:
+## Choose the right deliverable
 
-| Template | When it fires |
+You do not need to know the template name before starting.
+
+| If you need to... | Start with... |
+|---|---|
+| Compare live options and make a choice | `decision-doc` |
+| Explain a selected direction and get alignment | `one-pager` |
+| Turn an approved direction into a build contract | `prd` |
+| Check whether the underlying problem is real | `validating-problems` |
+| Work out what you need | `mindstorming`, which will recommend a deliverable |
+
+Mindpowers includes nine templates and a fallback:
+
+| Template | Best fit |
 |---|---|
 | [`business-review`](skills/mindstorming/references/business-review.md) | Weekly or quarterly product reviews |
-| [`decision-doc`](skills/mindstorming/references/decision-doc.md) | Strategic arguments, OKR defence, build-vs-buy |
-| [`one-pager`](skills/mindstorming/references/one-pager.md) | Pre-solution pitch for buy-in, before a PRD or a formal decision doc. Sometimes labeled BRD |
-| [`prd`](skills/mindstorming/references/prd.md) | Adaptive product specs with evidence, traceable requirements, acceptance criteria, measurement, and honest build readiness |
-| [`briefing-doc`](skills/mindstorming/references/briefing-doc.md) | Partner meetings, exec syncs, regulator prep |
-| [`comms-draft`](skills/mindstorming/references/comms-draft.md) | Slack messages, team emails, announcements |
-| [`framework`](skills/mindstorming/references/framework.md) | Methods, rubrics, playbooks |
-| [`talking-points`](skills/mindstorming/references/talking-points.md) | OKR defence, Q&A prep, anything you'll say out loud |
-| [`post-mortem`](skills/mindstorming/references/post-mortem.md) | Incident or project retros: what happened, root cause, what changes |
-| `self-shape` | Anything else, Claude asks one question at a time |
+| [`decision-doc`](skills/mindstorming/references/decision-doc.md) | Strategic arguments, OKR defence, and build-vs-buy decisions |
+| [`one-pager`](skills/mindstorming/references/one-pager.md) | A selected direction that needs alignment before a full PRD or decision doc |
+| [`prd`](skills/mindstorming/references/prd.md) | An approved direction that needs traceable requirements, acceptance criteria, measurement, and honest build readiness |
+| [`briefing-doc`](skills/mindstorming/references/briefing-doc.md) | Partner meetings, executive syncs, and regulator preparation |
+| [`comms-draft`](skills/mindstorming/references/comms-draft.md) | Slack messages, team emails, and announcements |
+| [`framework`](skills/mindstorming/references/framework.md) | Methods, rubrics, and playbooks |
+| [`talking-points`](skills/mindstorming/references/talking-points.md) | OKR defence, Q&A preparation, and spoken communication |
+| [`post-mortem`](skills/mindstorming/references/post-mortem.md) | Incident or project retrospectives |
+| `self-shape` | Anything else, using one contextual question at a time |
 
-Each template carries the lessons that make that kind of document good: lead with the insight (not the data) in a business review, put the recommendation first in a decision doc, and make PRD requirements traceable and verifiable without inventing missing product decisions.
+Each template changes the language and depth shown to you. The basic system
+underneath stays consistent: understand the purpose, surface important gaps,
+record decisions, and judge readiness for the stated next action.
 
-## How it works
+## Evidence, readiness, and approval
 
-Before shaping, Mindpowers performs a lightweight premise check. When a central
-customer or business claim is unsupported, it recommends
-`validating-problems` and waits for confirmation before switching. You can
-decline and continue provisionally: the claim keeps its honest evidence status
-and any material blocker remains visible. Problem validation records
-claim-level evidence statuses in
-`docs/mindpowers/problems/YYYY-MM-DD-<slug>.md` and resumes only the claims that
-remain unresolved. Prioritisation stays outside problem validation and the PRD.
+Mindpowers checks whether the available evidence is strong enough for what you
+want to do next. It does the detailed assessment internally, then shows a short
+plain-language conclusion, the main reason, the uncertainty, and the next step.
 
-Mindstorming, the "shape" step, runs a 10-step process:
+The standard changes with the action:
 
-1. Read the context you supplied, workspace material already in scope, recent specs, and `docs/mindpowers/preferences.md`. It does not broaden connected internal searches without your direction
-2. Pick the matching template, or `self-shape` if nothing fits. When the format is ambiguous or high-stakes, recommend a deliverable and explain why
-3. Offer a visual companion if the conversation looks like it needs sketches or diagrams
-4. Ask contextual questions: reuse settled routine contracts, otherwise ask one independently answerable question at a time
-5. Propose two or three approaches when the path isn't obvious
-6. Walk through the plan and get your spoken approval. If you say the structure feels too generic, Claude researches the topic before trying again
-7. Recommend conditional sections only when the answers reveal a relevant risk, and explain the readiness consequence if a material section is declined
-8. Write and check the spec at `docs/mindpowers/specs/YYYY-MM-DD-<type>-<slug>.md`, naming any material blockers
-9. You read the written spec and give final approval, which flips its status to `locked`
-10. Hand off in a way that fits the document. `locked` approves the working brief; readiness and any required human approvals remain separate
+- A one-pager may be ready for an early discussion with limited evidence when
+  the uncertainty and scope are clear.
+- A PRD is not build-ready when weak evidence could materially change what gets
+  built, how success is measured, or an important risk.
+- A small, reversible pilot may be ready when it tests a named assumption,
+  produces an observable result, and defines when to stop or change course.
+- A full rollout needs a new readiness check. Pilot readiness does not carry
+  over automatically.
 
-From there, `drafting` preserves the spec's evidence qualifications, readiness,
-blockers, and recorded external-review status. `reviewing-docs` routes weak
-evidence, unresolved decisions, prose problems, verification needs, stable
-preferences, and pending approvals differently. It explains the recommended
-handoff and waits for your confirmation before each switch. `calibrating`
-compares the Mindpowers draft with the final artifact and, with approval,
-records reusable preferences for next time.
+Every material target or decision threshold also needs an understandable basis.
+The basis might be a baseline, benchmark, customer expectation, test result,
+financial constraint, operational requirement, or deliberate business
+trade-off.
 
-### Evidence that fits the next action
+A business trade-off counts as a basis only when it is labelled as a business
+decision and the reason is visible. Mindpowers does not call it
+evidence-backed. If a material target has no basis, the work stays `not-ready`.
 
-Mindpowers checks more than whether evidence exists. It asks whether the
-evidence is strong enough for the document's stated scope and next action. For
-an important conclusion, it gives a short explanation of its recommendation,
-what it checked, the main reasons, what remains uncertain, and the next step.
-It does not dump an internal scoring checklist.
+Three ideas remain separate:
 
-- A one-pager can be ready for an early discussion with narrow evidence when
-  the scope and uncertainty are clear. That does not prove the problem is
-  widespread or approve a build.
-- A PRD stays `not-ready` when weak evidence could change what gets built, how
-  success is measured, or an important risk. Drafting can still continue
-  provisionally with the blocker visible.
-- A user may choose a target without strong evidence. Mindpowers records that
-  honestly as a business decision, including the trade-off, rather than calling
-  it an evidence-backed target.
-- A small, reversible pilot can be ready for its limited scope when it tests a
-  named assumption, has an observable result, and defines when to stop or
-  change course. Expanding the scope requires a new readiness check; pilot
-  readiness does not carry over to a full rollout.
+| Term | What it means |
+|---|---|
+| Status | Whether you approved the written working brief, such as `locked` |
+| Readiness | Whether the artifact is complete enough for its stated next action |
+| Human approval | Whether the named stakeholders have actually signed off |
 
-PRDs use a compact core plus conditional modules. Every PRD covers evidence and baseline, users and scope, the selected solution and credible alternatives, stable `US-###` / `REQ-###` / `AC-###` contracts, measurement, risks, and open decisions. Telemetry, AI evaluations, decision rights, privacy, integration, operational, and rollout sections appear only when the product's actual risk triggers them. Small reversible changes stay small. If a build-critical choice is missing, the PRD says `needs-decision` instead of inventing a number, event, date, or owner.
+Mindpowers can judge the document. It never claims that stakeholders approved
+it unless those approvals were explicitly recorded.
+
+## What Mindpowers does not do
+
+- It does not decide whether a validated problem should be prioritised.
+- It does not guarantee that a claim, target, or chosen solution is correct.
+- It does not treat a polished document as proof that the work is ready.
+- It does not invent missing product choices, dates, numbers, or responsibilities.
+- It does not claim stakeholder approval without a recorded sign-off.
+- It does not search connected internal sources beyond the scope you provide.
+- It cannot physically prevent a team from shipping.
+- It does not create shared organisational memory across workspaces.
 
 ## Install
 
@@ -140,10 +197,10 @@ claude plugin marketplace add rohitgehe05/mindpowers && claude plugin install mi
 
 ### Cowork (Claude Desktop)
 
-1. Download the `mindpowers-cowork-v*.zip` from the [latest release](https://github.com/rohitgehe05/mindpowers/releases/latest)
-2. In Cowork: **Customize → Personal plugins → `+`**
-3. Click "Upload local plugin", drag/select the zip, click **Upload**
-4. Plugin appears in sidebar under Personal plugins. Trigger by asking for a brainstorm (e.g. "draft a PRD for X")
+1. Download `mindpowers-cowork-v*.zip` from the [latest release](https://github.com/rohitgehe05/mindpowers/releases/latest).
+2. In Cowork, open **Customize → Personal plugins → `+`**.
+3. Click **Upload local plugin**, select the zip, then click **Upload**.
+4. Ask for the work you need, such as “Draft a PRD for X.”
 
 ### Codex and ChatGPT desktop
 
@@ -154,60 +211,74 @@ codex plugin marketplace add rohitgehe05/mindpowers
 codex plugin add mindpowers@mindpowers
 ```
 
-Start a new Codex chat after installation. In ChatGPT desktop, the same plugin is available in Work mode under **Plugins** after the marketplace is added.
+Start a new Codex chat after installation. In ChatGPT desktop, the same plugin
+is available in Work mode under **Plugins** after the marketplace is added.
 
 ### Cursor
 
-1. Open **Customize** in the sidebar
-2. Go to **Rules** and click **Add Rule**
-3. Select **Remote Rule (GitHub)**
-4. Enter `https://github.com/rohitgehe05/mindpowers`
-5. Review the imported skills under **Customize -> Skills**
+1. Open **Customize** in the sidebar.
+2. Go to **Rules** and click **Add Rule**.
+3. Select **Remote Rule (GitHub)**.
+4. Enter `https://github.com/rohitgehe05/mindpowers`.
+5. Review the imported skills under **Customize → Skills**.
 
-[Cursor discovers Agent Skills](https://cursor.com/docs/skills) and invokes them when their descriptions match. You can also name a skill explicitly in your prompt.
+[Cursor discovers Agent Skills](https://cursor.com/docs/skills) and invokes them
+when their descriptions match. You can also name a skill explicitly.
 
 ### Other Agent Skills clients
 
-Each directory under `skills/` follows the open [Agent Skills specification](https://agentskills.io/specification). Copy the skill directories you want into the user-level or project-level skills location documented by your client. Paths and plugin packaging vary by client, so use the native instructions above where available.
+Each directory under `skills/` follows the open
+[Agent Skills specification](https://agentskills.io/specification). Copy the
+skill directories you want into the user-level or project-level skills location
+documented by your client. Paths and plugin packaging vary by client, so use the
+native instructions above where available.
 
-## Works alongside superpowers
+## Where files go and privacy
 
-`superpowers:brainstorming` fires for code and features. `mindpowers:mindstorming` fires for documents and comms. Writing a PRD belongs to mindpowers; building what the PRD describes belongs to superpowers. And where coworkpowers is a suite, mindpowers is the one loop that stops Claude from writing the wrong doc in the first place.
-
-## Where files go
-
-```
+```text
 docs/mindpowers/problems/       evidence-assessed problem briefs
 docs/mindpowers/specs/          locked intent, one file per document
-docs/mindpowers/drafts/         the actual deliverables, same stem as their spec
+docs/mindpowers/drafts/         deliverables, using the same stem as their spec
 docs/mindpowers/reviews/        red-team notes
-docs/mindpowers/preferences.md  what you've liked, by template type
+docs/mindpowers/preferences.md  approved preferences, grouped by template type
 ```
 
-Specs often carry sensitive content (leadership comms, OKR politics, exec briefings): in a shared or public git repo, mindstorming warns you and suggests `.gitignore`-ing `docs/mindpowers/` or picking a private location.
+These files can contain sensitive material, including leadership communication,
+strategy, and customer evidence. In a shared or public Git repository,
+Mindpowers warns you and suggests adding `docs/mindpowers/` to `.gitignore` or
+choosing a private location.
 
-## What's new
+Preferences and recent specs are workspace-local. They do not become a shared
+company memory unless your organisation provides a separate shared system.
 
-- **0.9**: Mindpowers now checks whether evidence is strong enough for the next
-  action, explains important conclusions in plain language, keeps limited-pilot
-  readiness tied to its scope, and separates business choices, content
-  readiness, and human approval.
-- **0.8**: PRDs become adaptive engineering contracts with scoped evidence, stable requirement and acceptance-criteria IDs, risk-triggered telemetry and AI evaluation modules, and honest `build-ready` / `needs-decision` status.
-- **0.7.1**: Native Codex and ChatGPT desktop plugin packaging, a tested Codex install path, and Cursor's supported GitHub import flow.
-- **0.7**: `validating-problems` adds an optional evidence step before Mindstorming, with claim-level statuses that carry into a one-pager without implying prioritisation.
-- **0.6**: `one-pager` joins the templates, for pitching a direction and getting fast alignment before a full PRD or decision doc gets written. BRD is the same template at more weight, not a separate one.
-- **0.5**: `calibrating` remembers what landed and what you changed, per template type, in `docs/mindpowers/preferences.md`. Mindstorming reads it at the start of every session, so your fourth business review starts smarter than your first.
-- **0.4**: `drafting` and `reviewing-docs` complete the loop, and `post-mortem` joins the templates.
+## Works alongside Superpowers
 
-Full history in the [CHANGELOG](CHANGELOG.md).
+`superpowers:brainstorming` is for code and features.
+`mindpowers:mindstorming` is for documents and communication. Writing a PRD
+belongs to Mindpowers. Building what the PRD describes belongs to Superpowers.
+
+Mindpowers is one connected loop for avoiding the wrong document, weak
+reasoning, and invisible blockers before drafting begins.
+
+## What’s new
+
+- [**0.9.0**](https://github.com/rohitgehe05/mindpowers/releases/tag/v0.9.0):
+  Evidence is judged against the next action, important conclusions use plain
+  language, pilot readiness stays tied to scope, and business decisions remain
+  separate from evidence and human approval.
+- **0.8**: PRDs became adaptive engineering contracts with stable requirement
+  IDs, traceable acceptance criteria, risk-triggered modules, and honest
+  build-readiness.
+
+See the [CHANGELOG](CHANGELOG.md) for the full release history.
 
 ## Philosophy
 
 - **Two approvals beat one.** Talking it through misses things. Writing it down catches them.
 - **Templates hold the lessons.** Standards you learned the hard way belong in a template, not your memory.
 - **Cut ruthlessly.** Every section in a spec has to earn its place.
-- **When nothing fits, slow down.** No template means one question at a time, which forces you to actually think.
-- **No task is too small.** The spec for a Slack reply is short, but it still exists, except for short comms, which stay in chat unless you want a record.
+- **When nothing fits, slow down.** No template means one question at a time, which forces you to think.
+- **No task is too small.** A short spec can still prevent a wrong turn. Short communication can stay in chat unless you want a record.
 
 ## Credits
 
