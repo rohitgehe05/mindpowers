@@ -274,11 +274,16 @@ Mark `Readiness: build-ready` only when:
   change the direction;
 - every `REQ-###` has at least one linked, verifiable `AC-###`;
 - material failure states and edge cases are resolved;
-- success and guardrails have a baseline, target or decision rule, and
+- success and guardrails have a baseline, a target or decision rule, an
+  understandable basis for every material target or decision threshold, and a
   measurement method;
 - every triggered conditional module is complete; and
 - no open decision can still change scope, product behaviour, measurement, or
   launch safety.
+
+For this test, a deliberate business trade-off counts as an understandable
+basis only when the PRD labels it as a `business decision`, states what is being
+traded, and does not present the choice as evidence-backed.
 
 Otherwise mark `Readiness: needs-decision` and list the exact blocking
 evidence gaps and `OD-###` entries. Readiness is not prioritisation or

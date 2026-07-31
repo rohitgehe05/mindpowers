@@ -469,6 +469,7 @@ Before showing the spec to the user, run through:
 - [ ] For BRs, decision-docs, and one-pagers: is the insight, recommendation, or ask up front, not buried?
 - [ ] For PRDs: are evidence claims scoped, every requirement linked to a verifiable acceptance criterion, and readiness honest about blocking open decisions?
 - [ ] For PRDs: did any threshold, window, sample, event, rollout value, date, or owner get invented rather than supplied or explicitly accepted?
+- [ ] For PRDs: does every material target or decision threshold have an understandable basis? If the basis is a deliberate trade-off, is it labelled as a business decision, with the trade-off visible rather than presented as evidence-backed?
 - [ ] When principles or claims map to existing thinkers' work, are sources attributed?
 
 Fix issues inline before presenting. If a section needs more work, return to elicitation and ask the user.
