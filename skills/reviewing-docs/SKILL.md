@@ -121,6 +121,21 @@ If there are zero findings above "polish," say that plainly instead of manufactu
 
 **If the spec itself was wrong:** when the fidelity check or persona pass reveals that the problem traces back to the spec (wrong audience, wrong claim, wrong structure from the start, not just an execution slip), say so plainly and recommend flipping that spec's `status` to `superseded`, then rerunning mindstorming on the delta rather than patching the draft in place.
 
+## Visual companion (optional)
+
+After findings are assembled, when there are 3+ line-anchored findings, offer
+the annotated view in its own message, naming the mode per the fallback ladder
+in `skills/_shared/companion/COMPANION.md`:
+
+> "Want the findings as an annotated view alongside our chat? Each finding
+> appears under the exact line it's anchored to, severity-labelled."
+
+If accepted, follow COMPANION.md and push the `annotated-findings` screen: one
+`.section` per finding — quoted line, then the finding with its severity
+(`.label`: BLOCKER / WEAKENS / POLISH) and ID. The view is read-only;
+discussion and routing decisions stay in chat. The saved review file remains
+the artifact of record.
+
 ## Root-cause routing
 
 Classify the cause of each surfaced finding before recommending the next action:
