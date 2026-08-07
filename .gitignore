@@ -8,6 +8,7 @@ desktop.ini
 .idea/
 .worktrees/
 /.superpowers/
+/.mindpowers/
 *.swp
 *.swo
 *~

@@ -4,6 +4,18 @@ All notable changes to mindpowers will be documented here.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.10.0] - 2026-08-07
+
+### Added
+- Visual companion: vendored the superpowers companion server (MIT, attributed)
+  as `skills/_shared/companion/`; browser screens during elicitation with
+  artifact and text fallbacks.
+
+### Changed
+- mindstorming renders its existing visual-companion offer for real;
+  validating-problems gains a live claim ledger; reviewing-docs gains an
+  annotated findings view.
+
 ## [0.9.0] - 2026-07-31
 
 ### Added
