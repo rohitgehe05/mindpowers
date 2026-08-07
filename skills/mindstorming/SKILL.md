@@ -336,12 +336,14 @@ If the dialogue stays text-shaped throughout (a comms-draft, a short briefing-do
 
 When you do offer, this message MUST be its own turn. Do not combine with clarifying questions, context summaries, or any other content:
 
-> "Some of what we're working on might be easier to see. I can render decision matrices, flows, comparison tables, or simple diagrams alongside our chat. Want me to use visuals where they help? They render inline as artefacts."
+> "Some of what we're working on might be easier to see. I can render decision matrices, flows, comparison tables, or simple diagrams alongside our chat — [in a browser tab that opens for you | as inline artifacts | as tables in chat, pick per the fallback ladder]. Want me to use visuals where they help?"
 
 If the user accepts, decide per-question whether to render visually or stay in chat:
 
 - Render visually: 2x2 matrices, scoring grids, swimlane flows, side-by-side comparison tables, simple wireframes, layered structure diagrams
 - Stay in chat: requirements questions, conceptual choices, tradeoff lists, audience clarification, anything text-shaped
+
+On acceptance, follow `skills/_shared/companion/COMPANION.md` for the mechanism: mode detection and fallback ladder, server lifecycle, screen pushing, reading browser events, and the shared rules (board is the chooser; a typed reply always wins over a click).
 
 Acceptance does NOT mean every question goes through the visual companion. Per-question judgement applies.
 
