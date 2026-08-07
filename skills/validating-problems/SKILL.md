@@ -182,6 +182,21 @@ evidence status:
 
 Keep this skill and `mindstorming` independently usable. Do not require a one-pager or any other downstream artifact to complete problem validation.
 
+## Visual companion (optional)
+
+When the claim discussion has enough moving parts that a table beats prose
+(usually once two or more claims have different statuses), offer the visual
+companion in its own message, naming the mode per the fallback ladder in
+`skills/_shared/companion/COMPANION.md`:
+
+> "Want a live claim ledger alongside our chat? It shows each claim's status
+> and as-of date, updating as we go."
+
+If accepted, follow COMPANION.md. Push the `claim-ledger` screen there and
+re-push it (versioned filename) whenever a claim's status or as_of changes.
+Everything else — questions, evidence discussion, the brief — stays in chat.
+Never offer during the first bound-the-decision exchange.
+
 ## Hard rules
 
 - Inspect available evidence before asking for information.
