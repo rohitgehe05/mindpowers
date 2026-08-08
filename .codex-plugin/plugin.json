@@ -1,6 +1,6 @@
 {
   "name": "mindpowers",
-  "version": "0.10.0",
+  "version": "0.11.0",
   "description": "One loop for clear knowledge work: check whether evidence is strong enough for the next action, shape the deliverable one useful question at a time, draft from an approved spec, review the result, and remember what you like. Missing decisions, evidence limits, readiness, and required human approval stay visible.",
   "author": {
     "name": "Rohit Gehe",

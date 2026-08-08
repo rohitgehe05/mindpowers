@@ -36,7 +36,7 @@ Check the doc for a paper trail before reviewing it blind.
 - Did anything make it into the doc that the spec didn't scope in?
 - Has the claim or recommendation drifted between spec and doc: softened, hedged, or quietly changed?
 
-Fidelity problems are worth surfacing on their own, separate from the persona pass below, because they mean the doc stopped tracking its own plan somewhere along the way.
+Fidelity problems are worth surfacing on their own, separate from the lens panel below, because they mean the doc stopped tracking its own plan somewhere along the way.
 
 **If no spec exists:** offer to write down the document's intended audience,
 main claim, and shape before reviewing.
@@ -44,9 +44,14 @@ main claim, and shape before reviewing.
 > "There's no spec for this doc. Want me to first write down its audience, main
 > claim, and shape so we can check that it says what you intended?"
 
-This is worth doing even when it feels like a formality: it's often where the real problem surfaces, because writing down "here's the claim this doc is actually making" tends to expose that the claim isn't the one the author intended. A doc that reads fine sentence-by-sentence can still imply a claim nobody signed up for once you state it plainly. If the user declines, proceed straight to the template rubric and persona pass without it.
+This is worth doing even when it feels like a formality: it's often where the real problem surfaces, because writing down "here's the claim this doc is actually making" tends to expose that the claim isn't the one the author intended. A doc that reads fine sentence-by-sentence can still imply a claim nobody signed up for once you state it plainly. If the user declines, proceed straight to the template rubric and lens panel without it.
 
 Either way, don't skip Step 1 to save time. A doc that fails its own spec is a different, more useful finding than a doc that merely reads weak; surface it first so the rest of the review has the right frame.
+
+Also check `docs/mindpowers/reviews/` for a prior review of this doc (same
+filename stem). If one exists, load its findings ledger before assigning any
+IDs: existing findings keep their `R-###`, new findings continue the
+sequence, and the re-review updates statuses per the Output section.
 
 ## Step 2: Load the template rubric
 
@@ -70,27 +75,59 @@ Do not invent a rubric when a template exists. The template encodes standards so
 
 For example: a decision doc gets checked against `decision-doc.md`'s standards directly: is the recommendation in the first section rather than the last, is there a real counter-argument rather than a strawman, is the ask explicit. A comms draft gets checked against `comms-draft.md`: is the key message identifiable on a skim, is the tone calibrated to the stated audience. Use the rubric file's own language when naming a finding; don't paraphrase a standard into something vaguer than the template already made it.
 
-## Step 3: Persona pass
+## Step 3: Lens panel
 
-Pick exactly one persona based on the doc type and read the doc as that person would, adversarially.
+Review runs as a panel of one to three lenses, each reading the doc cold.
+Load `skills/reviewing-docs/references/lenses.md` for the lens definitions,
+the tier table, and the reader archetypes.
 
-| Doc type | Persona | Reads for |
-|---|---|---|
-| `decision-doc`, `business-review` | Exec skeptic | "What are you not telling me? Where's the number?" |
-| `briefing-doc` | Regulator / hostile counsel | Where does this admit more than it should, or claim more than it can back up? |
-| `comms-draft` | Distracted skimmer | Reads only the first line of each paragraph. Does the message still land? |
-| `prd`, `framework` | First-time implementer | Could I actually execute this from what's written, with no side channel to the author? |
-| `talking-points` | Adversarial interviewer | Which predicted question actually breaks the point under follow-up? |
-| `post-mortem` | Exec skeptic | Is the root cause real or is this a blameless-sounding non-answer? |
-| self-shape | Nearest fit, by intent | Ask the user which of the above the doc's audience most resembles. |
-
-Run the whole doc through that one persona. Don't rotate personas mid-review; a single sharp lens beats several shallow ones. Say which persona you're using before giving findings, so the user knows what lens produced them (e.g., "reading this as the skeptical exec who wasn't in the room").
+1. **Pick the tier** from the doc type using the tier table (comms-draft
+   and talking-points get the audience lens only; briefing-doc,
+   business-review, and one-pager add rigor; decision-doc, prd, framework,
+   post-mortem, and self-shape add premise). The user can override for any
+   run: "quick pass" drops to tier 1, "full panel" raises to tier 3.
+2. **Tier 3 gate:** before the full panel runs, run the audience lens first
+   and show the user its reader card and first-read narrative: "Does this
+   match your reader? Where am I wrong?" If the card is wrong, correct it
+   and re-run the audience lens with the corrected card, then dispatch the
+   remaining lenses. In degraded mode (no subagents), build the card and
+   narrative in-conversation and say so. Tiers 1-2 skip this gate and seed
+   the reader card from the spec's `audience` frontmatter or the archetype
+   table.
+3. **Dispatch:** on clients that can spawn subagents, run each lens as a
+   fresh subagent given ONLY what "What every lens receives" in lenses.md
+   allows — the spec (or its Step 1 stand-in), the doc, the lens prompt,
+   and the template rubric. Never the drafting conversation, never another
+   lens's findings. Lenses run blind to each other. On clients without
+   subagents, follow "Degraded mode" in lenses.md and say plainly in the
+   output that isolation was simulated.
+4. Say which tier, lenses, and isolation mode produced the findings before
+   presenting them (e.g., "full panel: audience + rigor + premise, run as
+   isolated subagents").
 
 **Talking-points live drill (optional):** for talking-points docs specifically, offer a live drill after the written review.
 
 > "Want to drill this out loud? I'll ask the predicted questions one at a time as the interviewer, you answer, and I'll score each answer against the prepared point and help sharpen it."
 
 If accepted, ask one predicted question at a time, wait for the user's spoken answer, then score it (does it land the prepared point, does it survive a follow-up) and suggest a tighter version before moving to the next question.
+
+## Step 4: Synthesis and triage
+
+Merge the lens outputs into one findings list:
+
+1. **Dedupe.** Where lenses hit the same underlying problem, merge into one
+   finding that keeps each lens's angle visible.
+2. **Triage** every finding into exactly one class:
+   - **Mechanical** — objective defect (broken cross-reference,
+     contradictory figures, a spec section missing from the doc). Present
+     with the fix.
+   - **Taste** — judgment call (tone, ordering, depth). Present with a
+     recommendation; the user decides.
+   - **User-Challenge** — the finding disputes the user's stated direction
+     or a locked-spec decision. Never auto-resolved: present it with what
+     the reviewers might be missing and the cost if they are wrong.
+3. **Disagreements** between lenses surface explicitly as disagreements,
+   never silently averaged. The user's call is final.
 
 ## Output
 
@@ -99,27 +136,48 @@ Produce findings, not a rewrite.
 - Rank findings by severity: **blocker** (this will get called out and the doc won't survive it as-is) → **weakens** (undercuts the doc but survivable) → **polish** (worth fixing, not urgent).
 - Every finding anchors to a **quoted line** from the doc; don't describe a problem in the abstract, point at the sentence.
 - Every finding carries a **suggested fix**: a direction, not necessarily rewritten prose.
+- Every finding gets a stable ID at first sighting: `R-001, R-002, …`,
+  scoped to the reviewed doc and never renumbered. A re-review of the same
+  doc reuses existing IDs and continues the sequence for new findings.
 - Every surfaced finding classifies its root cause, recommended route, and readiness impact using this exact metadata:
 
   ```yaml
+  id: R-001
   severity: blocker | weakens | polish
+  lens: audience | rigor | premise
+  triage: mechanical | taste | user-challenge
   root_cause: evidence | decision | writing | verification | preference | approval
   recommended_route: validating-problems | mindstorming | drafting | reviewing-docs | calibrating | none
   readiness_impact: blocking | non-blocking | none
   ```
 
-- Cap it at the **top 8 findings**, ranked. This is a red-team pass, not a laundry list; if there are 20 problems, surface the 8 that matter most and say so.
+- Present the **top 8 findings** in chat, ranked. The saved review file
+  records ALL findings in the ledger — overflow beyond the top 8 is
+  recorded there, never discarded; say in chat how many more the file holds.
 - One line of praise is fine if genuinely earned. No more than one line, and don't lead with it.
 
 Format each finding roughly like this:
 
-> **[blocker] "the recommendation is to consolidate vendors over the next two quarters"**: no number attached to the savings this is supposed to justify. An exec skeptic asks "how much, exactly" in the first thirty seconds. Fix: attach the estimated savings range and the confidence behind it, even a rough one.
+> **[R-001 · blocker] "the recommendation is to consolidate vendors over the next two quarters"**: no number attached to the savings this is supposed to justify. An exec skeptic asks "how much, exactly" in the first thirty seconds. Fix: attach the estimated savings range and the confidence behind it, even a rough one.
 
 If there are zero findings above "polish," say that plainly instead of manufacturing minor nitpicks to fill out a list; a clean doc is a valid outcome.
 
 **Saving the review:** per the file contract, save to `docs/mindpowers/reviews/YYYY-MM-DD-<type>-<slug>.md`, using the same stem as the doc/spec it reviewed so the pair sorts together. Exception: if the doc is a short comms piece (Slack message, brief email), present the findings in chat only; don't write a file for something that was never going to be filed itself.
 
-**If the spec itself was wrong:** when the fidelity check or persona pass reveals that the problem traces back to the spec (wrong audience, wrong claim, wrong structure from the start, not just an execution slip), say so plainly and recommend flipping that spec's `status` to `superseded`, then rerunning mindstorming on the delta rather than patching the draft in place.
+**The findings ledger:** every review file contains a ledger table of ALL
+findings for the doc, one row each:
+
+| ID | Severity | Lens | Summary | Status |
+|---|---|---|---|---|
+| R-001 | blocker | rigor | Savings claim has no number attached | open |
+
+Status is `open | fixed | regressed | parked`. A re-review of the same doc
+updates statuses in this ledger instead of re-listing findings: a fixed
+finding that breaks again is marked `regressed` under its original ID, and
+new findings continue the ID sequence. The ledger is the durable record;
+the chat summary is the view.
+
+**If the spec itself was wrong:** when the fidelity check or lens panel reveals that the problem traces back to the spec (wrong audience, wrong claim, wrong structure from the start, not just an execution slip), say so plainly and recommend flipping that spec's `status` to `superseded`, then rerunning mindstorming on the delta rather than patching the draft in place.
 
 ## Visual companion (optional)
 
@@ -182,8 +240,8 @@ Paths above are relative to the working folder; in Cowork that's the user's shar
 ## Rules
 
 - Never rewrite the doc wholesale. That's drafting's job; offer to hand it to drafting instead of doing it here.
-- At most the top 8 findings, ranked by severity. Not exhaustive, not a laundry list.
+- Top 8 findings in chat, ranked by severity; the review file's ledger records all of them.
 - Praise is allowed, capped at one line.
-- Always name which persona you're reading as before giving findings, so the user knows the lens.
+- Always name the tier, lenses, and isolation mode before giving findings, so the user knows what produced them.
 - Never switch skills before the user confirms the recommended route.
 - If asked to review code, decline and point at a code-review tool instead; this skill is for prose deliverables.
