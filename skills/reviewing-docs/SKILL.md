@@ -36,7 +36,7 @@ Check the doc for a paper trail before reviewing it blind.
 - Did anything make it into the doc that the spec didn't scope in?
 - Has the claim or recommendation drifted between spec and doc: softened, hedged, or quietly changed?
 
-Fidelity problems are worth surfacing on their own, separate from the persona pass below, because they mean the doc stopped tracking its own plan somewhere along the way.
+Fidelity problems are worth surfacing on their own, separate from the lens panel below, because they mean the doc stopped tracking its own plan somewhere along the way.
 
 **If no spec exists:** offer to write down the document's intended audience,
 main claim, and shape before reviewing.
@@ -44,7 +44,7 @@ main claim, and shape before reviewing.
 > "There's no spec for this doc. Want me to first write down its audience, main
 > claim, and shape so we can check that it says what you intended?"
 
-This is worth doing even when it feels like a formality: it's often where the real problem surfaces, because writing down "here's the claim this doc is actually making" tends to expose that the claim isn't the one the author intended. A doc that reads fine sentence-by-sentence can still imply a claim nobody signed up for once you state it plainly. If the user declines, proceed straight to the template rubric and persona pass without it.
+This is worth doing even when it feels like a formality: it's often where the real problem surfaces, because writing down "here's the claim this doc is actually making" tends to expose that the claim isn't the one the author intended. A doc that reads fine sentence-by-sentence can still imply a claim nobody signed up for once you state it plainly. If the user declines, proceed straight to the template rubric and lens panel without it.
 
 Either way, don't skip Step 1 to save time. A doc that fails its own spec is a different, more useful finding than a doc that merely reads weak; surface it first so the rest of the review has the right frame.
 
@@ -128,27 +128,48 @@ Produce findings, not a rewrite.
 - Rank findings by severity: **blocker** (this will get called out and the doc won't survive it as-is) → **weakens** (undercuts the doc but survivable) → **polish** (worth fixing, not urgent).
 - Every finding anchors to a **quoted line** from the doc; don't describe a problem in the abstract, point at the sentence.
 - Every finding carries a **suggested fix**: a direction, not necessarily rewritten prose.
+- Every finding gets a stable ID at first sighting: `R-001, R-002, …`,
+  scoped to the reviewed doc and never renumbered. A re-review of the same
+  doc reuses existing IDs and continues the sequence for new findings.
 - Every surfaced finding classifies its root cause, recommended route, and readiness impact using this exact metadata:
 
   ```yaml
+  id: R-001
   severity: blocker | weakens | polish
+  lens: audience | rigor | premise
+  triage: mechanical | taste | user-challenge
   root_cause: evidence | decision | writing | verification | preference | approval
   recommended_route: validating-problems | mindstorming | drafting | reviewing-docs | calibrating | none
   readiness_impact: blocking | non-blocking | none
   ```
 
-- Cap it at the **top 8 findings**, ranked. This is a red-team pass, not a laundry list; if there are 20 problems, surface the 8 that matter most and say so.
+- Present the **top 8 findings** in chat, ranked. The saved review file
+  records ALL findings in the ledger — overflow beyond the top 8 is
+  recorded there, never discarded; say in chat how many more the file holds.
 - One line of praise is fine if genuinely earned. No more than one line, and don't lead with it.
 
 Format each finding roughly like this:
 
-> **[blocker] "the recommendation is to consolidate vendors over the next two quarters"**: no number attached to the savings this is supposed to justify. An exec skeptic asks "how much, exactly" in the first thirty seconds. Fix: attach the estimated savings range and the confidence behind it, even a rough one.
+> **[R-001 · blocker] "the recommendation is to consolidate vendors over the next two quarters"**: no number attached to the savings this is supposed to justify. An exec skeptic asks "how much, exactly" in the first thirty seconds. Fix: attach the estimated savings range and the confidence behind it, even a rough one.
 
 If there are zero findings above "polish," say that plainly instead of manufacturing minor nitpicks to fill out a list; a clean doc is a valid outcome.
 
 **Saving the review:** per the file contract, save to `docs/mindpowers/reviews/YYYY-MM-DD-<type>-<slug>.md`, using the same stem as the doc/spec it reviewed so the pair sorts together. Exception: if the doc is a short comms piece (Slack message, brief email), present the findings in chat only; don't write a file for something that was never going to be filed itself.
 
-**If the spec itself was wrong:** when the fidelity check or persona pass reveals that the problem traces back to the spec (wrong audience, wrong claim, wrong structure from the start, not just an execution slip), say so plainly and recommend flipping that spec's `status` to `superseded`, then rerunning mindstorming on the delta rather than patching the draft in place.
+**The findings ledger:** every review file contains a ledger table of ALL
+findings for the doc, one row each:
+
+| ID | Severity | Lens | Summary | Status |
+|---|---|---|---|---|
+| R-001 | blocker | rigor | Savings claim has no number attached | open |
+
+Status is `open | fixed | regressed | parked`. A re-review of the same doc
+updates statuses in this ledger instead of re-listing findings: a fixed
+finding that breaks again is marked `regressed` under its original ID, and
+new findings continue the ID sequence. The ledger is the durable record;
+the chat summary is the view.
+
+**If the spec itself was wrong:** when the fidelity check or lens panel reveals that the problem traces back to the spec (wrong audience, wrong claim, wrong structure from the start, not just an execution slip), say so plainly and recommend flipping that spec's `status` to `superseded`, then rerunning mindstorming on the delta rather than patching the draft in place.
 
 ## Visual companion (optional)
 
@@ -211,8 +232,8 @@ Paths above are relative to the working folder; in Cowork that's the user's shar
 ## Rules
 
 - Never rewrite the doc wholesale. That's drafting's job; offer to hand it to drafting instead of doing it here.
-- At most the top 8 findings, ranked by severity. Not exhaustive, not a laundry list.
+- Top 8 findings in chat, ranked by severity; the review file's ledger records all of them.
 - Praise is allowed, capped at one line.
-- Always name which persona you're reading as before giving findings, so the user knows the lens.
+- Always name the tier, lenses, and isolation mode before giving findings, so the user knows what produced them.
 - Never switch skills before the user confirms the recommended route.
 - If asked to review code, decline and point at a code-review tool instead; this skill is for prose deliverables.
