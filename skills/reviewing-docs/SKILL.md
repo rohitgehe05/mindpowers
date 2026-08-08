@@ -70,27 +70,56 @@ Do not invent a rubric when a template exists. The template encodes standards so
 
 For example: a decision doc gets checked against `decision-doc.md`'s standards directly: is the recommendation in the first section rather than the last, is there a real counter-argument rather than a strawman, is the ask explicit. A comms draft gets checked against `comms-draft.md`: is the key message identifiable on a skim, is the tone calibrated to the stated audience. Use the rubric file's own language when naming a finding; don't paraphrase a standard into something vaguer than the template already made it.
 
-## Step 3: Persona pass
+## Step 3: Lens panel
 
-Pick exactly one persona based on the doc type and read the doc as that person would, adversarially.
+Review runs as a panel of one to three lenses, each reading the doc cold.
+Load `skills/reviewing-docs/references/lenses.md` for the lens definitions,
+the tier table, and the reader archetypes.
 
-| Doc type | Persona | Reads for |
-|---|---|---|
-| `decision-doc`, `business-review` | Exec skeptic | "What are you not telling me? Where's the number?" |
-| `briefing-doc` | Regulator / hostile counsel | Where does this admit more than it should, or claim more than it can back up? |
-| `comms-draft` | Distracted skimmer | Reads only the first line of each paragraph. Does the message still land? |
-| `prd`, `framework` | First-time implementer | Could I actually execute this from what's written, with no side channel to the author? |
-| `talking-points` | Adversarial interviewer | Which predicted question actually breaks the point under follow-up? |
-| `post-mortem` | Exec skeptic | Is the root cause real or is this a blameless-sounding non-answer? |
-| self-shape | Nearest fit, by intent | Ask the user which of the above the doc's audience most resembles. |
-
-Run the whole doc through that one persona. Don't rotate personas mid-review; a single sharp lens beats several shallow ones. Say which persona you're using before giving findings, so the user knows what lens produced them (e.g., "reading this as the skeptical exec who wasn't in the room").
+1. **Pick the tier** from the doc type using the tier table (comms-draft
+   and talking-points get the audience lens only; briefing-doc,
+   business-review, and one-pager add rigor; decision-doc, prd, framework,
+   post-mortem, and self-shape add premise). The user can override for any
+   run: "quick pass" drops to tier 1, "full panel" raises to tier 3.
+2. **Tier 3 gate:** before the panel runs, build the audience lens's reader
+   card and first-read narrative and show both to the user: "Does this
+   match your reader? Where am I wrong?" Correct the card from their
+   answer, then run the panel. Tiers 1-2 skip this gate and seed the reader
+   card from the spec's `audience` frontmatter or the archetype table.
+3. **Dispatch:** on clients that can spawn subagents, run each lens as a
+   fresh subagent given ONLY what "What every lens receives" in lenses.md
+   allows — the spec (or its Step 1 stand-in), the doc, the lens prompt,
+   and the template rubric. Never the drafting conversation, never another
+   lens's findings. Lenses run blind to each other. On clients without
+   subagents, follow "Degraded mode" in lenses.md and say plainly in the
+   output that isolation was simulated.
+4. Say which tier, lenses, and isolation mode produced the findings before
+   presenting them (e.g., "full panel: audience + rigor + premise, run as
+   isolated subagents").
 
 **Talking-points live drill (optional):** for talking-points docs specifically, offer a live drill after the written review.
 
 > "Want to drill this out loud? I'll ask the predicted questions one at a time as the interviewer, you answer, and I'll score each answer against the prepared point and help sharpen it."
 
 If accepted, ask one predicted question at a time, wait for the user's spoken answer, then score it (does it land the prepared point, does it survive a follow-up) and suggest a tighter version before moving to the next question.
+
+## Step 4: Synthesis and triage
+
+Merge the lens outputs into one findings list:
+
+1. **Dedupe.** Where lenses hit the same underlying problem, merge into one
+   finding that keeps each lens's angle visible.
+2. **Triage** every finding into exactly one class:
+   - **Mechanical** — objective defect (broken cross-reference,
+     contradictory figures, a spec section missing from the doc). Present
+     with the fix.
+   - **Taste** — judgment call (tone, ordering, depth). Present with a
+     recommendation; the user decides.
+   - **User-Challenge** — the finding disputes the user's stated direction
+     or a locked-spec decision. Never auto-resolved: present it with what
+     the reviewers might be missing and the cost if they are wrong.
+3. **Disagreements** between lenses surface explicitly as disagreements,
+   never silently averaged. The user's call is final.
 
 ## Output
 
