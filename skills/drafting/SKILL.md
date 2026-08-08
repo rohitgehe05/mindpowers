@@ -58,7 +58,7 @@ A locked spec approves the working brief for drafting. It does not establish con
    - Preserve external review and approval status in a clearly labeled body section such as `External reviews and approvals`, unless the selected template defines a dedicated field. Never put approval state in `readiness`.
    - Update the spec's own frontmatter with `draft: <path to the draft>` so the link goes both ways.
    - **Comms exception:** for short comms (a Slack message, a brief email), present the draft in chat instead of writing a file. Only save a file if the user asks for a record.
-6. **Handoff.** Ask: "Want to revise this, review it, or call it done?" If the user chooses review, switch to `reviewing-docs`; do not switch before that confirmation.
+6. **Handoff.** Ask: "Want to revise this, review it, or call it done?" If the user chooses review, switch to `reviewing-docs`; do not switch before that confirmation. When the draft carries checkable claims (numbers, dates, names, quotes), also mention that `fact-checking` can verify them against sources before the doc ships; recommend it, don't run it unasked.
 
 If your harness has a task list, track these steps as todos so nothing gets skipped mid-draft; if it doesn't, just work through them in order.
 
