@@ -4,6 +4,24 @@ All notable changes to mindpowers will be documented here.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.11.0] - 2026-08-08
+
+### Added
+
+- Reviewer lens panel in `reviewing-docs`: one to three blind fresh-context
+  lenses (audience, rigor, premise) tiered by document type, with a
+  reader-card confirmation gate for high-stakes docs and an honest degraded
+  mode on clients without subagents.
+- Stable finding IDs (`R-###`) and a findings ledger in review files:
+  statuses tracked across review rounds, overflow findings recorded instead
+  of discarded.
+
+### Changed
+
+- The single-persona pass is replaced by the lens panel; persona archetypes
+  now seed the audience lens's reader card
+  (`skills/reviewing-docs/references/lenses.md`).
+
 ## [0.10.0] - 2026-08-07
 
 ### Added
