@@ -82,7 +82,11 @@ sensitivity prompt in-conversation with the same honesty caveat.
 `docs/mindpowers/reviews/YYYY-MM-DD-<type>-<slug>.md`, same stem as the
 doc. If `reviewing-docs` hasn't run and no review file exists, create it
 with frontmatter `type`, `date`, `topic` matching the doc and a note that
-only fact-checking has run. One row per claim:
+only fact-checking has run.
+
+**Comms exception:** for short comms (a Slack message, a brief email), present the ledger in chat instead of writing a file — matching drafting's and reviewing-docs' comms handling. Only save a file if the user asks for a record.
+
+One row per claim:
 
 | ID | Claim | Class | Verdict | Source quote |
 |---|---|---|---|---|

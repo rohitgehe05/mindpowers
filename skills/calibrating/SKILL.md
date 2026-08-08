@@ -7,7 +7,7 @@ description: Use after a knowledge-work deliverable ships or gets human edits. T
 
 ## Overview
 
-mindpowers does one loop: shape, draft, review, and remembers what you like. This skill is the "remember" step, and the only one that writes `docs/mindpowers/preferences.md`. `mindstorming` step 1 reads that file before it starts a new session, so what gets recorded here shapes every future spec of that template type.
+mindpowers does one loop: shape, draft, review, fact-check, and remember what you like. This skill is the "remember" step, and the only one that writes `docs/mindpowers/preferences.md`. `mindstorming` step 1 reads that file before it starts a new session, so what gets recorded here shapes every future spec of that template type.
 
 This is a light skill. Don't turn it into an interrogation: most of the time there are 1-3 short questions and one write.
 

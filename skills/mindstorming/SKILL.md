@@ -7,7 +7,7 @@ description: Use before drafting any non-code knowledge-work deliverable, includ
 
 ## Overview
 
-mindpowers does one loop: shape, draft, review, and remembers what you like. This skill is the "shape" step.
+mindpowers does one loop: shape, draft, review, fact-check, and remember what you like. This skill is the "shape" step.
 
 Help turn rough ideas into locked specs for knowledge-work deliverables (memos, business reviews, decision docs, PRDs, briefing docs, comms, frameworks, talking points, post-mortems) through Socratic dialogue.
 
@@ -349,11 +349,11 @@ Acceptance does NOT mean every question goes through the visual companion. Per-q
 
 ## File Contract
 
-mindpowers is one loop across four skills: shape (`mindstorming`, this skill) -> draft (`drafting`) -> review (`reviewing-docs`) -> remember (`calibrating`). All paths below are relative to the working folder (see "no filesystem / Cowork" note in "Spec File Format").
+mindpowers is one loop across six skills: validate (`validating-problems`) -> shape (`mindstorming`, this skill) -> draft (`drafting`) -> review (`reviewing-docs`) -> fact-check (`fact-checking`) -> remember (`calibrating`). All paths below are relative to the working folder (see "no filesystem / Cowork" note in "Spec File Format").
 
 - **Specs**, written by this skill: `docs/mindpowers/specs/YYYY-MM-DD-<type>-<slug>.md`. Flat, no type subdirectories; the type lives in the filename. YAML frontmatter is authoritative (see "Spec File Format" below).
 - **Drafts**, written by `drafting`: `docs/mindpowers/drafts/YYYY-MM-DD-<type>-<slug>.md`, same stem as the spec it came from, so the pair sorts together. Draft frontmatter carries `spec: <path>`, `type`, and `status: draft | final`.
-- **Reviews**, written by `reviewing-docs`: `docs/mindpowers/reviews/YYYY-MM-DD-<type>-<slug>.md`.
+- **Reviews**, written by `reviewing-docs` and `fact-checking`: `docs/mindpowers/reviews/YYYY-MM-DD-<type>-<slug>.md`.
 - **Preferences**, written by `calibrating`: `docs/mindpowers/preferences.md`, entries keyed by template type.
 
 **Status protocol:** a spec's `status` moves `draft -> locked -> (optionally) superseded`. This skill writes new specs as `draft` and flips them to `locked` on final approval. `drafting` consumes ONLY specs with `status: locked`; never draft from an unapproved spec. `reviewing-docs` can review any doc regardless of status and may recommend flipping a spec to `superseded` if it's since been reworked. `calibrating` only appends to `preferences.md`.
