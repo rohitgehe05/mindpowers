@@ -233,6 +233,8 @@ instead of restarting.
 
 When findings are mixed, resolve evidence and decision reasoning before prose work. Rerun `reviewing-docs` after the routed corrections are made.
 
+When the doc carries checkable claims (numbers, dates, names, quotes) and the review is otherwise clean or near-clean, recommend a `fact-checking` pass before the doc ships: it verifies claims against the user's sources with a quote-the-source rule and flags sensitive content. Recommend and wait for confirmation; never run it unasked.
+
 ## Cowork / no-filesystem fallback
 
 Paths above are relative to the working folder; in Cowork that's the user's shared folder. If no writable folder exists, present the full review in chat (or as an artifact) and say plainly it was not saved to disk.

@@ -72,10 +72,10 @@ of the PRD is ready, this target no longer blocks the build.
 This is the difference between a polished document and an honest working
 contract.
 
-## The five-skill loop
+## The six-skill loop
 
 Mindpowers uses one connected loop. It validates the problem when needed, then
-shapes, drafts, reviews, and remembers what you like. It keeps provisional work
+shapes, drafts, reviews, fact-checks before shipping, and remembers what you like. It keeps provisional work
 moving without hiding the blockers that still matter.
 
 | Skill | What it does |
@@ -84,6 +84,7 @@ moving without hiding the blockers that still matter.
 | `mindstorming` | Recommends a deliverable, asks contextual questions, and turns the answers into a spec with honest readiness |
 | `drafting` | Turns an approved spec into the deliverable while preserving uncertainty, blockers, and review status |
 | `reviewing-docs` | Red-teams a document, explains each problem, and recommends the right next skill |
+| `fact-checking` | Verifies a doc's claims against the user's sources with a quote-the-source rule and flags sensitive content before shipping |
 | `calibrating` | Compares a Mindpowers draft with the final human-edited version and records approved, stable preferences |
 
 Mindpowers explains a recommended handoff and asks for confirmation before

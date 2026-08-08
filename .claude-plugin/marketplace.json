@@ -5,7 +5,7 @@
   },
   "metadata": {
     "description": "One loop for clear knowledge work: check whether evidence is strong enough for the next action, shape the deliverable one useful question at a time, draft from an approved spec, review the result, and remember what you like. Missing decisions, evidence limits, readiness, and required human approval stay visible.",
-    "version": "0.11.0",
+    "version": "0.12.0",
     "pluginRoot": "."
   },
   "plugins": [
@@ -13,7 +13,7 @@
       "name": "mindpowers",
       "source": "./",
       "description": "One loop for clear knowledge work: check whether evidence is strong enough for the next action, shape the deliverable one useful question at a time, draft from an approved spec, review the result, and remember what you like. Missing decisions, evidence limits, readiness, and required human approval stay visible.",
-      "version": "0.11.0",
+      "version": "0.12.0",
       "keywords": ["brainstorming", "mindstorming", "knowledge-work", "specs", "decision-making", "writing", "frameworks", "cowork", "claude-cowork", "prd", "productivity", "templates", "problem-validation", "product-discovery", "product-management", "requirements", "acceptance-criteria"]
     }
   ]
