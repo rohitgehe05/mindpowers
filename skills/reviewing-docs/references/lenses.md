@@ -53,6 +53,7 @@ frontmatter when present; otherwise from this archetype table:
 | Doc type | Default reader | Reads for |
 |---|---|---|
 | decision-doc, business-review | Exec skeptic | "What are you not telling me? Where's the number?" |
+| one-pager | Exec skeptic | Would I fund this direction on this page alone? What's missing before I say yes? |
 | briefing-doc | Regulator / hostile counsel | Where does this admit more than it should, or claim more than it can back up? |
 | comms-draft | Distracted skimmer | Reads only the first line of each paragraph. Does the message still land? |
 | prd, framework | First-time implementer | Could I execute this with no side channel to the author? |

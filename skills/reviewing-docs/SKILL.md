@@ -48,6 +48,11 @@ This is worth doing even when it feels like a formality: it's often where the re
 
 Either way, don't skip Step 1 to save time. A doc that fails its own spec is a different, more useful finding than a doc that merely reads weak; surface it first so the rest of the review has the right frame.
 
+Also check `docs/mindpowers/reviews/` for a prior review of this doc (same
+filename stem). If one exists, load its findings ledger before assigning any
+IDs: existing findings keep their `R-###`, new findings continue the
+sequence, and the re-review updates statuses per the Output section.
+
 ## Step 2: Load the template rubric
 
 1. Identify the doc's type from its content and shape (business review, decision doc, PRD, briefing doc, comms draft, framework, talking points, post-mortem) or from its frontmatter `type:` field if present.
@@ -81,11 +86,14 @@ the tier table, and the reader archetypes.
    business-review, and one-pager add rigor; decision-doc, prd, framework,
    post-mortem, and self-shape add premise). The user can override for any
    run: "quick pass" drops to tier 1, "full panel" raises to tier 3.
-2. **Tier 3 gate:** before the panel runs, build the audience lens's reader
-   card and first-read narrative and show both to the user: "Does this
-   match your reader? Where am I wrong?" Correct the card from their
-   answer, then run the panel. Tiers 1-2 skip this gate and seed the reader
-   card from the spec's `audience` frontmatter or the archetype table.
+2. **Tier 3 gate:** before the full panel runs, run the audience lens first
+   and show the user its reader card and first-read narrative: "Does this
+   match your reader? Where am I wrong?" If the card is wrong, correct it
+   and re-run the audience lens with the corrected card, then dispatch the
+   remaining lenses. In degraded mode (no subagents), build the card and
+   narrative in-conversation and say so. Tiers 1-2 skip this gate and seed
+   the reader card from the spec's `audience` frontmatter or the archetype
+   table.
 3. **Dispatch:** on clients that can spawn subagents, run each lens as a
    fresh subagent given ONLY what "What every lens receives" in lenses.md
    allows — the spec (or its Step 1 stand-in), the doc, the lens prompt,
