@@ -4,6 +4,21 @@ All notable changes to mindpowers will be documented here.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.12.0] - 2026-08-08
+
+### Added
+
+- `fact-checking`, the sixth skill: extracts every checkable claim
+  (`C-###` IDs), verifies source-verifiable ones with blind verifier
+  subagents under a hard quote-the-source rule (unquotable is never
+  silently confirmed), and runs a separate sensitivity pass for named
+  people, customer names, unannounced plans, and PII. Results land in a
+  claims ledger in the doc's review file; the chat summary leads with
+  contradicted and needs-you items.
+- `drafting` and `reviewing-docs` recommend a fact-checking pass at
+  handoff for docs with checkable claims (confirmed routing, never
+  automatic).
+
 ## [0.11.0] - 2026-08-08
 
 ### Added
