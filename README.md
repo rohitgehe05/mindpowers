@@ -26,6 +26,7 @@ Ask naturally:
 - “Grill this idea until the problem and solution are clear.”
 - “Turn this approved direction into a build-ready PRD.”
 - “Review this document like a skeptical product leader.”
+- “Fact-check this memo before I send it.”
 
 Mindpowers will:
 
@@ -183,6 +184,7 @@ it unless those approvals were explicitly recorded.
 - It does not treat a polished document as proof that the work is ready.
 - It does not invent missing product choices, dates, numbers, or responsibilities.
 - It does not claim stakeholder approval without a recorded sign-off.
+- It does not confirm a claim it cannot quote a source for, and it does not run web research without asking.
 - It does not search connected internal sources beyond the scope you provide.
 - It cannot physically prevent a team from shipping.
 - It does not create shared organisational memory across workspaces.
@@ -240,14 +242,16 @@ native instructions above where available.
 docs/mindpowers/problems/       evidence-assessed problem briefs
 docs/mindpowers/specs/          locked intent, one file per document
 docs/mindpowers/drafts/         deliverables, using the same stem as their spec
-docs/mindpowers/reviews/        red-team notes
+docs/mindpowers/reviews/        red-team notes and fact-check claim ledgers
 docs/mindpowers/preferences.md  approved preferences, grouped by template type
 ```
 
 These files can contain sensitive material, including leadership communication,
 strategy, and customer evidence. In a shared or public Git repository,
 Mindpowers warns you and suggests adding `docs/mindpowers/` to `.gitignore` or
-choosing a private location.
+choosing a private location. The visual companion stores its rendered screens
+under `.mindpowers/companion/` in the working folder; the same warning applies,
+and the companion never fetches anything from the network.
 
 Preferences and recent specs are workspace-local. They do not become a shared
 company memory unless your organisation provides a separate shared system.
@@ -263,13 +267,19 @@ reasoning, and invisible blockers before drafting begins.
 
 ## What’s new
 
-- [**0.9.0**](https://github.com/rohitgehe05/mindpowers/releases/tag/v0.9.0):
-  Evidence is judged against the next action, important conclusions use plain
-  language, pilot readiness stays tied to scope, and business decisions remain
-  separate from evidence and human approval.
-- **0.8**: PRDs became adaptive engineering contracts with stable requirement
-  IDs, traceable acceptance criteria, risk-triggered modules, and honest
-  build-readiness.
+- [**0.12.0**](https://github.com/rohitgehe05/mindpowers/releases/tag/v0.12.0):
+  Fact-checking became the sixth skill. Every claim in a doc is verified
+  against your sources — a verdict must quote its source line, or the claim
+  lands on a "confirm this yourself" list — and a separate pass flags
+  sensitive content before anything ships.
+- [**0.11.0**](https://github.com/rohitgehe05/mindpowers/releases/tag/v0.11.0):
+  Reviews now read your doc the way its real audience does: one to three
+  fresh-context reviewer lenses, blind to the drafting conversation, with
+  findings tracked by stable IDs across review rounds.
+- [**0.10.0**](https://github.com/rohitgehe05/mindpowers/releases/tag/v0.10.0):
+  A visual companion renders decision matrices, claim ledgers, and annotated
+  findings in a browser tab while you work, with artifact and text fallbacks
+  on clients without a shell.
 
 See the [CHANGELOG](CHANGELOG.md) for the full release history.
 
